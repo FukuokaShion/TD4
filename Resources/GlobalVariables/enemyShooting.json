@@ -1,0 +1,9 @@
+{
+    "enemyShooting": {
+        "afterTime": 15,
+        "bulletLiveLimit": 60,
+        "interval": 25,
+        "shotMax": 3,
+        "speed": 2.0
+    }
+}

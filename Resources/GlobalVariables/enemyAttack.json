@@ -1,0 +1,19 @@
+{
+    "enemyAttack": {
+        "afterTime": 45,
+        "anticDistance": [
+            0.0,
+            0.0,
+            1.0
+        ],
+        "anticTime": 45,
+        "attackDistance": [
+            0.0,
+            0.0,
+            -3.0
+        ],
+        "attackTime": 15,
+        "colRad": 3.0,
+        "power": 220
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "playerMove": {
+        "avoidSwitchTime": 12,
+        "dashMaxSpeed": 0.3799999952316284,
+        "speedMaxTime": 15,
+        "walkMaxSpeed": 0.20000000298023224
+    }
+}

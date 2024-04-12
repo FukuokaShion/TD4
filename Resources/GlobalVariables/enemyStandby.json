@@ -1,0 +1,6 @@
+{
+    "enemyStandby": {
+        "approachDistance": 5.0,
+        "limit": 60
+    }
+}

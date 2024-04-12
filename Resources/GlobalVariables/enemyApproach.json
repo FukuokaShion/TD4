@@ -1,0 +1,7 @@
+{
+    "enemyApproach": {
+        "distance": 4.0,
+        "limit": 180,
+        "speed": 0.30000001192092896
+    }
+}

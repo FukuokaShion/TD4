@@ -1,0 +1,19 @@
+{
+    "playerAttack": {
+        "afterTime": 6,
+        "animationSpeed": 1.5,
+        "anticDistance": [
+            0.0,
+            0.0,
+            1.0
+        ],
+        "anticTime": 16,
+        "attackDistance": [
+            0.0,
+            0.0,
+            1.0
+        ],
+        "attackTime": 11,
+        "sowrdPower": 30
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "playerJump": {
+        "limit": 20,
+        "maxPos": 2.0,
+        "maxSpeed": 0.20000000298023224
+    }
+}

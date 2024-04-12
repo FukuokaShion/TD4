@@ -1,0 +1,8 @@
+{
+    "playerJumpAttack": {
+        "afterTime": 40,
+        "animationSpeed": 1.5,
+        "attackFallSpeed": -0.20000000298023224,
+        "power": 50
+    }
+}
