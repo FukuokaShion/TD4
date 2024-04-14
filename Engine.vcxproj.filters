@@ -13,14 +13,8 @@
     <Filter Include="User\Source\Player">
       <UniqueIdentifier>{628035a0-2517-4ba9-8b8d-e4db2464bc70}</UniqueIdentifier>
     </Filter>
-    <Filter Include="User\Source\Enemy">
-      <UniqueIdentifier>{6bfde38e-92fe-498f-9a44-5c058c580f43}</UniqueIdentifier>
-    </Filter>
     <Filter Include="User\Source\Scene">
       <UniqueIdentifier>{4349b04e-3d06-488a-9b41-bd725a5b9100}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="User\Source\Loader">
-      <UniqueIdentifier>{1494b4ec-62c1-404f-920d-c1997743b160}</UniqueIdentifier>
     </Filter>
     <Filter Include="User\Source\Field">
       <UniqueIdentifier>{21b5912b-a2ac-4e8c-808e-eeff69ad6f95}</UniqueIdentifier>
@@ -28,38 +22,11 @@
     <Filter Include="User\Header">
       <UniqueIdentifier>{1482f690-1c2b-4c21-8274-6de46df1607c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="User\Header\Enemy">
-      <UniqueIdentifier>{1de9dfb5-d1ba-4b1f-9978-95c10cfbdcb9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="User\Header\Field">
       <UniqueIdentifier>{3061c46d-cb3b-48d5-94a8-8a0a21ba1279}</UniqueIdentifier>
     </Filter>
-    <Filter Include="User\Header\Loader">
-      <UniqueIdentifier>{bb559e5a-7f71-4a03-aa73-c2b8b77d0d7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="User\Header\Player">
-      <UniqueIdentifier>{4d323de8-d2a9-41a6-a143-a5b2e08080dd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="User\Header\Scene">
       <UniqueIdentifier>{30509ed0-ceb3-4348-80b4-d587819c3884}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="User\Source\Enemy\State">
-      <UniqueIdentifier>{a5da3410-6a6f-4b3b-b329-9a33562a0669}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="User\Source\Enemy\Particle">
-      <UniqueIdentifier>{a0499dd7-5d3a-400c-83ac-23247058ac7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="User\Source\Player\State">
-      <UniqueIdentifier>{34e8dc17-9cad-4e78-890f-7fe19816e138}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="User\Header\Enemy\State">
-      <UniqueIdentifier>{f2e3de60-4176-425a-94e8-b885c4233c98}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="User\Header\Enemy\Particle">
-      <UniqueIdentifier>{32b0bcc3-839d-4aed-9ce2-4b016e7dcef9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="User\Header\Player\State">
-      <UniqueIdentifier>{aed3f72c-2288-4735-b195-46a7ded806be}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Source">
       <UniqueIdentifier>{d98e2870-a7ff-4443-8b08-673ea8c16c19}</UniqueIdentifier>
@@ -141,6 +108,9 @@
     </Filter>
     <Filter Include="Engine\Header\3d\Light">
       <UniqueIdentifier>{965007ed-129d-4c35-94c6-280d292716cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="User\Header\Player">
+      <UniqueIdentifier>{dae6b2c4-c2b9-4a6d-b191-cde8ec118100}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -226,21 +196,6 @@
     <ClCompile Include="Engine\3d\FBXObject3d.cpp">
       <Filter>Engine\Source\3d</Filter>
     </ClCompile>
-    <ClCompile Include="User\Player\Player.cpp">
-      <Filter>User\Source\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\Enemy.cpp">
-      <Filter>User\Source\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="User\FIELD\Field.cpp">
-      <Filter>User\Source\Field</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\PlayerHp.cpp">
-      <Filter>User\Source\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\EnemyHp.cpp">
-      <Filter>User\Source\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\MATH\Easing.cpp">
       <Filter>Engine\Source\Math</Filter>
     </ClCompile>
@@ -250,44 +205,14 @@
     <ClCompile Include="User\SCENE\SceneState.cpp">
       <Filter>User\Source\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="User\SCENE\TitleScene.cpp">
-      <Filter>User\Source\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\base\Framework .cpp">
       <Filter>Engine\Source\Base</Filter>
     </ClCompile>
     <ClCompile Include="User\GameMain.cpp">
       <Filter>User\Source</Filter>
     </ClCompile>
-    <ClCompile Include="User\Enemy\EnemyBullet.cpp">
-      <Filter>User\Source\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="User\FIELD\TitleField.cpp">
-      <Filter>User\Source\Field</Filter>
-    </ClCompile>
-    <ClCompile Include="User\FIELD\Ship.cpp">
-      <Filter>User\Source\Field</Filter>
-    </ClCompile>
-    <ClCompile Include="User\LOADER\ObjModelLoader.cpp">
-      <Filter>User\Source\Loader</Filter>
-    </ClCompile>
-    <ClCompile Include="User\LOADER\LoaderManager.cpp">
-      <Filter>User\Source\Loader</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\PlayerUI.cpp">
-      <Filter>User\Source\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\EnemyUI.cpp">
-      <Filter>User\Source\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="User\LOADER\SpriteLoader.cpp">
-      <Filter>User\Source\Loader</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\CAMERA\GameCamera.cpp">
       <Filter>Engine\Source\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="User\SCENE\Option.cpp">
-      <Filter>User\Source\Scene</Filter>
     </ClCompile>
     <ClCompile Include="User\SCENE\SceneChange.cpp">
       <Filter>User\Source\Scene</Filter>
@@ -295,104 +220,20 @@
     <ClCompile Include="User\COLLISION\CollisionManager.cpp">
       <Filter>User\Source</Filter>
     </ClCompile>
-    <ClCompile Include="User\Enemy\EnemyBomb.cpp">
-      <Filter>User\Source\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\EnemyEarthquake.cpp">
-      <Filter>User\Source\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="User\SCENE\TutorialScene.cpp">
-      <Filter>User\Source\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="User\FIELD\TutorialField.cpp">
-      <Filter>User\Source\Field</Filter>
-    </ClCompile>
-    <ClCompile Include="User\FIELD\Scarecrow.cpp">
-      <Filter>User\Source\Field</Filter>
-    </ClCompile>
-    <ClCompile Include="User\FIELD\Signboard.cpp">
-      <Filter>User\Source\Field</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Loader\GlobalVariables.cpp">
       <Filter>Engine\Source\Loader</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\PlayerStamina.cpp">
-      <Filter>User\Source\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\PlayerDust.cpp">
-      <Filter>User\Source\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyApproach.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyAttack.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyBombShooting.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyEarthquakeAttack.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyLeave.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyRoundShooting.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyShooting.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyStandby.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyState.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyStrongBodyBlow.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\State\EnemyStumb.cpp">
-      <Filter>User\Source\Enemy\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\Particle\EnemyDeathParticle.cpp">
-      <Filter>User\Source\Enemy\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\Particle\EnemyParticle.cpp">
-      <Filter>User\Source\Enemy\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Enemy\Particle\EnemyShootingParticle.cpp">
-      <Filter>User\Source\Enemy\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\State\PlayerAttack.cpp">
-      <Filter>User\Source\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\State\PlayerAvoid.cpp">
-      <Filter>User\Source\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\State\PlayerJump.cpp">
-      <Filter>User\Source\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\State\PlayerJumpAttack.cpp">
-      <Filter>User\Source\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\State\PlayerMove.cpp">
-      <Filter>User\Source\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\State\PlayerStandby.cpp">
-      <Filter>User\Source\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\State\PlayerState.cpp">
-      <Filter>User\Source\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="User\Player\State\PlayerStumb.cpp">
-      <Filter>User\Source\Player\State</Filter>
     </ClCompile>
     <ClCompile Include="Engine\3d\Light\DirectionalLight.cpp">
       <Filter>Engine\Source\3d\Light</Filter>
     </ClCompile>
     <ClCompile Include="Engine\3d\Light\LightGroup.cpp">
       <Filter>Engine\Source\3d\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Loader\LoaderManager.cpp">
+      <Filter>Engine\Source\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Loader\SpriteLoader.cpp">
+      <Filter>Engine\Source\Loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -471,21 +312,6 @@
     <ClInclude Include="Engine\3D\FBXObject3d.h">
       <Filter>Engine\Header\3d</Filter>
     </ClInclude>
-    <ClInclude Include="User\PLAYER\Player.h">
-      <Filter>User\Header\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\Enemy.h">
-      <Filter>User\Header\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="User\FIELD\Field.h">
-      <Filter>User\Header\Field</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerHp.h">
-      <Filter>User\Header\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\EnemyHp.h">
-      <Filter>User\Header\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\MATH\Easing.h">
       <Filter>Engine\Header\Math</Filter>
     </ClInclude>
@@ -498,47 +324,17 @@
     <ClInclude Include="User\SCENE\SceneState.h">
       <Filter>User\Header\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="User\SCENE\TitleScene.h">
-      <Filter>User\Header\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\base\Framework .h">
       <Filter>Engine\Header\Base</Filter>
     </ClInclude>
     <ClInclude Include="User\GameMain.h">
       <Filter>User\Header</Filter>
     </ClInclude>
-    <ClInclude Include="User\Enemy\EnemyBullet.h">
-      <Filter>User\Header\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\COLLISION\CollisionAttribute.h">
       <Filter>Engine\Header\Collsion</Filter>
     </ClInclude>
-    <ClInclude Include="User\FIELD\TitleField.h">
-      <Filter>User\Header\Field</Filter>
-    </ClInclude>
-    <ClInclude Include="User\FIELD\Ship.h">
-      <Filter>User\Header\Field</Filter>
-    </ClInclude>
-    <ClInclude Include="User\LOADER\ObjModelLoader.h">
-      <Filter>User\Header\Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="User\LOADER\LoaderManager.h">
-      <Filter>User\Header\Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerUI.h">
-      <Filter>User\Header\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\EnemyUI.h">
-      <Filter>User\Header\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="User\LOADER\SpriteLoader.h">
-      <Filter>User\Header\Loader</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\CAMERA\GameCamera.h">
       <Filter>Engine\Header\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="User\SCENE\Option.h">
-      <Filter>User\Header\Scene</Filter>
     </ClInclude>
     <ClInclude Include="User\SCENE\SceneChange.h">
       <Filter>User\Header\Scene</Filter>
@@ -549,107 +345,23 @@
     <ClInclude Include="Engine\COLLISION\CollisionPrimitive.h">
       <Filter>Engine\Header\Collsion</Filter>
     </ClInclude>
-    <ClInclude Include="User\Enemy\EnemyBomb.h">
-      <Filter>User\Header\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\EnemyEarthquake.h">
-      <Filter>User\Header\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="User\SCENE\TutorialScene.h">
-      <Filter>User\Header\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="User\FIELD\TutorialField.h">
-      <Filter>User\Header\Field</Filter>
-    </ClInclude>
-    <ClInclude Include="User\FIELD\Scarecrow.h">
-      <Filter>User\Header\Field</Filter>
-    </ClInclude>
-    <ClInclude Include="User\FIELD\Signboard.h">
-      <Filter>User\Header\Field</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Loader\GlobalVariables.h">
       <Filter>Engine\Header\Loader</Filter>
     </ClInclude>
     <ClInclude Include="Engine\3D\LightGroup.h">
       <Filter>Engine\Header\3d</Filter>
     </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerStamina.h">
-      <Filter>User\Header\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerDust.h">
-      <Filter>User\Header\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyApproach.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyAttack.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyBombShooting.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyEarthquakeAttack.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyLeave.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyRoundShooting.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyShooting.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyStandby.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyState.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyStrongBodyBlow.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\State\EnemyStumb.h">
-      <Filter>User\Header\Enemy\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\Particle\EnemyDeathParticle.h">
-      <Filter>User\Header\Enemy\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\Particle\EnemyParticle.h">
-      <Filter>User\Header\Enemy\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="User\Enemy\Particle\EnemyShootingParticle.h">
-      <Filter>User\Header\Enemy\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerAttack.h">
-      <Filter>User\Header\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerAvoid.h">
-      <Filter>User\Header\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerJump.h">
-      <Filter>User\Header\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerJumpAttack.h">
-      <Filter>User\Header\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerMove.h">
-      <Filter>User\Header\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerStandby.h">
-      <Filter>User\Header\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerState.h">
-      <Filter>User\Header\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="User\PLAYER\PlayerStumb.h">
-      <Filter>User\Header\Player\State</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\3D\CircleShadow.h">
       <Filter>Engine\Header\3d\Light</Filter>
     </ClInclude>
     <ClInclude Include="Engine\3D\DirectionalLight.h">
       <Filter>Engine\Header\3d\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Loader\LoaderManager.h">
+      <Filter>Engine\Header\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Loader\SpriteLoader.h">
+      <Filter>Engine\Header\Loader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
