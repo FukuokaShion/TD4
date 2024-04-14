@@ -2,13 +2,13 @@
  * @file GameScene.cpp
  * @brief ゲームプレイシーン
  */
-#include"GameScene.h"
-#include"SceneManager.h"
-#include"FbxLoader.h"
-#include"SpriteLoader.h"
-#include"Easing.h"
-#include"Collision.h"
-#include"LightGroup.h"
+#include "GameScene.h"
+#include "Collision.h"
+#include "Easing.h"
+#include "FbxLoader.h"
+#include "LightGroup.h"
+#include "SceneManager.h"
+#include "SpriteLoader.h"
 
 GameScene::GameScene() {}
 
@@ -25,29 +25,21 @@ GameScene::~GameScene() {
 	CollisionManager::GetInstance()->Finalize();
 }
 
-//更新
+// 更新
 void GameScene::Update() {
-		gameCamera_->Update();
-		CollisionManager::GetInstance()->CheakAllCol();
+	gameCamera_->Update();
+	CollisionManager::GetInstance()->CheakAllCol();
 }
 
-
 void GameScene::ObjectDraw() {
-
 
 #ifdef _DEBUG
 	CollisionManager::GetInstance()->DrawCollider();
 #endif
 }
 
-void GameScene::FbxDraw() {
+void GameScene::FbxDraw() {}
 
-}
+void GameScene::SpriteDraw() {}
 
-void GameScene::SpriteDraw() {
-
-}
-
-void GameScene::StateTransition() {
-
-}
+void GameScene::StateTransition() {}
