@@ -17,6 +17,7 @@ void GameScene::Initialize() {
 	gameCamera_ = make_unique<GameCamera>();
 	gameCamera_->Initialize(WinApp::window_width, WinApp::window_height);
 
+	// 当たり判定マネージャー初期化
 	CollisionManager::GetInstance()->Initialize();
 }
 
