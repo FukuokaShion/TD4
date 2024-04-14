@@ -7,11 +7,7 @@
 #include"Sprite.h"
 #include"Audio.h"
 #include"GameCamera.h"
-#include"Field.h"
-#include"Player.h"
-#include"Enemy.h"
 #include"CollisionManager.h"
-#include"Option.h"
 
 using namespace std;
 
@@ -47,38 +43,6 @@ private:
 	void StateTransition() override;
 
 private:
-	enum class State {
-		game,
-		clear,
-		death,
-		option,
-	};
-private:
-	State state_;
-	//サウンド
-	Audio* audio_ = nullptr;
-	IXAudio2SourceVoice* pSourceVoice_ = nullptr;
-	//メンバ変数
 	//カメラ
 	unique_ptr<GameCamera> gameCamera_ = nullptr;
-	//フィールド
-	unique_ptr<Field> field_ = nullptr;
-	//プレイヤー
-	unique_ptr<Player> player_ = nullptr;
-	//エネミー
-	unique_ptr<Enemy> enemy_ = nullptr;
-	//画像
-	unique_ptr<Sprite> pushB_;
-	unique_ptr<Sprite> telopBase_;
-	float telopBaseAddAlpha_;
-	//クリア
-	unique_ptr<Sprite> clear_;
-	unique_ptr<Sprite> clearEffect_;
-	int clearEffAddSize_;
-	float clearEffSubtractAlpha_;
-	//ゲームオーバー
-	unique_ptr<Sprite> youDiedPic_;
-	float youDiedAddAlpha_;
-	//オプション
-	unique_ptr<Option> option_ = nullptr;
 };

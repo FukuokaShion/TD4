@@ -1,8 +1,0 @@
-{
-    "enemyRoundShooting": {
-        "bulletLiveLimit": 60,
-        "interval": 25,
-        "shotMax": 5,
-        "speed": 2.0
-    }
-}
