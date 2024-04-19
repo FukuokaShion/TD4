@@ -12,6 +12,7 @@
 
 GameScene::GameScene() {}
 
+// 初期化
 void GameScene::Initialize() {
 	// カメラ生成
 	gameCamera_ = make_unique<GameCamera>();
