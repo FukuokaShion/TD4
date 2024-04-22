@@ -50,4 +50,8 @@ private:
 	unique_ptr<TGameCamera> gameCamera_ = nullptr;
 	//プレイヤー
 	unique_ptr<Player::Main> player_ = nullptr;
+
+
+	//仮コイン先
+	unique_ptr<Model> modelCoin = nullptr;
 };
