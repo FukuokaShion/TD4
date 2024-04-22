@@ -250,6 +250,15 @@
     <ClCompile Include="User\Player\State\PlayerDash.cpp">
       <Filter>User\Source\Player\State</Filter>
     </ClCompile>
+    <ClCompile Include="User\BaseFieldObject.cpp">
+      <Filter>User\Source\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="User\CoinObject.cpp">
+      <Filter>User\Source\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="User\GoalObject.cpp">
+      <Filter>User\Source\Field</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BASE\FPS.h">
@@ -386,6 +395,15 @@
     </ClInclude>
     <ClInclude Include="User\Player\State\PlayerDash.h">
       <Filter>User\Header\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="User\BaseFieldObject.h">
+      <Filter>User\Header\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="User\CoinObject.h">
+      <Filter>User\Header\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="User\GoalObject.h">
+      <Filter>User\Header\Field</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

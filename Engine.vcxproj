@@ -101,6 +101,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="User\CoinObject.cpp" />
+    <ClCompile Include="User\GoalObject.cpp" />
+    <ClCompile Include="User\BaseFieldObject.cpp" />
     <ClCompile Include="Engine\2D\Sprite.cpp" />
     <ClCompile Include="Engine\2D\SpriteCommon.cpp" />
     <ClCompile Include="Engine\3d\FbxLoader.cpp" />
@@ -147,6 +150,9 @@
     <ClCompile Include="User\SCENE\SceneState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="User\CoinObject.h" />
+    <ClInclude Include="User\GoalObject.h" />
+    <ClInclude Include="User\BaseFieldObject.h" />
     <ClInclude Include="Engine\2D\Sprite.h" />
     <ClInclude Include="Engine\2D\SpriteCommon.h" />
     <ClInclude Include="Engine\3D\CircleShadow.h" />
