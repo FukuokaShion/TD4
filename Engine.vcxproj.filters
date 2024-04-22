@@ -112,6 +112,12 @@
     <Filter Include="User\Header\Player">
       <UniqueIdentifier>{dae6b2c4-c2b9-4a6d-b191-cde8ec118100}</UniqueIdentifier>
     </Filter>
+    <Filter Include="User\Header\Player\State">
+      <UniqueIdentifier>{d4cd6546-48d4-4217-83e0-96b1253bca20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="User\Source\Player\State">
+      <UniqueIdentifier>{46e6d412-df92-4f4b-bb99-db6203539277}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -234,6 +240,15 @@
     </ClCompile>
     <ClCompile Include="Engine\Loader\SpriteLoader.cpp">
       <Filter>Engine\Source\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Player\Player.cpp">
+      <Filter>User\Source\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Player\State\PlayerState.cpp">
+      <Filter>User\Source\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Player\State\PlayerDash.cpp">
+      <Filter>User\Source\Player\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +377,15 @@
     </ClInclude>
     <ClInclude Include="Engine\Loader\SpriteLoader.h">
       <Filter>Engine\Header\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\Player.h">
+      <Filter>User\Header\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\State\PlayerState.h">
+      <Filter>User\Header\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\State\PlayerDash.h">
+      <Filter>User\Header\Player\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

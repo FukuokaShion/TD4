@@ -17,6 +17,12 @@ void GameScene::Initialize() {
 	// カメラ生成
 	gameCamera_ = make_unique<GameCamera>();
 	gameCamera_->Initialize(WinApp::window_width, WinApp::window_height);
+	//カメラセット
+	FBXObject3d::SetCamera(gameCamera_.get());
+
+	//プレイヤー
+	player_ = make_unique<Player::Main>();
+	player_->Initialize();
 
 	// 当たり判定マネージャー初期化
 	CollisionManager::GetInstance()->Initialize();
@@ -29,8 +35,9 @@ GameScene::~GameScene() {
 
 // 更新
 void GameScene::Update() {
-	gameCamera_->Update();
-	CollisionManager::GetInstance()->CheakAllCol();
+		gameCamera_->Update();
+		player_->Update();
+		CollisionManager::GetInstance()->CheakAllCol();
 }
 
 void GameScene::ObjectDraw() {
@@ -38,6 +45,10 @@ void GameScene::ObjectDraw() {
 #ifdef _DEBUG
 	CollisionManager::GetInstance()->DrawCollider();
 #endif
+}
+
+void GameScene::FbxDraw() {
+	player_->FbxDraw();
 }
 
 void GameScene::FbxDraw() {}
