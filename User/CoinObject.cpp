@@ -7,6 +7,8 @@ CoinObject::CoinObject(Model* Model, Vector3 Pos, Vector3 Scale)
 
 	object->wtf.position = Pos;
 	object->wtf.scale = Scale;
+
+	tag = ObjectTag::COIN;
 }
 
 void CoinObject::Update()

@@ -36,6 +36,8 @@ void GameScene::Initialize() {
 	CoinObject::Spawn(modelCoin.get(), Vector3(	 0.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
 	CoinObject::Spawn(modelCoin.get(), Vector3(	 5.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
 	CoinObject::Spawn(modelCoin.get(), Vector3(	10.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
+
+
 	CollisionManager::GetInstance()->Initialize();
 }
 
