@@ -118,6 +118,12 @@
     <Filter Include="User\Source\Player\State">
       <UniqueIdentifier>{46e6d412-df92-4f4b-bb99-db6203539277}</UniqueIdentifier>
     </Filter>
+    <Filter Include="User\Header\Camera">
+      <UniqueIdentifier>{336e2969-a5a3-4f0f-b55d-18e4c5eba4d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="User\Source\Camera">
+      <UniqueIdentifier>{1c6cf6d0-c88f-4489-bdb3-16cc7715a1ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -249,6 +255,9 @@
     </ClCompile>
     <ClCompile Include="User\Player\State\PlayerDash.cpp">
       <Filter>User\Source\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Camera\TGameCamera.cpp">
+      <Filter>User\Source\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -386,6 +395,9 @@
     </ClInclude>
     <ClInclude Include="User\Player\State\PlayerDash.h">
       <Filter>User\Header\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Camera\TGameCamera.h">
+      <Filter>User\Header\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -15,8 +15,9 @@ GameScene::GameScene() {}
 // 初期化
 void GameScene::Initialize() {
 	// カメラ生成
-	gameCamera_ = make_unique<GameCamera>();
+	gameCamera_ = make_unique<TGameCamera>();
 	gameCamera_->Initialize(WinApp::window_width, WinApp::window_height);
+
 	// カメラセット
 	FBXObject3d::SetCamera(gameCamera_.get());
 
@@ -35,6 +36,11 @@ GameScene::~GameScene() {
 
 // 更新
 void GameScene::Update() {
+	gameCamera_->SetCameraPos({
+	    player_->GetPos().x,
+	    player_->GetPos().y + 3,
+	    player_->GetPos().z - 6,
+	});
 	gameCamera_->Update();
 	player_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
