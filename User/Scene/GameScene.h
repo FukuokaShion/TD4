@@ -3,6 +3,7 @@
  * @brief ゲームプレイシーン
  */
 #pragma once
+#include"Model.h"
 #include"SceneState.h"
 #include"Sprite.h"
 #include"Audio.h"
@@ -11,6 +12,7 @@
 #include"CollisionManager.h"
 
 #include"Player.h"
+
 
 using namespace std;
 
