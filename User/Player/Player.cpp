@@ -30,5 +30,6 @@ void Main::Update() {
 }
 
 void Main::FbxDraw() {
-	body_->Draw();
-}
+	body_->Draw(); }
+
+const Vector3& Player::Main::GetPos() const { return body_->wtf.position; }

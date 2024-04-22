@@ -37,6 +37,8 @@ namespace Player {
 		 * @brief 描画
 		*/
 		void FbxDraw();
+
+		const Vector3& GetPos() const;
 	private:
 		//モデル
 		std::unique_ptr<FBXModel> bodyModel_ = nullptr;

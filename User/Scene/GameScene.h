@@ -7,6 +7,7 @@
 #include"Sprite.h"
 #include"Audio.h"
 #include"GameCamera.h"
+#include "TGameCamera.h"
 #include"CollisionManager.h"
 
 #include"Player.h"
@@ -46,7 +47,7 @@ private:
 
 private:
 	//カメラ
-	unique_ptr<GameCamera> gameCamera_ = nullptr;
+	unique_ptr<TGameCamera> gameCamera_ = nullptr;
 	//プレイヤー
 	unique_ptr<Player::Main> player_ = nullptr;
 
