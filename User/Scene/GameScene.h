@@ -9,6 +9,8 @@
 #include"GameCamera.h"
 #include"CollisionManager.h"
 
+#include"Player.h"
+
 using namespace std;
 
 class GameScene : public SceneState {
@@ -45,4 +47,6 @@ private:
 private:
 	//カメラ
 	unique_ptr<GameCamera> gameCamera_ = nullptr;
+	//プレイヤー
+	unique_ptr<Player::Main> player_ = nullptr;
 };
