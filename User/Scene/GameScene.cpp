@@ -52,9 +52,9 @@ GameScene::~GameScene() {
 // 更新
 void GameScene::Update() {
 	gameCamera_->SetCameraPos({
-	    player_->GetPos().x,
-	    player_->GetPos().y + 3,
-	    player_->GetPos().z - 6,
+	    player_->GetWorldTransform().position.x,
+	    player_->GetWorldTransform().position.y + 3,
+	    player_->GetWorldTransform().position.z - 6,
 	});
 	gameCamera_->Update();
 	player_->Update();

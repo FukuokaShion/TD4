@@ -5,6 +5,7 @@
 #pragma once
 
 #include"PlayerState.h"
+#include"Transform.h"
 
 namespace Player {
 	class Dash : public State {
@@ -18,13 +19,12 @@ namespace Player {
 		/**
 		 * @brief 更新
 		*/
-		void Update() override;
-
+		void Update(Main* player) override;
 	private:
 		/**
 		 * @brief 移動
 		*/
-		void Move();
+		void Move(const Transform wtf);
 		/**
 		 * @brief 回転
 		*/
@@ -39,6 +39,7 @@ namespace Player {
 		void ApplyGlobalVariables() override;
 	private:
 		const char* groupName_ = "playerDash";
-		
+		float maxSpeed_;
+		float rotaSpeed_;
 	};
 }

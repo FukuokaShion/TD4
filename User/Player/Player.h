@@ -37,8 +37,10 @@ namespace Player {
 		 * @brief 描画
 		*/
 		void FbxDraw();
-
-		const Vector3& GetPos() const;
+		/**
+		 * @brief 座標取得
+		*/
+		const Transform GetWorldTransform() { return body_->wtf; };
 	private:
 		//モデル
 		std::unique_ptr<FBXModel> bodyModel_ = nullptr;

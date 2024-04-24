@@ -18,18 +18,19 @@ void Main::Initialize() {
 	body_->Initialize();
 	body_->SetModel(bodyModel_.get());
 	body_->PlayAnimation(DASH, 3.0f);
+	body_->Update();
 	//ステート
 	state_ = std::make_unique<Dash>();
 	state_->Initialize();
 }
 
 void Main::Update() {
-	state_->Update();
-	body_->wtf.position += {0, 0, 1.0f};
+	state_->Update(this);
+	body_->wtf.rotation += state_->GetRotaVector();
+	body_->wtf.position += state_->GetMoveVector();
 	body_->Update();
 }
 
 void Main::FbxDraw() {
-	body_->Draw(); }
-
-const Vector3& Player::Main::GetPos() const { return body_->wtf.position; }
+	body_->Draw();
+}
