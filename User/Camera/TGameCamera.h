@@ -1,11 +1,17 @@
 #pragma once
 #include "Camera.h"
 #include "Vector2.h"
-
-class Main;
+#include "Vector3.h"
+#include "Transform.h"
 
 class TGameCamera : public MyEngine::Camera {
 public:
+	enum Angle {
+		Back,
+		RightBack,
+		LeftBack,
+	};
+
 	/**
 	 * @brief 初期化
 	 */
@@ -17,14 +23,11 @@ public:
 	 */
 	void Update() override;
 
-	void SetCameraPos(const MyEngine::Vector3& playerPos);
+	void SetParentTF(const MyEngine::Transform& parentWTF);
 
 private:
-	/**
-	 * @brief 回転
-	 */
-	void Rota();
+	Angle cameraAngle = Back;
 
-private:
-	Main* main_ = nullptr;
+	MyEngine::Vector3 cameraEye_;
+	MyEngine::Vector3 cameraTarget_;
 };
