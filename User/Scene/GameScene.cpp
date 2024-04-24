@@ -31,6 +31,9 @@ void GameScene::Initialize() {
 	player_ = make_unique<Player::Main>();
 	player_->Initialize();
 
+	//地面
+	modelGround_ = MyEngine::Model::LoadFromOBJ("Ground");
+	ground_ = make_unique<Ground>(modelGround_.get(), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f));
 	modelCoin = MyEngine::Model::LoadFromOBJ("collider");
 
 	CoinObject::Spawn(modelCoin.get(), Vector3(-10.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
@@ -58,12 +61,13 @@ void GameScene::Update() {
 	});
 	gameCamera_->Update();
 	player_->Update();
+	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
 }
 
 void GameScene::ObjectDraw() {
 
-
+	ground_->Draw();
 	BaseFieldObject::ManagerBaseFieldObject();
 
 #ifdef _DEBUG

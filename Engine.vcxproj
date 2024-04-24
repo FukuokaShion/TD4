@@ -101,6 +101,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="User\Field\Ground.cpp" />
     <ClCompile Include="User\Field\CoinObject.cpp" />
     <ClCompile Include="User\Field\GoalObject.cpp" />
     <ClCompile Include="User\Field\BaseFieldObject.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="User\SCENE\SceneState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="User\Field\Ground.h" />
     <ClInclude Include="User\Field\CoinObject.h" />
     <ClInclude Include="User\Field\GoalObject.h" />
     <ClInclude Include="User\Field\BaseFieldObject.h" />
