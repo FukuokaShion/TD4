@@ -13,6 +13,7 @@
 
 #include"Player.h"
 #include"Particle/PlayerParticleManager.h"
+#include"Ground.h"
 using namespace std;
 
 class GameScene : public SceneState {
@@ -51,10 +52,13 @@ private:
 	unique_ptr<TGameCamera> gameCamera_ = nullptr;
 	//プレイヤー
 	unique_ptr<Player::Main> player_ = nullptr;
-
+	//地面
+	unique_ptr<Ground> ground_=nullptr;
 
 	//仮コイン先
 	unique_ptr<Model> modelCoin = nullptr;
-
+  
 	unique_ptr<PlayerParticleManager> playerParticleManager_ = nullptr;
+	//地面モデル
+	unique_ptr<Model> modelGround_ = nullptr;
 };
