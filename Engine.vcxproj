@@ -101,9 +101,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="User\CoinObject.cpp" />
-    <ClCompile Include="User\GoalObject.cpp" />
-    <ClCompile Include="User\BaseFieldObject.cpp" />
+    <ClCompile Include="User\Field\Ground.cpp" />
+    <ClCompile Include="User\Field\CoinObject.cpp" />
+    <ClCompile Include="User\Field\GoalObject.cpp" />
+    <ClCompile Include="User\Field\BaseFieldObject.cpp" />
     <ClCompile Include="Engine\2D\Sprite.cpp" />
     <ClCompile Include="Engine\2D\SpriteCommon.cpp" />
     <ClCompile Include="Engine\3d\FbxLoader.cpp" />
@@ -142,6 +143,8 @@
     <ClCompile Include="User\Camera\TGameCamera.cpp" />
     <ClCompile Include="User\COLLISION\CollisionManager.cpp" />
     <ClCompile Include="User\GameMain.cpp" />
+    <ClCompile Include="User\Player\Particle\PlayerParticleManager.cpp" />
+    <ClCompile Include="User\Player\Particle\Smoke.cpp" />
     <ClCompile Include="User\Player\Player.cpp" />
     <ClCompile Include="User\Player\State\PlayerDash.cpp" />
     <ClCompile Include="User\Player\State\PlayerState.cpp" />
@@ -151,9 +154,10 @@
     <ClCompile Include="User\SCENE\SceneState.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="User\CoinObject.h" />
-    <ClInclude Include="User\GoalObject.h" />
-    <ClInclude Include="User\BaseFieldObject.h" />
+    <ClInclude Include="User\Field\Ground.h" />
+    <ClInclude Include="User\Field\CoinObject.h" />
+    <ClInclude Include="User\Field\GoalObject.h" />
+    <ClInclude Include="User\Field\BaseFieldObject.h" />
     <ClInclude Include="Engine\2D\Sprite.h" />
     <ClInclude Include="Engine\2D\SpriteCommon.h" />
     <ClInclude Include="Engine\3D\CircleShadow.h" />
@@ -193,6 +197,8 @@
     <ClInclude Include="User\Camera\TGameCamera.h" />
     <ClInclude Include="User\COLLISION\CollisionManager.h" />
     <ClInclude Include="User\GameMain.h" />
+    <ClInclude Include="User\Player\Particle\PlayerParticleManager.h" />
+    <ClInclude Include="User\Player\Particle\Smoke.h" />
     <ClInclude Include="User\Player\Player.h" />
     <ClInclude Include="User\Player\State\PlayerDash.h" />
     <ClInclude Include="User\Player\State\PlayerState.h" />

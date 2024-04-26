@@ -41,6 +41,7 @@ namespace MyEngine {
 			Matrix4 viewProj;
 			Matrix4 world;
 			Vector3 cameraPos;
+			Vector4 color;
 		};
 
 		//ボーンの最大数
@@ -132,6 +133,9 @@ namespace MyEngine {
 		*/
 		Vector3 GetBonWorldPos(const uint32_t& BoneNum);
 
+		void SetColor(Vector4 color) { color_ = color; }
+		Vector4 GetColor() { return color_; }
+
 	protected: // メンバ変数
 		ComPtr<ID3D12Resource> constBuffB0; // 定数バッファ
 		// 定数バッファ(スキン)
@@ -157,7 +161,9 @@ namespace MyEngine {
 		bool isLoop_;
 		//アニメーション終了
 		bool isFin;
-
+		
+		// 色
+		Vector4 color_ = { 1,1,1,1 };
 
 	public:
 		Transform wtf;
