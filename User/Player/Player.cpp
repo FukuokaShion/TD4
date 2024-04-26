@@ -10,6 +10,8 @@
 
 using namespace Player;
 
+Main* Main::nowPlayer_ = nullptr;
+
 Main::Main(){}
 Main::~Main(){}
 
@@ -34,7 +36,7 @@ void Main::Update() {
 }
 
 void Main::FbxDraw() {
-	body_->Draw();
+	body_->Draw(); 
 }
 
 void Main::TransitionTo(StateNum nextState) {

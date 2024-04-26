@@ -3,9 +3,9 @@
  * @brief プレイヤー本体
  */
 #pragma once
-#include"FBXModel.h"
-#include"FBXObject3d.h"
-#include"PlayerState.h"
+#include "FBXModel.h"
+#include "FBXObject3d.h"
+#include "PlayerState.h"
 
 using namespace MyEngine;
 
@@ -43,7 +43,6 @@ namespace Player {
 		 * @brief 描画
 		*/
 		void FbxDraw();
-
 		/**
 		 * @brief 状態移行
 		*/
@@ -56,11 +55,12 @@ namespace Player {
 		 * @brief 座標取得
 		*/
 		const Transform GetWorldTransform() { return body_->wtf; };
-	private:
-		//モデル
-		std::unique_ptr<FBXModel> bodyModel_ = nullptr;
-		std::unique_ptr<FBXObject3d> body_ = nullptr;
-		//行動パターン
-		std::unique_ptr<State> state_ = nullptr;
-	};
+
+private:
+	// モデル
+	std::unique_ptr<FBXModel> bodyModel_ = nullptr;
+	std::unique_ptr<FBXObject3d> body_ = nullptr;
+	// 行動パターン
+	std::unique_ptr<State> state_ = nullptr;
+};
 }
