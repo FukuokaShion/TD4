@@ -26,6 +26,7 @@ void GameScene::Initialize() {
 	// カメラセット
 	FBXObject3d::SetCamera(gameCamera_.get());
 	Object3d::SetCamera(gameCamera_.get());
+	ParticleManager::SetCamera(gameCamera_.get());
 
 	// プレイヤー
 	player_ = make_unique<Player::Main>();
@@ -39,6 +40,9 @@ void GameScene::Initialize() {
 	CoinObject::Spawn(modelCoin.get(), Vector3(	 5.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
 	CoinObject::Spawn(modelCoin.get(), Vector3(	10.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
 
+	//パーティクル
+	playerParticleManager_ = make_unique<PlayerParticleManager>();
+	playerParticleManager_->Initialize();
 	// 当たり判定マネージャー初期化
 	CollisionManager::GetInstance()->Initialize();
 }
@@ -58,6 +62,8 @@ void GameScene::Update() {
 	});
 	gameCamera_->Update();
 	player_->Update();
+	//引数ぶぶんを自機の中心座標でお願い
+	playerParticleManager_->Update(player_->GetWorldPosition()+Vector3{0.0f,2.0f,0.0f});
 	CollisionManager::GetInstance()->CheakAllCol();
 }
 
@@ -65,14 +71,18 @@ void GameScene::ObjectDraw() {
 
 
 	BaseFieldObject::ManagerBaseFieldObject();
-
 #ifdef _DEBUG
 	CollisionManager::GetInstance()->DrawCollider();
 #endif
 }
 
-void GameScene::FbxDraw() { player_->FbxDraw(); }
+void GameScene::FbxDraw() { 
+	player_->FbxDraw(); 
 
-void GameScene::SpriteDraw() {}
+}
+
+void GameScene::SpriteDraw() {
+	playerParticleManager_->Draw();
+}
 
 void GameScene::StateTransition() {}

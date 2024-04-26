@@ -38,11 +38,15 @@ namespace Player {
 		*/
 		void FbxDraw();
 
+		////ワールド座標を取得
+		Vector3 GetWorldPosition();
+
 		const Vector3& GetPos() const;
 	private:
 		//モデル
 		std::unique_ptr<FBXModel> bodyModel_ = nullptr;
 		std::unique_ptr<FBXObject3d> body_ = nullptr;
+
 		//行動パターン
 		std::unique_ptr<State> state_ = nullptr;
 	};

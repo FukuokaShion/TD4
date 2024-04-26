@@ -124,6 +124,12 @@
     <Filter Include="User\Source\Camera">
       <UniqueIdentifier>{1c6cf6d0-c88f-4489-bdb3-16cc7715a1ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="User\Header\Player\Particle">
+      <UniqueIdentifier>{73c38458-b91b-41c0-8c1c-fb580188bac5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="User\Source\Player\Particle">
+      <UniqueIdentifier>{0e647565-8867-44e4-9761-b37c538a263d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -267,6 +273,12 @@
     </ClCompile>
     <ClCompile Include="User\Camera\TGameCamera.cpp">
       <Filter>User\Source\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Player\Particle\PlayerParticleManager.cpp">
+      <Filter>User\Source\Player\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Player\Particle\Smoke.cpp">
+      <Filter>User\Source\Player\Particle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,6 +428,12 @@
     </ClInclude>
     <ClInclude Include="User\Camera\TGameCamera.h">
       <Filter>User\Header\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\Particle\PlayerParticleManager.h">
+      <Filter>User\Header\Player\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\Particle\Smoke.h">
+      <Filter>User\Header\Player\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

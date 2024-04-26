@@ -215,7 +215,7 @@ void FBXObject3d::Initialize()
 
 	//1フレーム分の時間を60FPSで設定
 	frameTime.SetTime(0, 0, 0, 1, 0, FbxTime::EMode::eFrames60);
-
+	color_ = Vector4(0.8f, 0.8f, 0.8f, 1.0f);
 }
 
 void FBXObject3d::Update() {
@@ -235,7 +235,7 @@ void FBXObject3d::Update() {
 	constMap->viewProj = matViewProjection;
 	constMap->world = wtf.matWorld;
 	constMap->cameraPos = cameraPos;
-
+	constMap->color = color_;
 	constBuffB0->Unmap(0, nullptr);
 
 	std::vector<FBXModel::Bone>& bones = fbxmodel_->GetBones();
