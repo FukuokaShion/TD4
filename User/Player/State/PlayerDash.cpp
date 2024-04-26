@@ -29,7 +29,7 @@ Dash::~Dash() {}
 void Dash::Update(Main* player) {
 	Rota();
 	Move(player->GetWorldTransform());
-	StateTransition();
+	StateTransition(player);
 }
 
 void Dash::Rota() {
@@ -48,6 +48,9 @@ void Dash::Move(Transform wtf) {
 	moveVector_ = Matrix4::bVelocity(result,wtf.matWorld);
 }
 
-void Dash::StateTransition() {
-	
+void Dash::StateTransition(Main* player) {
+	if (Input::GetInstance()->PushKey(DIK_S)) {
+		player->AnimationChange(Main::Animation::STAND);
+		player->TransitionTo(Main::StateNum::SLIDE_STATE);
+	}
 }

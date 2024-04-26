@@ -32,7 +32,7 @@ namespace Player {
 		/**
 		 * @brief 状態移行
 		*/
-		void StateTransition() override;
+		void StateTransition(Main* player) override;
 		/**
 		 * @brief 調整項目の適用
 		*/
@@ -40,6 +40,8 @@ namespace Player {
 	private:
 		const char* groupName_ = "playerSlide";
 		float maxSpeed_;
-		float rotaSpeed_;
+
+		int timer_;
+		int limit_;
 	};
 }

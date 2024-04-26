@@ -35,7 +35,7 @@ namespace Player {
 		/**
 		 * @brief 状態移行
 		*/
-		virtual void StateTransition() = 0;
+		virtual void StateTransition(Main* player) = 0;
 		/**
 		 * @brief 調整項目の適用
 		*/

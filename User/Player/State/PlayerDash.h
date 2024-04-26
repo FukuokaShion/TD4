@@ -32,7 +32,7 @@ namespace Player {
 		/**
 		 * @brief 状態移行
 		*/
-		void StateTransition() override;
+		void StateTransition(Main* player) override;
 		/**
 		 * @brief 調整項目の適用
 		*/

@@ -25,7 +25,7 @@ Jump::~Jump() {}
 void Jump::Update(Main* player) {
 	Rota();
 	Move(player->GetWorldTransform());
-	StateTransition();
+	StateTransition(player);
 }
 
 void Jump::Rota() {
@@ -44,5 +44,6 @@ void Jump::Move(Transform wtf) {
 	moveVector_ = Matrix4::bVelocity(result, wtf.matWorld);
 }
 
-void Jump::StateTransition() {
+void Jump::StateTransition(Main* player) {
+	player->AnimationChange(Main::Animation::DASH);
 }

@@ -13,29 +13,29 @@ Slide::Slide() {}
 
 void Slide::Initialize() {
 	GlobalVariables::GetInstance()->CreateGroup(groupName_);
+	GlobalVariables::GetInstance()->AddItem(groupName_, "maxSpeed", 1.0f);
+	GlobalVariables::GetInstance()->AddItem(groupName_, "limit", 30);
+	timer_ = 0;
 	moveVector_ = { 0,0,0 };
 	ApplyGlobalVariables();
 }
 
 void Slide::ApplyGlobalVariables() {
+	maxSpeed_ = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "maxSpeed");
+	limit_ = GlobalVariables::GetInstance()->GetIntValue(groupName_, "limit");
 }
 
 Slide::~Slide() {}
 
 void Slide::Update(Main* player) {
+	timer_++;
 	Rota();
 	Move(player->GetWorldTransform());
-	StateTransition();
+	StateTransition(player);
 }
 
 void Slide::Rota() {
 	rotaVector_ = { 0,0,0 };
-	if (Input::GetInstance()->PushKey(DIK_A)) {
-		rotaVector_ += {0, -rotaSpeed_, 0};
-	}
-	if (Input::GetInstance()->PushKey(DIK_D)) {
-		rotaVector_ += {0, rotaSpeed_, 0};
-	}
 }
 
 void Slide::Move(Transform wtf) {
@@ -44,5 +44,9 @@ void Slide::Move(Transform wtf) {
 	moveVector_ = Matrix4::bVelocity(result, wtf.matWorld);
 }
 
-void Slide::StateTransition() {
+void Slide::StateTransition(Main* player) {
+	if (timer_ > limit_) {
+		player->AnimationChange(Main::Animation::DASH,3.0f);
+		player->TransitionTo(Main::StateNum::DASH_STATE);
+	}
 }

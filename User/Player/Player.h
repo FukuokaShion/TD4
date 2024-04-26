@@ -14,13 +14,19 @@ namespace Player {
 	public:
 		//アニメーション番号
 		enum Animation {
-			AVOID,
 			ATTACK,
 			JUMP,
-			JUMPATTACK,
-			STAND,
 			STUMB,
+			STAND,
+			JUMPATTACK,
 			DASH,
+			SLIDE,
+			AVOID,
+		};
+		enum StateNum{
+			DASH_STATE,
+			JUMP_STATE,
+			SLIDE_STATE,
 		};
 	public:
 		Main();
@@ -37,6 +43,15 @@ namespace Player {
 		 * @brief 描画
 		*/
 		void FbxDraw();
+
+		/**
+		 * @brief 状態移行
+		*/
+		void TransitionTo(StateNum nextState);
+		/**
+		 * @brief アニメーション切り替え
+		*/
+		void AnimationChange(int animationNum = 0, float speed = 1.0f) { body_->PlayAnimation(animationNum, speed); };
 		/**
 		 * @brief 座標取得
 		*/
