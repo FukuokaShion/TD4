@@ -10,8 +10,6 @@
 
 using namespace Player;
 
-Main* Main::nowPlayer_ = nullptr;
-
 Main::Main(){}
 Main::~Main(){}
 

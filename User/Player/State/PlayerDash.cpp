@@ -49,7 +49,7 @@ void Dash::Move(Transform wtf) {
 }
 
 void Dash::StateTransition(Main* player) {
-	if (Input::GetInstance()->PushKey(DIK_S)) {
+	if (Input::GetInstance()->TriggerKey(DIK_S)) {
 		player->AnimationChange(Main::Animation::STAND);
 		player->TransitionTo(Main::StateNum::SLIDE_STATE);
 	}

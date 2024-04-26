@@ -30,13 +30,13 @@ void TGameCamera::Update() {
 void TGameCamera::SetParentTF(const Transform& parentWTF) { 
 	switch (cameraAngle) {
 	case TGameCamera::Back:
-		cameraEye_ = { 0, 6,-9};
+		cameraEye_ = { 0, 6,-15};
 		break;
 	case TGameCamera::RightBack:
-		cameraEye_ = { 5, 6,-8};
+		cameraEye_ = { 5, 6,-14};
 		break;
 	case TGameCamera::LeftBack:
-		cameraEye_ = {-5, 6,-8};
+		cameraEye_ = {-5, 6,-14};
 		break;
 	default:
 		break;
