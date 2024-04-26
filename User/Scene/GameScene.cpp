@@ -31,6 +31,7 @@ void GameScene::Initialize() {
 	// プレイヤー
 	player_ = make_unique<Player::Main>();
 	player_->Initialize();
+	Player::Main::nowPlayer_ = player_.get();
 
 	//地面
 	modelGround_ = MyEngine::Model::LoadFromOBJ("Ground");
@@ -58,14 +59,10 @@ GameScene::~GameScene() {
 
 // 更新
 void GameScene::Update() {
-	gameCamera_->SetCameraPos({
-	    player_->GetPos().x,
-	    player_->GetPos().y + 3,
-	    player_->GetPos().z - 6,
-	});
+	gameCamera_->SetParentTF(player_->GetWTF());
 	gameCamera_->Update();
 	player_->Update();
-
+  
 	//引数ぶぶんを自機の中心座標でお願い
 	playerParticleManager_->Update(player_->GetWorldPosition()+Vector3{0.0f,2.0f,0.0f});
 	ground_->Update();
