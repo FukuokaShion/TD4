@@ -34,7 +34,7 @@ void GameScene::Initialize() {
 
 	//地面
 	modelGround_ = MyEngine::Model::LoadFromOBJ("Ground");
-	ground_ = make_unique<Ground>(modelGround_.get(), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f));
+	ground_ = make_unique<Ground>(modelGround_.get(), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
 	modelCoin = MyEngine::Model::LoadFromOBJ("collider");
 
 	CoinObject::Spawn(modelCoin.get(), Vector3(-10.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
