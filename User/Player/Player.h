@@ -10,17 +10,23 @@
 using namespace MyEngine;
 
 namespace Player {
-class Main {
-public:
-	// アニメーション番号
-	enum Animation {
-		AVOID,
-		ATTACK,
-		JUMP,
-		JUMPATTACK,
-		STAND,
-		STUMB,
-		DASH,
+	class Main {
+	public:
+		//アニメーション番号
+		enum Animation {
+			ATTACK,
+			JUMP,
+			STUMB,
+			STAND,
+			JUMPATTACK,
+			DASH,
+			SLIDE,
+			AVOID,
+		};
+		enum StateNum{
+			DASH_STATE,
+			JUMP_STATE,
+			SLIDE_STATE,
 		};
 	public:
 		Main();
@@ -37,40 +43,18 @@ public:
 		 * @brief 描画
 		*/
 		void FbxDraw();
-
-		////ワールド座標を取得
-		Vector3 GetWorldPosition();
-
-		const Vector3& GetPos() const;
-	private:
-		//モデル
-		std::unique_ptr<FBXModel> bodyModel_ = nullptr;
-		std::unique_ptr<FBXObject3d> body_ = nullptr;
-
-		//行動パターン
-		std::unique_ptr<State> state_ = nullptr;
-public:
-	Main();
-	~Main();
-	/**
-	 * @brief 初期化
-	 */
-	void Initialize();
-	/**
-	 * @brief 更新
-	 */
-	void Update();
-	/**
-	 * @brief 描画
-	 */
-	void FbxDraw();
-
-	const Vector3& GetPos() const;
-
-	const Transform& GetWTF() const { return body_->wtf; };
-
-public:
-	static Main* nowPlayer_;
+		/**
+		 * @brief 状態移行
+		*/
+		void TransitionTo(StateNum nextState);
+		/**
+		 * @brief アニメーション切り替え
+		*/
+		void AnimationChange(int animationNum = 0, float speed = 1.0f) { body_->PlayAnimation(animationNum, speed); };
+		/**
+		 * @brief 座標取得
+		*/
+		const Transform GetWorldTransform() { return body_->wtf; };
 
 private:
 	// モデル

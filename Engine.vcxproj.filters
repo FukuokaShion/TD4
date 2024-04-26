@@ -274,6 +274,12 @@
     <ClCompile Include="User\Camera\TGameCamera.cpp">
       <Filter>User\Source\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="User\Player\State\PlayerJump.cpp">
+      <Filter>User\Source\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Player\State\PlayerSlide.cpp">
+      <Filter>User\Source\Player\State</Filter>
+  </ClCompile>
     <ClCompile Include="User\Player\Particle\PlayerParticleManager.cpp">
       <Filter>User\Source\Player\Particle</Filter>
     </ClCompile>
@@ -432,6 +438,12 @@
     <ClInclude Include="User\Camera\TGameCamera.h">
       <Filter>User\Header\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="User\Player\State\PlayerJump.h">
+      <Filter>User\Header\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\State\PlayerSlide.h">
+      <Filter>User\Header\Player\State</Filter>
+   </ClInclude>
     <ClInclude Include="User\Player\Particle\PlayerParticleManager.h">
       <Filter>User\Header\Player\Particle</Filter>
     </ClInclude>
