@@ -25,11 +25,27 @@ void Main::Initialize() {
 
 void Main::Update() {
 	state_->Update();
-	body_->wtf.position += {0, 0, 1.0f};
+	body_->wtf.position += {0.0f, 0, 0.0f};
 	body_->Update();
+	
 }
 
 void Main::FbxDraw() {
-	body_->Draw(); }
+	body_->Draw(); 
+}
+
+Vector3 Main::GetWorldPosition()
+{
+	//ワールド座標を入れる変数
+	Vector3 worldPos;
+
+	body_->wtf.UpdateMat();
+	//ワールド行列の平行移動成分
+	worldPos.x = body_->wtf.matWorld.m[ 3 ][ 0 ];
+	worldPos.y = body_->wtf.matWorld.m[ 3 ][ 1 ];
+	worldPos.z = body_->wtf.matWorld.m[ 3 ][ 2 ];
+
+	return worldPos;
+}
 
 const Vector3& Player::Main::GetPos() const { return body_->wtf.position; }

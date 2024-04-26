@@ -157,6 +157,9 @@ namespace MyEngine {
 		//setter
 		void SetModel(Model* model) { this->model_ = model; }
 
+		void SetColor(Vector4 color) { color_ = color; }
+		Vector4 GetColor() { return color_; }
+
 	private: // メンバ変数
 	public:
 		ComPtr<ID3D12Resource> constBuffB0; // 定数バッファ
@@ -164,7 +167,7 @@ namespace MyEngine {
 		bool isDead_ = false;
 
 		// 色
-		Vector4 color = { 1,1,1,1 };
+		Vector4 color_ = { 1,1,1,1 };
 
 		// 親オブジェクト
 		Object3d* parent_ = nullptr;

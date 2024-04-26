@@ -12,9 +12,8 @@
 #include"CollisionManager.h"
 
 #include"Player.h"
+#include"Particle/PlayerParticleManager.h"
 #include"Ground.h"
-
-
 using namespace std;
 
 class GameScene : public SceneState {
@@ -58,6 +57,8 @@ private:
 
 	//仮コイン先
 	unique_ptr<Model> modelCoin = nullptr;
+  
+	unique_ptr<PlayerParticleManager> playerParticleManager_ = nullptr;
 	//地面モデル
 	unique_ptr<Model> modelGround_ = nullptr;
 };
