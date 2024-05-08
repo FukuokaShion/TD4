@@ -7,6 +7,7 @@
 #include"PlayerDash.h"
 #include"PlayerJump.h"
 #include"PlayerSlide.h"
+#include"imgui.h"
 
 using namespace Player;
 
@@ -29,6 +30,9 @@ void Main::Initialize() {
 void Main::Update() {
 	body_->wtf.rotation += state_->GetRotaVector();
 	body_->wtf.position += state_->GetMoveVector();
+	if (body_->wtf.position.y < 0) {
+		body_->wtf.position.y = 0;
+	}
 	body_->Update();
 	state_->Update(this);
 }
