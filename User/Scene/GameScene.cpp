@@ -36,12 +36,17 @@ void GameScene::Initialize() {
 	modelGround_ = MyEngine::Model::LoadFromOBJ("Ground");
 	ground_ = make_unique<Ground>(modelGround_.get(), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
 	modelCoin = MyEngine::Model::LoadFromOBJ("collider");
-
-	CoinObject::Spawn(modelCoin.get(), Vector3(-10.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
-	CoinObject::Spawn(modelCoin.get(), Vector3(	-5.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
-	CoinObject::Spawn(modelCoin.get(), Vector3(	 0.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
-	CoinObject::Spawn(modelCoin.get(), Vector3(	 5.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
-	CoinObject::Spawn(modelCoin.get(), Vector3(	10.0f, 3.0f, 10.0f), Vector3(1.0f, 1.0f, 1.0f));
+	jsonLoader = std::make_unique<LevelData>();
+	jsonLoader.reset(LevelLoader::LoadJson("1"));
+	// レベルデータからオブジェクトを生成、配置
+	for (auto& objectData : jsonLoader->objects)
+	{
+		//コイン
+		if (objectData.fileName == "coin")
+		{
+			CoinObject::Spawn(modelCoin.get(), objectData.translation,objectData.scaling);
+		}
+	}
 
 	//パーティクル
 	playerParticleManager_ = make_unique<PlayerParticleManager>();
