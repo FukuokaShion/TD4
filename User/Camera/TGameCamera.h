@@ -12,6 +12,12 @@ public:
 		LeftBack,
 	};
 
+	enum Speed {
+		Low,
+		Medium,
+		High
+	};
+
 	/**
 	 * @brief 初期化
 	 */
@@ -27,6 +33,7 @@ public:
 
 private:
 	Angle cameraAngle = Back;
+	Speed speedLv = Low;
 
 	MyEngine::Vector3 cameraEye_;
 	MyEngine::Vector3 cameraTarget_;

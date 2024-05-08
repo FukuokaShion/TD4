@@ -24,24 +24,60 @@ void TGameCamera::Update() {
 		cameraAngle = LeftBack;
 	}
 
+	switch (cameraAngle) {
+	case TGameCamera::Back:
+		if (Input::GetInstance()->TriggerKey(DIK_1)) {
+			speedLv = Low;
+		}
+		if (Input::GetInstance()->TriggerKey(DIK_2)) {
+			speedLv = Medium;
+		}
+		if (Input::GetInstance()->TriggerKey(DIK_3)) {
+			speedLv = High;
+		}
+		break;
+	case TGameCamera::RightBack:
+		break;
+	case TGameCamera::LeftBack:
+		break;
+	default:
+		break;
+	}
+
 	Camera::Update();
 }
 
 void TGameCamera::SetParentTF(const Transform& parentWTF) { 
 	switch (cameraAngle) {
 	case TGameCamera::Back:
-		cameraEye_ = { 0, 6,-9};
+		switch (speedLv) {
+		case TGameCamera::Low:
+			cameraEye_ = {0, 4, -9};
+			cameraTarget_ = {0, 3, 9};
+			break;
+		case TGameCamera::Medium:
+			cameraEye_ = {0, 8, -12};
+			cameraTarget_ = {0, 1, 9};
+			break;
+		case TGameCamera::High:
+			cameraEye_ = {0, 10, -15};
+			cameraTarget_ = {0, 1, 9};
+			break;
+		default:
+			break;
+		}
 		break;
 	case TGameCamera::RightBack:
 		cameraEye_ = { 5, 6,-8};
+		cameraTarget_ = {0, 2, 9};
 		break;
 	case TGameCamera::LeftBack:
 		cameraEye_ = {-5, 6,-8};
+		cameraTarget_ = {0, 2, 9};
 		break;
 	default:
 		break;
 	}
-	cameraTarget_ = {0, 2, 9};
 
 	eye_ = cameraEye_;
 	target_ = cameraTarget_;
