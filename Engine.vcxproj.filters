@@ -279,7 +279,7 @@
     </ClCompile>
     <ClCompile Include="User\Player\State\PlayerSlide.cpp">
       <Filter>User\Source\Player\State</Filter>
-  </ClCompile>
+    </ClCompile>
     <ClCompile Include="User\Player\Particle\PlayerParticleManager.cpp">
       <Filter>User\Source\Player\Particle</Filter>
     </ClCompile>
@@ -288,6 +288,12 @@
     </ClCompile>
     <ClCompile Include="User\Field\Ground.cpp">
       <Filter>User\Source\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Player\Particle\BackBoost.cpp">
+      <Filter>User\Source\Player\Particle</Filter>
+    </ClInclude>
+    <ClCompile Include="Engine\Loader\LevelLoader.cpp">
+      <Filter>Engine\Source\Loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -443,7 +449,7 @@
     </ClInclude>
     <ClInclude Include="User\Player\State\PlayerSlide.h">
       <Filter>User\Header\Player\State</Filter>
-   </ClInclude>
+    </ClInclude>
     <ClInclude Include="User\Player\Particle\PlayerParticleManager.h">
       <Filter>User\Header\Player\Particle</Filter>
     </ClInclude>
@@ -452,6 +458,12 @@
     </ClInclude>
     <ClInclude Include="User\Field\Ground.h">
       <Filter>User\Source\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\Particle\BackBoost.h">
+      <Filter>User\Header\Player\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Loader\LevelLoader.h">
+      <Filter>Engine\Header\Loader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

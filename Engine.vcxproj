@@ -101,6 +101,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Loader\LevelLoader.cpp" />
     <ClCompile Include="User\Field\Ground.cpp" />
     <ClCompile Include="User\Field\CoinObject.cpp" />
     <ClCompile Include="User\Field\GoalObject.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="User\Camera\TGameCamera.cpp" />
     <ClCompile Include="User\COLLISION\CollisionManager.cpp" />
     <ClCompile Include="User\GameMain.cpp" />
+    <ClCompile Include="User\Player\Particle\BackBoost.cpp" />
     <ClCompile Include="User\Player\Particle\PlayerParticleManager.cpp" />
     <ClCompile Include="User\Player\Particle\Smoke.cpp" />
     <ClCompile Include="User\Player\Player.cpp" />
@@ -156,6 +158,7 @@
     <ClCompile Include="User\SCENE\SceneState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Loader\LevelLoader.h" />
     <ClInclude Include="User\Field\Ground.h" />
     <ClInclude Include="User\Field\CoinObject.h" />
     <ClInclude Include="User\Field\GoalObject.h" />
@@ -199,6 +202,7 @@
     <ClInclude Include="User\Camera\TGameCamera.h" />
     <ClInclude Include="User\COLLISION\CollisionManager.h" />
     <ClInclude Include="User\GameMain.h" />
+    <ClInclude Include="User\Player\Particle\BackBoost.h" />
     <ClInclude Include="User\Player\Particle\PlayerParticleManager.h" />
     <ClInclude Include="User\Player\Particle\Smoke.h" />
     <ClInclude Include="User\Player\Player.h" />

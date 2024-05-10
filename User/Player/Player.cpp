@@ -21,7 +21,7 @@ void Main::Initialize() {
 	body_ = std::make_unique<FBXObject3d>();
 	body_->Initialize();
 	body_->SetModel(bodyModel_.get());
-	body_->PlayAnimation(DASH, 1.0f);
+	body_->PlayAnimation(DASH, 3.0f);
 	body_->Update();
 	//ステート
 	state_ = std::make_unique<Dash>();
