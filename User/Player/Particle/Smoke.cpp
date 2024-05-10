@@ -37,7 +37,7 @@ void Smoke::Update(Vector3 PlayerPos)
 	if (smokeEffTimer_ >= 100) {
 		smokeEffTimer_ = 0;
 	}
-	ImGui::Begin("Player");
+	ImGui::Begin("Smoke");
 	ImGui::Text("smokeEffTimer_:%d", smokeEffTimer_);
 	ImGui::Text("isSmokeEffFlag_:%d", isSmokeEffFlag_);
 	ImGui::End();
@@ -84,4 +84,14 @@ void Smoke::EffSummary(Vector3 pos)
 		smokeParticle_->Add(60, posGas, velGas, accGas, startScale, endScale, { 1.0f,1.0f,1.0f,1.0f });
 		smokeParticle_->Update();
 	}
+}
+
+void Smoke::EffTrueCheck()
+{
+	isSmokeEffFlag_ = true;
+}
+
+void Smoke::EffFalseCheck()
+{
+	isSmokeEffFlag_ = false;
 }

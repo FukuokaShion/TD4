@@ -68,6 +68,8 @@ void GameScene::Update() {
 	player_->Update();
   
 	//引数ぶぶんを自機の中心座標でお願い
+	playerParticleManager_->ParticleCreate(PlayerParticleManager::SMOKE, player_->GetWorldTransform().position);
+	playerParticleManager_->ParticleCreate(PlayerParticleManager::BACKBOOST, player_->GetWorldTransform().position + Vector3{ 0,3,0 });
 	playerParticleManager_->Update(player_->GetWorldTransform().position);
 	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
