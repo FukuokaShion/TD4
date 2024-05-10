@@ -18,6 +18,11 @@ using namespace std;
 
 class PlayerParticleManager
 {
+public :
+	enum : uint32_t{
+		SMOKE,
+		BACKBOOST
+	};
 public:
 	PlayerParticleManager();
 	~PlayerParticleManager();
@@ -27,6 +32,8 @@ public:
 	void Update(Vector3 PlayerPos);
 
 	void Draw();
+
+	void ParticleCreate(uint32_t particleType,Vector3 createPos);
 
 private:
 	unique_ptr<Smoke> smoke_ = nullptr;

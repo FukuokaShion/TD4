@@ -18,7 +18,7 @@ public:
 
 	void Initialize();
 
-	void Update(Vector3 PlayerPos);
+	void Update();
 
 	void Draw();
 
@@ -29,7 +29,7 @@ public:
 private:
 	unique_ptr<ParticleManager> backBoostParticle_;
 	int backBoostEffTimer_ = 0;
-	bool isBackBoostEffFlag_ = true;
+	bool isBackBoostEffFlag_ = false;
 
 	const float rnd_posGas = 0.0f;
 	const float rnd_velGasz = 0.02f;
@@ -43,5 +43,7 @@ private:
 	float randVelY;
 	float startScale;
 	float endScale;
-
+	int liveTime;
+	Vector3 color;
+	float alpha;
 };

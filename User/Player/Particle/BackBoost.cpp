@@ -2,39 +2,28 @@
 #include <imgui.h>
 #include "GlobalVariables.h"
 
-void BackBoost::Initialize()
-{
+void BackBoost::Initialize(){
 	backBoostParticle_ = make_unique<ParticleManager>();
 	backBoostParticle_->Initialize();
 	backBoostParticle_->LoadTexture("particle.png");
-
 	//指定した名前のグループを作る
-	GlobalVariables::GetInstance()->CreateGroup(groupName_);
+	GlobalVariables* globalVariables = GlobalVariables::GetInstance();
+	globalVariables->CreateGroup(groupName_);
 	//第一引数名のグループ内に第二引数名の調整項目が無ければ、第三引数を初期値として登録
-	GlobalVariables::GetInstance()->AddItem(groupName_, "randPos", 0.02f);
-	GlobalVariables::GetInstance()->AddItem(groupName_, "randVel", 0.02f);
-	GlobalVariables::GetInstance()->AddItem(groupName_, "randVelY", 0.0f);
-	GlobalVariables::GetInstance()->AddItem(groupName_, "startScale", 0.8f);
-	GlobalVariables::GetInstance()->AddItem(groupName_, "endScale", 0.4f);
+	globalVariables->AddItem(groupName_, "randPos", 0.02f);
+	globalVariables->AddItem(groupName_, "randVel", 0.02f);
+	globalVariables->AddItem(groupName_, "randVelY", 0.0f);
+	globalVariables->AddItem(groupName_, "startScale", 0.8f);
+	globalVariables->AddItem(groupName_, "endScale", 0.4f);
+	globalVariables->AddItem(groupName_, "liveTime", 30);
+	globalVariables->AddItem(groupName_, "color", { 0.3f,1.0f,1.0f });
+	globalVariables->AddItem(groupName_, "alpha", 0.7f);
 	ApplyGlobalVariables();
 }
 
-void BackBoost::Update(Vector3 PlayerPos)
-{
-	randPos = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randPos");
-	randVel = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVel");
-	randVelY = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVelY");
-	startScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "startScale");
-	endScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "endScale");
-
-	if (isBackBoostEffFlag_ == true) { backBoostEffTimer_++; }
-	if (backBoostEffTimer_ <= 100 && backBoostEffTimer_ >= 1) {
-		//煙エフェクトのでる場所
-		EffSummary(Vector3(PlayerPos.x, PlayerPos.y, PlayerPos.z));
-	}
-	if (backBoostEffTimer_ >= 100) {
-		backBoostEffTimer_ = 0;
-	}
+void BackBoost::Update(){
+	ApplyGlobalVariables();
+	backBoostParticle_->Update();
 
 	ImGui::Begin("backBoost");
 	ImGui::Text("backBoostEffTimer_:%d", backBoostEffTimer_);
@@ -42,19 +31,20 @@ void BackBoost::Update(Vector3 PlayerPos)
 	ImGui::End();
 }
 
-void BackBoost::Draw()
-{
+void BackBoost::Draw(){
 	backBoostParticle_->Draw();
 }
 
-void BackBoost::ApplyGlobalVariables()
-{
+void BackBoost::ApplyGlobalVariables(){
 	//第一引数名のグループ内の第二引数名の調整項目の最新状態を読み込む
 	randPos = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randPos");
 	randVel = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVel");
 	randVelY = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVelY");
 	startScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "startScale");
 	endScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "endScale");
+	liveTime = GlobalVariables::GetInstance()->GetIntValue(groupName_, "liveTime");
+	color = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "color");
+	alpha = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "alpha");
 }
 
 void BackBoost::EffSummary(Vector3 pos)
@@ -78,7 +68,6 @@ void BackBoost::EffSummary(Vector3 pos)
 		accGas.x = (float)rand() / RAND_MAX * rnd_accGas - rnd_accGas / 2.0f;
 		accGas.y = (float)rand() / RAND_MAX * rnd_accGas - rnd_accGas / 2.0f;
 		//追加
-		backBoostParticle_->Add(60, posGas, velGas, accGas, startScale, endScale, { 1.0f,1.0f,1.0f,1.0f });
-		backBoostParticle_->Update();
+		backBoostParticle_->Add(liveTime, posGas, velGas, accGas, startScale, endScale, { color.x,color.y,color.z,alpha });
 	}
 }
