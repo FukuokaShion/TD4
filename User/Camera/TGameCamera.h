@@ -38,6 +38,7 @@ private:
 	MyEngine::Vector3 cameraEye_;
 	MyEngine::Vector3 cameraTarget_;
 
+	bool isEase = false;
 	float easeTimer_ = 0;
 	float easeTime_ = 0;
 };

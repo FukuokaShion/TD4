@@ -17,9 +17,11 @@ void TGameCamera::Update() {
 	if (Input::GetInstance()->TriggerKey(DIK_DOWNARROW)) {
 		cameraAngle = Back;
 	}
+
 	if (Input::GetInstance()->TriggerKey(DIK_RIGHTARROW)) {
 		cameraAngle = RightBack;
 	}
+
 	if (Input::GetInstance()->TriggerKey(DIK_LEFTARROW)) {
 		cameraAngle = LeftBack;
 	}
@@ -29,9 +31,11 @@ void TGameCamera::Update() {
 		if (Input::GetInstance()->TriggerKey(DIK_1)) {
 			speedLv = Low;
 		}
+
 		if (Input::GetInstance()->TriggerKey(DIK_2)) {
 			speedLv = Medium;
 		}
+
 		if (Input::GetInstance()->TriggerKey(DIK_3)) {
 			speedLv = High;
 		}
