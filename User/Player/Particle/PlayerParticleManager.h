@@ -11,6 +11,7 @@
 #include"CollisionManager.h"
 
 #include "Smoke.h"
+#include "BackBoost.h"
 
 using namespace MyEngine;
 using namespace std;
@@ -29,6 +30,7 @@ public:
 
 private:
 	unique_ptr<Smoke> smoke_ = nullptr;
+	unique_ptr<BackBoost> backBoost_ = nullptr;
 
 };
 

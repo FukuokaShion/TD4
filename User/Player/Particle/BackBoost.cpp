@@ -1,13 +1,12 @@
-#include "Smoke.h"
+#include "BackBoost.h"
 #include <imgui.h>
 #include "GlobalVariables.h"
 
-
-void Smoke::Initialize()
+void BackBoost::Initialize()
 {
-	smokeParticle_ = make_unique<ParticleManager>();
-	smokeParticle_->Initialize();
-	smokeParticle_->LoadTexture("particle.png");
+	backBoostParticle_ = make_unique<ParticleManager>();
+	backBoostParticle_->Initialize();
+	backBoostParticle_->LoadTexture("particle.png");
 
 	//指定した名前のグループを作る
 	GlobalVariables::GetInstance()->CreateGroup(groupName_);
@@ -18,10 +17,9 @@ void Smoke::Initialize()
 	GlobalVariables::GetInstance()->AddItem(groupName_, "startScale", 0.8f);
 	GlobalVariables::GetInstance()->AddItem(groupName_, "endScale", 0.4f);
 	ApplyGlobalVariables();
-
 }
 
-void Smoke::Update(Vector3 PlayerPos)
+void BackBoost::Update(Vector3 PlayerPos)
 {
 	randPos = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randPos");
 	randVel = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVel");
@@ -29,29 +27,28 @@ void Smoke::Update(Vector3 PlayerPos)
 	startScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "startScale");
 	endScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "endScale");
 
-	if (isSmokeEffFlag_ == true) { smokeEffTimer_++; }
-	if (smokeEffTimer_ <= 100 && smokeEffTimer_ >= 1) {
+	if (isBackBoostEffFlag_ == true) { backBoostEffTimer_++; }
+	if (backBoostEffTimer_ <= 100 && backBoostEffTimer_ >= 1) {
 		//煙エフェクトのでる場所
 		EffSummary(Vector3(PlayerPos.x, PlayerPos.y, PlayerPos.z));
 	}
-	if (smokeEffTimer_ >= 100) {
-		smokeEffTimer_ = 0;
+	if (backBoostEffTimer_ >= 100) {
+		backBoostEffTimer_ = 0;
 	}
-	ImGui::Begin("Smoke");
-	ImGui::Text("smokeEffTimer_:%d", smokeEffTimer_);
-	ImGui::Text("isSmokeEffFlag_:%d", isSmokeEffFlag_);
+
+	ImGui::Begin("backBoost");
+	ImGui::Text("backBoostEffTimer_:%d", backBoostEffTimer_);
+	ImGui::Text("isBackBoostEffFlag_:%d", isBackBoostEffFlag_);
 	ImGui::End();
-
 }
 
-void Smoke::Draw()
+void BackBoost::Draw()
 {
-	smokeParticle_->Draw();
+	backBoostParticle_->Draw();
 }
 
-void Smoke::ApplyGlobalVariables()
+void BackBoost::ApplyGlobalVariables()
 {
-	
 	//第一引数名のグループ内の第二引数名の調整項目の最新状態を読み込む
 	randPos = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randPos");
 	randVel = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVel");
@@ -60,7 +57,7 @@ void Smoke::ApplyGlobalVariables()
 	endScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "endScale");
 }
 
-void Smoke::EffSummary(Vector3 pos)
+void BackBoost::EffSummary(Vector3 pos)
 {
 	//パーティクル範囲
 	for (int i = 0; i < 20; i++) {
@@ -81,17 +78,7 @@ void Smoke::EffSummary(Vector3 pos)
 		accGas.x = (float)rand() / RAND_MAX * rnd_accGas - rnd_accGas / 2.0f;
 		accGas.y = (float)rand() / RAND_MAX * rnd_accGas - rnd_accGas / 2.0f;
 		//追加
-		smokeParticle_->Add(60, posGas, velGas, accGas, startScale, endScale, { 1.0f,1.0f,1.0f,1.0f });
-		smokeParticle_->Update();
+		backBoostParticle_->Add(60, posGas, velGas, accGas, startScale, endScale, { 1.0f,1.0f,1.0f,1.0f });
+		backBoostParticle_->Update();
 	}
-}
-
-void Smoke::EffTrueCheck()
-{
-	isSmokeEffFlag_ = true;
-}
-
-void Smoke::EffFalseCheck()
-{
-	isSmokeEffFlag_ = false;
 }

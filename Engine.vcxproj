@@ -143,6 +143,7 @@
     <ClCompile Include="User\Camera\TGameCamera.cpp" />
     <ClCompile Include="User\COLLISION\CollisionManager.cpp" />
     <ClCompile Include="User\GameMain.cpp" />
+    <ClCompile Include="User\Player\Particle\BackBoost.cpp" />
     <ClCompile Include="User\Player\Particle\PlayerParticleManager.cpp" />
     <ClCompile Include="User\Player\Particle\Smoke.cpp" />
     <ClCompile Include="User\Player\Player.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="User\Camera\TGameCamera.h" />
     <ClInclude Include="User\COLLISION\CollisionManager.h" />
     <ClInclude Include="User\GameMain.h" />
+    <ClInclude Include="User\Player\Particle\BackBoost.h" />
     <ClInclude Include="User\Player\Particle\PlayerParticleManager.h" />
     <ClInclude Include="User\Player\Particle\Smoke.h" />
     <ClInclude Include="User\Player\Player.h" />
