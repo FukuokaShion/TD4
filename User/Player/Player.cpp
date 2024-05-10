@@ -3,11 +3,12 @@
  * @brief プレイヤー本体
  */
 
+#include"imgui.h"
+#include"CollisionManager.h"
 #include"Player.h"
 #include"PlayerDash.h"
 #include"PlayerJump.h"
 #include"PlayerSlide.h"
-#include"imgui.h"
 
 using namespace Player;
 
@@ -25,6 +26,13 @@ void Main::Initialize() {
 	//ステート
 	state_ = std::make_unique<Dash>();
 	state_->Initialize();
+	//当たり判定
+	colliderRad_ = 0.7f;
+	spineBoneNum_ = bodyModel_->GetBoneNum("mixamorig:Spine3");
+	bodyCollider_ = new BaseCollider();
+	bodyCollider_->SetAttribute(Attribute::PlyerBody);
+	bodyCollider_->SetRad(colliderRad_);
+	CollisionManager::GetInstance()->AddCollider(bodyCollider_);
 }
 
 void Main::Update() {
@@ -33,6 +41,7 @@ void Main::Update() {
 	if (body_->wtf.position.y < 0) {
 		body_->wtf.position.y = 0;
 	}
+	bodyCollider_->SetCenter(body_->GetBonWorldPos(spineBoneNum_));
 	body_->Update();
 	state_->Update(this);
 }
