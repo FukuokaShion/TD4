@@ -26,6 +26,7 @@ void Main::Initialize() {
 	//ステート
 	state_ = std::make_unique<Dash>();
 	state_->Initialize();
+	rotaMax_ = 3.141592f / 8.0f;
 	//当たり判定
 	colliderRad_ = 0.7f;
 	spineBoneNum_ = bodyModel_->GetBoneNum("mixamorig:Spine3");
@@ -37,10 +38,13 @@ void Main::Initialize() {
 
 void Main::Update() {
 	body_->wtf.rotation += state_->GetRotaVector();
-	body_->wtf.position += state_->GetMoveVector();
-	if (body_->wtf.position.y < 0) {
-		body_->wtf.position.y = 0;
+	//回転に制限
+	if (body_->wtf.rotation.y > rotaMax_) {
+		body_->wtf.rotation.y = rotaMax_;
+	}else if (body_->wtf.rotation.y < -rotaMax_) {
+		body_->wtf.rotation.y = -rotaMax_;
 	}
+	body_->wtf.position += state_->GetMoveVector();
 	bodyCollider_->SetCenter(body_->GetBonWorldPos(spineBoneNum_));
 	body_->Update();
 	state_->Update(this);

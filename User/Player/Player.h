@@ -63,6 +63,8 @@ namespace Player {
 		std::unique_ptr<FBXObject3d> body_ = nullptr;
 		// 行動パターン
 		std::unique_ptr<State> state_ = nullptr;
+		//回転の最大
+		float rotaMax_;
 		//当たり判定
 		BaseCollider* bodyCollider_ = nullptr;
 		float colliderRad_;
