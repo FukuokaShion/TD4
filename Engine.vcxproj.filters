@@ -291,7 +291,7 @@
     </ClCompile>
     <ClCompile Include="User\Player\Particle\BackBoost.cpp">
       <Filter>User\Source\Player\Particle</Filter>
-    </ClInclude>
+	</ClCompile>
     <ClCompile Include="Engine\Loader\LevelLoader.cpp">
       <Filter>Engine\Source\Loader</Filter>
     </ClCompile>
