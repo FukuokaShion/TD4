@@ -53,4 +53,8 @@ void Dash::StateTransition(Main* player) {
 		player->AnimationChange(Main::Animation::STAND);
 		player->TransitionTo(Main::StateNum::SLIDE_STATE);
 	}
+	else if (Input::GetInstance()->TriggerKey(DIK_SPACE)) {
+		player->AnimationChange(Main::Animation::JUMP);
+		player->TransitionTo(Main::StateNum::JUMP_STATE);
+	}
 }

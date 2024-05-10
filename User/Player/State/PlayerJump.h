@@ -40,6 +40,8 @@ namespace Player {
 	private:
 		const char* groupName_ = "playerJump";
 		float maxSpeed_;
-		float rotaSpeed_;
+		float maxHeight_;
+		int timer_;
+		int reachTime_;
 	};
 }

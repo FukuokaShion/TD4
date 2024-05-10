@@ -6,6 +6,7 @@
 #include "FBXModel.h"
 #include "FBXObject3d.h"
 #include "PlayerState.h"
+#include "CollisionPrimitive.h"
 
 using namespace MyEngine;
 
@@ -23,7 +24,7 @@ namespace Player {
 			SLIDE,
 			AVOID,
 		};
-		enum StateNum{
+		enum StateNum {
 			DASH_STATE,
 			JUMP_STATE,
 			SLIDE_STATE,
@@ -56,11 +57,17 @@ namespace Player {
 		*/
 		const Transform GetWorldTransform() { return body_->wtf; };
 
-private:
-	// モデル
-	std::unique_ptr<FBXModel> bodyModel_ = nullptr;
-	std::unique_ptr<FBXObject3d> body_ = nullptr;
-	// 行動パターン
-	std::unique_ptr<State> state_ = nullptr;
-};
+	private:
+		// モデル
+		std::unique_ptr<FBXModel> bodyModel_ = nullptr;
+		std::unique_ptr<FBXObject3d> body_ = nullptr;
+		// 行動パターン
+		std::unique_ptr<State> state_ = nullptr;
+		//回転の最大
+		float rotaMax_;
+		//当たり判定
+		BaseCollider* bodyCollider_ = nullptr;
+		float colliderRad_;
+		uint32_t spineBoneNum_;
+	};
 }
