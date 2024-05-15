@@ -29,6 +29,10 @@ public:
 	 */
 	void Update() override;
 
+	void InputAngle();
+
+	void AngleUpdate();
+
 	void SetParentTF(const MyEngine::Transform& parentWTF);
 
 private:
@@ -40,5 +44,5 @@ private:
 
 	bool isEase = false;
 	float easeTimer_ = 0;
-	float easeTime_ = 0;
+	float easeTime_ = 30;
 };
