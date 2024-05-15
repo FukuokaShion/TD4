@@ -27,8 +27,8 @@ void SceneChange::Initialize() {
 	loading_->Initialize(SpriteCommon::GetInstance());
 	loading_->SetSize({ WinApp::window_width,WinApp::window_height });
 
-	black_->SetTextureIndex(SpriteLoader::WHITE);
-	loading_->SetTextureIndex(SpriteLoader::LOADING);
+	black_->SetTextureIndex(SpriteLoader::GetInstance()->GetTextureIndex("white.png"));
+	loading_->SetTextureIndex(SpriteLoader::GetInstance()->GetTextureIndex("loading.png"));
 }
 
 void SceneChange::Update() {

@@ -6,5 +6,5 @@
 #include"SpriteLoader.h"
 
 void LoaderManager::Load() {
-	SpriteLoader::Load();
+	SpriteLoader::GetInstance()->LoadAllTexture();
 }

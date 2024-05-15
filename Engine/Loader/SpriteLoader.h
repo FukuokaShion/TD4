@@ -5,33 +5,34 @@
 
 #pragma once
 #include"Sprite.h"
+#include<map>
+#include<string>
 
 class SpriteLoader {
 public:
-	enum {
-		WHITE,
-		TITLE,
-		LOADING,
-		ENEMYUI,
-		PLAYERUI,
-		BOSSFELLED,
-		YOUDIED,
-		OPTION,
-		RSTICK,
-		TELOPBASE,
-		PUSHA,
-		ARROW,
-		TUTORIAL_PUSHY,
-		TUTORIAL_JUMP,
-		TUTORIAL_ATTACK,
-		TUTORIAL_ROLLING,
-		TUTORIAL_CAMERA,
-		TUTORIAL_NEXT,
-		TUTORIAL_MOVE,
-	};
+	/**
+	 * @brief インスタンス取得
+	*/
+	static SpriteLoader* GetInstance();
 
 	/**
-	 * @brief 読み込み
+	 * @brief ファイル内全読み込み
 	*/
-	static void Load();
+	void LoadAllTexture();
+
+	/**
+	 * @brief 指定名の画像読み込み
+	*/
+	void LoadTexture(const std::string& spriteName);
+
+	/**
+	 * @brief インスタンス取得
+	*/
+	uint32_t GetTextureIndex(const std::string& spriteName);
+
+private:
+	//ファイルパス
+	const std::string kDirectoryPath = "Resources/Sprite/";
+	std::map<std::string, uint32_t> items_;
+	uint32_t textureIndex_ = 0;
 };
