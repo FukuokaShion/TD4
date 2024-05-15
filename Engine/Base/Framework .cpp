@@ -9,6 +9,7 @@
 #include "LightGroup.h"
 #include "ParticleManager.h"
 #include "GlobalVariables.h"
+#include "LoaderManager.h"
 #include "BaseFieldObject.h"
 
 using namespace MyEngine;
@@ -47,8 +48,8 @@ void Framework::Initialize() {
 	//スプライコモン
 	SpriteCommon::SetDxCommon(dxCommon_);
 
-	//調整項目
-	GlobalVariables::GetInstance()->LoadFiles();
+	//ファイル読み込み
+	LoaderManager::Load();
 
 	//FPS固定
 	fps_->SetFrameRate(60);
