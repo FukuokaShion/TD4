@@ -9,7 +9,7 @@
 #include "LightGroup.h"
 #include "ParticleManager.h"
 #include "GlobalVariables.h"
-#include "BaseFieldObject.h"
+#include "BaseFieldObjectManager.h"
 
 using namespace MyEngine;
 
@@ -59,7 +59,7 @@ void  Framework::Finalize() {
 	delete dxCommon_;
 	imGui_->Finalize();
 	FbxLoader::GetInstance()->Finalize();
-	BaseFieldObject::Clear();
+	BaseFieldObjectManager::Clear();
 	winApp_->Finalize();
 }
 

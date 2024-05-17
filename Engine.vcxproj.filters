@@ -262,9 +262,6 @@
     <ClCompile Include="User\Player\State\PlayerDash.cpp">
       <Filter>User\Source\Player\State</Filter>
     </ClCompile>
-    <ClCompile Include="User\Field\BaseFieldObject.cpp">
-      <Filter>User\Source\Field</Filter>
-    </ClCompile>
     <ClCompile Include="User\Field\CoinObject.cpp">
       <Filter>User\Source\Field</Filter>
     </ClCompile>
@@ -291,10 +288,11 @@
     </ClCompile>
     <ClCompile Include="User\Player\Particle\BackBoost.cpp">
       <Filter>User\Source\Player\Particle</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="Engine\Loader\LevelLoader.cpp">
       <Filter>Engine\Source\Loader</Filter>
     </ClCompile>
+    <ClCompile Include="User\Field\BaseFieldObjectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BASE\FPS.h">
@@ -465,6 +463,7 @@
     <ClInclude Include="Engine\Loader\LevelLoader.h">
       <Filter>Engine\Header\Loader</Filter>
     </ClInclude>
+    <ClInclude Include="User\Field\BaseFieldObjectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SHADER\FBX.hlsli">
