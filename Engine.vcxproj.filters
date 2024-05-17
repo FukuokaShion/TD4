@@ -291,9 +291,12 @@
     </ClCompile>
     <ClCompile Include="User\Player\Particle\BackBoost.cpp">
       <Filter>User\Source\Player\Particle</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="Engine\Loader\LevelLoader.cpp">
       <Filter>Engine\Source\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Player\Particle\Spark.cpp">
+      <Filter>User\Source\Player\Particle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -464,6 +467,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Loader\LevelLoader.h">
       <Filter>Engine\Header\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\Particle\Spark.h">
+      <Filter>User\Header\Player\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
