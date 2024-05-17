@@ -295,6 +295,9 @@
     <ClCompile Include="User\Field\BaseFieldObjectManager.cpp">
       <Filter>User\Source\Field</Filter>
     </ClCompile>
+    <ClCompile Include="User\Player\Particle\Spark.cpp">
+      <Filter>User\Source\Player\Particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BASE\FPS.h">
@@ -467,6 +470,9 @@
     </ClInclude>
     <ClInclude Include="User\Field\BaseFieldObjectManager.h">
       <Filter>User\Header\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\Particle\Spark.h">
+      <Filter>User\Header\Player\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@ void BackBoost::Initialize(){
 	GlobalVariables* globalVariables = GlobalVariables::GetInstance();
 	globalVariables->CreateGroup(groupName_);
 	//第一引数名のグループ内に第二引数名の調整項目が無ければ、第三引数を初期値として登録
-	globalVariables->AddItem(groupName_, "randPos", 0.02f);
+	globalVariables->AddItem(groupName_, "randPos", 0.0f);
 	globalVariables->AddItem(groupName_, "randVel", 0.02f);
 	globalVariables->AddItem(groupName_, "randVelY", 0.0f);
 	globalVariables->AddItem(groupName_, "startScale", 0.8f);
