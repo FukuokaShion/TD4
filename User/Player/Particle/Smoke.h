@@ -26,9 +26,6 @@ public:
 
 	void EffSummary(Vector3 pos);
 
-	void EffTrueCheck();
-	void EffFalseCheck();
-
 private:
 	unique_ptr<ParticleManager> smokeParticle_;
 	int smokeEffTimer_ = 0;

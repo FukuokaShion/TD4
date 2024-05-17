@@ -70,13 +70,3 @@ void Smoke::EffSummary(Vector3 pos)
 		
 	}
 }
-
-void Smoke::EffTrueCheck()
-{
-	isSmokeEffFlag_ = true;
-}
-
-void Smoke::EffFalseCheck()
-{
-	isSmokeEffFlag_ = false;
-}
