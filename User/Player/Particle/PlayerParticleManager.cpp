@@ -19,9 +19,9 @@ void PlayerParticleManager::Initialize()
 
 }
 
-void PlayerParticleManager::Update(Vector3 PlayerPos)
+void PlayerParticleManager::Update()
 {
-	smoke_->Update(PlayerPos);
+	smoke_->Update();
 	backBoost_->Update();
 }
 

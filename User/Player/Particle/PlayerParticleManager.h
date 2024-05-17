@@ -29,7 +29,7 @@ public:
 
 	void Initialize();
 
-	void Update(Vector3 PlayerPos);
+	void Update();
 
 	void Draw();
 
