@@ -33,6 +33,10 @@ namespace MyEngine {
 		/**
 		 * @brief int値取得
 		*/
+		bool GetBoolValue(const std::string& groupName, const std::string& key)const;
+		/**
+		 * @brief int値取得
+		*/
 		int32_t GetIntValue(const std::string& groupName, const std::string& key)const;
 		/**
 		 * @brief float値取得
@@ -42,6 +46,10 @@ namespace MyEngine {
 		 * @brief vector3値取得
 		*/
 		Vector3 GetVector3Value(const std::string& groupName, const std::string& key)const;
+		/**
+		 * @brief 項目追加(bool)
+		*/
+		void AddItem(const std::string& groupName, const std::string& key, bool value);
 		/**
 		 * @brief 項目追加(int)
 		*/
@@ -64,6 +72,10 @@ namespace MyEngine {
 		*/
 		void SaveFile(const std::string& groupName);
 		/**
+		 * @brief 値セット(bool)
+		*/
+		void SetValue(const std::string& groupName, const std::string& key, bool value);
+		/**
 		 * @brief 値セット(int)
 		*/
 		void SetValue(const std::string& groupName, const std::string& key, int32_t value);
@@ -78,7 +90,7 @@ namespace MyEngine {
 	private:
 		//項目
 		struct Item {
-			std::variant<int32_t, float, Vector3> value;
+			std::variant<bool, int32_t, float, Vector3> value;
 		};
 		//グループ
 		struct Group {

@@ -12,6 +12,7 @@
 #include"LightGroup.h"
 #include"Object3D.h"
 #include"Model.h"
+#include"ObjLoader.h"
 #include"BaseFieldObjectManager.h"
 
 GameScene::GameScene() {}
@@ -32,9 +33,8 @@ void GameScene::Initialize() {
 	player_->Initialize();
 
 	//地面
-	modelGround_ = MyEngine::Model::LoadFromOBJ("Ground");
-	ground_ = make_unique<Ground>(modelGround_.get(), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
-	modelCoin = MyEngine::Model::LoadFromOBJ("collider");
+	ObjLoader* objLoader = ObjLoader::GetInstance();
+	ground_ = make_unique<Ground>(objLoader->GetModel("Ground"), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
 	jsonLoader = std::make_unique<LevelData>();
 	jsonLoader.reset(LevelLoader::LoadJson("1"));
 	// レベルデータからオブジェクトを生成、配置

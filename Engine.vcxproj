@@ -103,6 +103,7 @@
   <ItemGroup>
     <ClCompile Include="User\Field\BaseFieldObjectManager.cpp" />
     <ClCompile Include="Engine\Loader\LevelLoader.cpp" />
+    <ClCompile Include="Engine\Loader\ObjLoader.cpp" />
     <ClCompile Include="User\Field\Ground.cpp" />
     <ClCompile Include="User\Field\CoinObject.cpp" />
     <ClCompile Include="User\Field\GoalObject.cpp" />
@@ -161,6 +162,7 @@
   <ItemGroup>
     <ClInclude Include="User\Field\BaseFieldObjectManager.h" />
     <ClInclude Include="Engine\Loader\LevelLoader.h" />
+    <ClInclude Include="Engine\Loader\ObjLoader.h" />
     <ClInclude Include="User\Field\Ground.h" />
     <ClInclude Include="User\Field\CoinObject.h" />
     <ClInclude Include="User\Field\GoalObject.h" />
