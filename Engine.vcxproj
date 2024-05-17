@@ -101,11 +101,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="User\Field\BaseFieldObjectManager.cpp" />
     <ClCompile Include="Engine\Loader\LevelLoader.cpp" />
     <ClCompile Include="User\Field\Ground.cpp" />
     <ClCompile Include="User\Field\CoinObject.cpp" />
     <ClCompile Include="User\Field\GoalObject.cpp" />
-    <ClCompile Include="User\Field\BaseFieldObject.cpp" />
     <ClCompile Include="Engine\2D\Sprite.cpp" />
     <ClCompile Include="Engine\2D\SpriteCommon.cpp" />
     <ClCompile Include="Engine\3d\FbxLoader.cpp" />
@@ -159,6 +159,7 @@
     <ClCompile Include="User\SCENE\SceneState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="User\Field\BaseFieldObjectManager.h" />
     <ClInclude Include="Engine\Loader\LevelLoader.h" />
     <ClInclude Include="User\Field\Ground.h" />
     <ClInclude Include="User\Field\CoinObject.h" />

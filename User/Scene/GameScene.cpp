@@ -12,8 +12,7 @@
 #include"LightGroup.h"
 #include"Object3D.h"
 #include"Model.h"
-#include"BaseFieldObject.h"
-#include"CoinObject.h"
+#include"BaseFieldObjectManager.h"
 
 GameScene::GameScene() {}
 
@@ -44,7 +43,7 @@ void GameScene::Initialize() {
 		//コイン
 		if (objectData.fileName == "coin")
 		{
-			CoinObject::Spawn(modelCoin.get(), objectData.translation,objectData.scaling);
+			BaseFieldObjectManager::CreateCoinObject(modelCoin.get(), objectData.translation,objectData.scaling);
 		}
 	}
 
@@ -58,7 +57,7 @@ void GameScene::Initialize() {
 GameScene::~GameScene() {
 	LightGroup::GetInstance()->ClearCircleShadow();
 	CollisionManager::GetInstance()->Finalize();
-	BaseFieldObject::Clear();
+	BaseFieldObjectManager::Clear();
 }
 
 // 更新
@@ -78,7 +77,7 @@ void GameScene::Update() {
 void GameScene::ObjectDraw() {
 
 	ground_->Draw();
-	BaseFieldObject::ManagerBaseFieldObject();
+	BaseFieldObjectManager::ManagerBaseFieldObject();
 #ifdef _DEBUG
 	CollisionManager::GetInstance()->DrawCollider();
 #endif

@@ -23,8 +23,3 @@ void CoinObject::Draw()
 {
 	object->Draw();
 }
-
-void CoinObject::Spawn(Model* Model, Vector3 Pos, Vector3 Scale)
-{
-	manageBaseFieldObjectList.emplace_back(std::make_unique<CoinObject>(Model, Pos, Scale));
-}
