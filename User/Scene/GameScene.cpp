@@ -13,8 +13,7 @@
 #include"Object3D.h"
 #include"Model.h"
 #include"ObjLoader.h"
-#include"BaseFieldObject.h"
-#include"CoinObject.h"
+#include"BaseFieldObjectManager.h"
 
 GameScene::GameScene() {}
 
@@ -44,7 +43,7 @@ void GameScene::Initialize() {
 		//コイン
 		if (objectData.fileName == "coin")
 		{
-			CoinObject::Spawn(objLoader->GetModel("collider"), objectData.translation,objectData.scaling);
+			BaseFieldObjectManager::CreateCoinObject(modelCoin.get(), objectData.translation,objectData.scaling);
 		}
 	}
 
@@ -58,7 +57,7 @@ void GameScene::Initialize() {
 GameScene::~GameScene() {
 	LightGroup::GetInstance()->ClearCircleShadow();
 	CollisionManager::GetInstance()->Finalize();
-	BaseFieldObject::Clear();
+	BaseFieldObjectManager::Clear();
 }
 
 // 更新
@@ -70,7 +69,7 @@ void GameScene::Update() {
 	//引数ぶぶんを自機の中心座標でお願い
 	playerParticleManager_->ParticleCreate(PlayerParticleManager::SMOKE, player_->GetWorldTransform().position);
 	playerParticleManager_->ParticleCreate(PlayerParticleManager::BACKBOOST, player_->GetWorldTransform().position + Vector3{ 0,3,0 });
-	playerParticleManager_->Update(player_->GetWorldTransform().position);
+	playerParticleManager_->Update();
 	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
 }
@@ -78,7 +77,7 @@ void GameScene::Update() {
 void GameScene::ObjectDraw() {
 
 	ground_->Draw();
-	BaseFieldObject::ManagerBaseFieldObject();
+	BaseFieldObjectManager::ManagerBaseFieldObject();
 #ifdef _DEBUG
 	CollisionManager::GetInstance()->DrawCollider();
 #endif
