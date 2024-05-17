@@ -292,7 +292,9 @@
     <ClCompile Include="Engine\Loader\LevelLoader.cpp">
       <Filter>Engine\Source\Loader</Filter>
     </ClCompile>
-    <ClCompile Include="User\Field\BaseFieldObjectManager.cpp" />
+    <ClCompile Include="User\Field\BaseFieldObjectManager.cpp">
+      <Filter>User\Source\Field</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BASE\FPS.h">
@@ -463,7 +465,9 @@
     <ClInclude Include="Engine\Loader\LevelLoader.h">
       <Filter>Engine\Header\Loader</Filter>
     </ClInclude>
-    <ClInclude Include="User\Field\BaseFieldObjectManager.h" />
+    <ClInclude Include="User\Field\BaseFieldObjectManager.h">
+      <Filter>User\Header\Field</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SHADER\FBX.hlsli">

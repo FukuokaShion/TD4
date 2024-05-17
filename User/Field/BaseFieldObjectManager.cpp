@@ -1,4 +1,7 @@
 #include "BaseFieldObjectManager.h"
+#include "CoinObject.h"
+#include "GoalObject.h"
+
 std::list<std::unique_ptr<BaseFieldObject>> BaseFieldObjectManager::manageBaseFieldObjectList;
 
 void BaseFieldObjectManager::ManagerBaseFieldObject() {
@@ -37,4 +40,9 @@ BaseFieldObjectManager* BaseFieldObjectManager::GetInstance()
 void BaseFieldObjectManager::CreateCoinObject(Model* Model, Vector3 Pos, Vector3 Scale)
 {
 	GetInstance()->manageBaseFieldObjectList.emplace_back(std::make_unique<CoinObject>(Model, Pos, Scale));
+}
+
+void BaseFieldObjectManager::CreateGoalObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotatin)
+{
+	GetInstance()->manageBaseFieldObjectList.emplace_back(std::make_unique<GoalObject>(Model, Pos, Scale, Rotatin));
 }

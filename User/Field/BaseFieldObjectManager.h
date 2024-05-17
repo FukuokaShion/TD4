@@ -1,7 +1,7 @@
 #pragma once
 #include <list>
 #include <memory>
-#include "CoinObject.h"
+
 #include "Object3d.h"
 #include "BaseFieldObject.h"
 using namespace MyEngine;
@@ -14,6 +14,7 @@ public:
 	static BaseFieldObjectManager* GetInstance();
 
 	static void CreateCoinObject(Model* Model, Vector3 Pos, Vector3 Scale);
+	static void CreateGoalObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotatin);
 
 	static void ManagerBaseFieldObject();
 	static void Clear();
