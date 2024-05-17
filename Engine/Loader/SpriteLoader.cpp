@@ -22,7 +22,7 @@ void SpriteLoader::LoadAllTexture() {
 		const std::filesystem::path& filePath = entry.path();
 		//ファイル拡張子取得
 		std::string extension = filePath.extension().string();
-		//jsonファイル以外スキップ
+		//pngファイル以外スキップ
 		if (extension.compare(".png") != 0) {
 			continue;
 		}
