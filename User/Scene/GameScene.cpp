@@ -35,18 +35,12 @@ void GameScene::Initialize() {
 	//地面
 	modelGround_ = MyEngine::Model::LoadFromOBJ("Ground");
 	ground_ = make_unique<Ground>(modelGround_.get(), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
-	modelCoin = MyEngine::Model::LoadFromOBJ("collider");
-	jsonLoader = std::make_unique<LevelData>();
-	jsonLoader.reset(LevelLoader::LoadJson("1"));
-	// レベルデータからオブジェクトを生成、配置
-	for (auto& objectData : jsonLoader->objects)
-	{
-		//コイン
-		if (objectData.fileName == "coin")
-		{
-			CoinObject::Spawn(modelCoin.get(), objectData.translation,objectData.scaling);
-		}
-	}
+	
+	//フィールドマネージャー
+	fieldManager_ = make_unique<FieldManager>();
+	fieldManager_->Initialize();
+	fieldManager_->Load("1");
+	
 
 	//パーティクル
 	playerParticleManager_ = make_unique<PlayerParticleManager>();
@@ -78,7 +72,7 @@ void GameScene::Update() {
 void GameScene::ObjectDraw() {
 
 	ground_->Draw();
-	BaseFieldObject::ManagerBaseFieldObject();
+	fieldManager_->Draw();
 #ifdef _DEBUG
 	CollisionManager::GetInstance()->DrawCollider();
 #endif

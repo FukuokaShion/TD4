@@ -14,7 +14,7 @@
 #include"Player.h"
 #include"Particle/PlayerParticleManager.h"
 #include"Ground.h"
-#include"LevelLoader.h"
+#include"FieldManager.h"
 using namespace std;
 
 class GameScene : public SceneState {
@@ -62,7 +62,7 @@ private:
 	unique_ptr<PlayerParticleManager> playerParticleManager_ = nullptr;
 	//地面モデル
 	unique_ptr<Model> modelGround_ = nullptr;
-
-	//レベルローダー
-	unique_ptr<LevelData>jsonLoader;
+	
+	//フィールドマネージャー
+	unique_ptr<FieldManager>fieldManager_ = nullptr;
 };
