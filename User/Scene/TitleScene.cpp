@@ -35,6 +35,8 @@ TitleScene::~TitleScene() {
 void TitleScene::Update() {
 	gameCamera_->Update();
 	titlePic_->Update();
+
+	StateTransition();
 }
 
 void TitleScene::ObjectDraw() {
@@ -49,5 +51,7 @@ void TitleScene::SpriteDraw() {
 }
 
 void TitleScene::StateTransition() {
-
+	if (Input::GetInstance()->TriggerKey(DIK_SPACE)) {
+		sceneManager_->TransitionTo(SceneManager::SCENE::SELECT);
+	}
 }

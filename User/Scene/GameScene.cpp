@@ -73,6 +73,8 @@ void GameScene::Update() {
 	playerParticleManager_->Update();
 	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
+
+	StateTransition();
 }
 
 void GameScene::ObjectDraw() {
@@ -93,4 +95,8 @@ void GameScene::SpriteDraw() {
 	playerParticleManager_->Draw();
 }
 
-void GameScene::StateTransition() {}
+void GameScene::StateTransition() {
+	if (Input::GetInstance()->TriggerKey(DIK_T)) {
+		sceneManager_->TransitionTo(SceneManager::SCENE::TITLE);
+	}
+}

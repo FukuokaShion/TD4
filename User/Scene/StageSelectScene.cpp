@@ -35,6 +35,8 @@ StageSelectScene::~StageSelectScene() {
 void StageSelectScene::Update() {
 	gameCamera_->Update();
 	stageSelectPic_->Update();
+	
+	StateTransition();
 }
 
 void StageSelectScene::ObjectDraw() {
@@ -49,5 +51,7 @@ void StageSelectScene::SpriteDraw() {
 }
 
 void StageSelectScene::StateTransition() {
-
+	if (Input::GetInstance()->TriggerKey(DIK_SPACE)) {
+		sceneManager_->TransitionTo(SceneManager::SCENE::GAME);
+	}
 }
