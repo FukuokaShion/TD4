@@ -6,6 +6,8 @@
 #include"FBXObject3d.h"
 #include"SceneManager.h"
 
+#include"TitleScene.h"
+#include"StageSelectScene.h"
 #include"GameScene.h"
 
 SceneManager::SceneManager() {}
@@ -17,7 +19,7 @@ void SceneManager::Initialize(DirectXCommon* dxCommon) {
 	this->dxCommon_ = dxCommon;
 
 	SceneState::SetSceneManager(this);
-	state_ = std::make_unique<GameScene>();
+	state_ = std::make_unique<TitleScene>();
 	state_->Initialize();
 
 	sceneChange_ = std::make_unique<SceneChange>();
