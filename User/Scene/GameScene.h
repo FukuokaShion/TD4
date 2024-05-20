@@ -47,7 +47,9 @@ private:
 	 * @brief シーン移行
 	*/
 	void StateTransition() override;
-
+public:
+	//ステージ番号
+	static int stageNum_;
 private:
 	//カメラ
 	unique_ptr<TGameCamera> gameCamera_ = nullptr;

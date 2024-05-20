@@ -4,6 +4,7 @@
  */
 #include"StageSelectScene.h"
 #include"SceneManager.h"
+#include"GameScene.h"
 
 #include"FbxLoader.h"
 #include"SpriteLoader.h"
@@ -52,6 +53,7 @@ void StageSelectScene::SpriteDraw() {
 
 void StageSelectScene::StateTransition() {
 	if (Input::GetInstance()->TriggerKey(DIK_SPACE)) {
+		GameScene::stageNum_ = 1;
 		sceneManager_->TransitionTo(SceneManager::SCENE::GAME);
 	}
 }

@@ -15,6 +15,8 @@
 #include"ObjLoader.h"
 #include"BaseFieldObjectManager.h"
 
+int GameScene::stageNum_ = 0;
+
 GameScene::GameScene() {}
 
 // 初期化
@@ -36,7 +38,7 @@ void GameScene::Initialize() {
 	ObjLoader* objLoader = ObjLoader::GetInstance();
 	ground_ = make_unique<Ground>(objLoader->GetModel("Ground"), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
 	jsonLoader = std::make_unique<LevelData>();
-	jsonLoader.reset(LevelLoader::LoadJson("1"));
+	jsonLoader.reset(LevelLoader::LoadJson(to_string(stageNum_)));
 	Model* modelCoin = objLoader->GetModel("collider");
 	// レベルデータからオブジェクトを生成、配置
 	for (auto& objectData : jsonLoader->objects)
