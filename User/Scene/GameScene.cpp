@@ -72,7 +72,7 @@ void GameScene::Update() {
 void GameScene::ObjectDraw() {
 
 	ground_->Draw();
-	fieldManager_->Draw();
+	BaseFieldObject::ManagerBaseFieldObject();
 #ifdef _DEBUG
 	CollisionManager::GetInstance()->DrawCollider();
 #endif

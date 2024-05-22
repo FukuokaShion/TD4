@@ -10,8 +10,6 @@ class FieldManager
 public:
 	void Initialize();
 
-	void Draw();
-
 	void Load(const std::string& num);
 private:
 	std::unique_ptr<LevelData> jsonLoader_;
