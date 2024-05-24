@@ -37,19 +37,12 @@ void GameScene::Initialize() {
 	//地面
 	ObjLoader* objLoader = ObjLoader::GetInstance();
 	ground_ = make_unique<Ground>(objLoader->GetModel("Ground"), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
-	jsonLoader = std::make_unique<LevelData>();
-	jsonLoader.reset(LevelLoader::LoadJson(to_string(stageNum_)));
-	Model* modelCoin = objLoader->GetModel("collider");
-	// レベルデータからオブジェクトを生成、配置
-	for (auto& objectData : jsonLoader->objects)
-	{
-		//コイン
-		if (objectData.fileName == "coin")
-		{
-			BaseFieldObjectManager::CreateCoinObject(modelCoin, objectData.translation,objectData.scaling);
-		}
-	}
-
+	
+	//フィールドマネージャー
+	fieldManager_ = make_unique<FieldManager>();
+	fieldManager_->Initialize();
+	fieldManager_->Load(to_string(stageNum_);
+                      
 	//パーティクル
 	playerParticleManager_ = make_unique<PlayerParticleManager>();
 	playerParticleManager_->Initialize();
