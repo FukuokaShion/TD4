@@ -29,7 +29,11 @@ void GlobalVariables::Update() {
 		for (std::map<std::string, Item>::iterator itItem = group.items.begin(); itItem != group.items.end(); ++itItem) {
 			const std::string& itemName = itItem->first;
 			Item& item = itItem->second;
-			
+			//bool型
+			if (holds_alternative<bool>(item.value)) {
+				bool* ptr = get_if<bool>(&item.value);
+				ImGui::Checkbox(itemName.c_str(), ptr);
+			}
 			//int32_t型
 			if (holds_alternative<int32_t>(item.value)) {
 				int32_t* ptr = get_if<int32_t>(&item.value);
@@ -101,14 +105,19 @@ void GlobalVariables::LoadFile(const std::string& groupName) {
 	for (json::iterator itItem = itGroup->begin(); itItem != itGroup->end(); ++itItem) {
 		//アイテム名取得
 		const std::string& itemName = itItem.key();
+		//bool型
+		if (itItem->is_boolean()) {
+			bool value = itItem->get<bool>();
+			SetValue(groupName, itemName, static_cast<bool>(value));
+		}
 		//int32_t型
-		if (itItem->is_number_integer()) {
+		else if (itItem->is_number_integer()) {
 			int32_t value = itItem->get<int32_t>();
 			SetValue(groupName, itemName, value);
 		}
 		//float型
 		else if (itItem->is_number_float()) {
-		double value = itItem->get<double>();
+			double value = itItem->get<double>();
 			SetValue(groupName, itemName, static_cast<float>(value));
 		}
 		//vector3型
@@ -136,8 +145,12 @@ void GlobalVariables::SaveFile(const std::string& groupName) {
 		const std::string& itemName = itItem->first;
 		//項目の参照取得
 		Item& item = itItem->second;
+		//bool型
+		if (holds_alternative<bool>(item.value)) {
+			root[groupName][itemName] = get<bool>(item.value);
+		}
 		//int32_t型
-		if (holds_alternative<int32_t>(item.value)) {
+		else if (holds_alternative<int32_t>(item.value)) {
 			root[groupName][itemName] = get<int32_t>(item.value);
 		}
 		//float型
@@ -172,6 +185,16 @@ void GlobalVariables::CreateGroup(const std::string& groupNmae) {
 	datas_[groupNmae];
 }
 
+void GlobalVariables::AddItem(const std::string& groupName, const std::string& key, bool value) {
+	//グループ検索
+	std::map<std::string, Group>::iterator itGroup = datas_.find(groupName);
+	std::map<std::string, Item>::iterator itItem = itGroup->second.items.find(key);
+	//ないなら登録
+	if (itItem == itGroup->second.items.end()) {
+		SetValue(groupName, key, value);
+	}
+}
+
 void GlobalVariables::AddItem(const std::string& groupName, const std::string& key, int32_t value) {
 	//グループ検索
 	std::map<std::string, Group>::iterator itGroup = datas_.find(groupName);
@@ -202,6 +225,13 @@ void GlobalVariables::AddItem(const std::string& groupName, const std::string& k
 	}
 }
 
+void GlobalVariables::SetValue(const std::string& groupName, const std::string& key, bool value) {
+	Group& group = datas_[groupName];
+	Item newItem{};
+	newItem.value = value;
+	group.items[key] = newItem;
+}
+
 void GlobalVariables::SetValue(const std::string& groupName, const std::string& key, int32_t value) {
 	Group& group = datas_[groupName];
 	Item newItem{};
@@ -221,6 +251,12 @@ void GlobalVariables::SetValue(const std::string& groupName, const std::string& 
 	Item newItem{};
 	newItem.value = value;
 	group.items[key] = newItem;
+}
+
+bool GlobalVariables::GetBoolValue(const std::string& groupName, const std::string& key)const {
+	const Group& group = datas_.at(groupName);
+	const Item& item = group.items.at(key);
+	return get<bool>(item.value);
 }
 
 int32_t GlobalVariables::GetIntValue(const std::string& groupName, const std::string& key)const {

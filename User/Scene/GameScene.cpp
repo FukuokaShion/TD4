@@ -12,8 +12,8 @@
 #include"LightGroup.h"
 #include"Object3D.h"
 #include"Model.h"
-#include"BaseFieldObject.h"
-#include"CoinObject.h"
+#include"ObjLoader.h"
+#include"BaseFieldObjectManager.h"
 
 GameScene::GameScene() {}
 
@@ -40,7 +40,6 @@ void GameScene::Initialize() {
 	fieldManager_ = make_unique<FieldManager>();
 	fieldManager_->Initialize();
 	fieldManager_->Load("1");
-	
 
 	//パーティクル
 	playerParticleManager_ = make_unique<PlayerParticleManager>();
@@ -52,7 +51,7 @@ void GameScene::Initialize() {
 GameScene::~GameScene() {
 	LightGroup::GetInstance()->ClearCircleShadow();
 	CollisionManager::GetInstance()->Finalize();
-	BaseFieldObject::Clear();
+	BaseFieldObjectManager::Clear();
 }
 
 // 更新
@@ -64,7 +63,7 @@ void GameScene::Update() {
 	//引数ぶぶんを自機の中心座標でお願い
 	playerParticleManager_->ParticleCreate(PlayerParticleManager::SMOKE, player_->GetWorldTransform().position);
 	playerParticleManager_->ParticleCreate(PlayerParticleManager::BACKBOOST, player_->GetWorldTransform().position + Vector3{ 0,3,0 });
-	playerParticleManager_->Update(player_->GetWorldTransform().position);
+	playerParticleManager_->Update();
 	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
 }
@@ -72,7 +71,7 @@ void GameScene::Update() {
 void GameScene::ObjectDraw() {
 
 	ground_->Draw();
-	BaseFieldObject::ManagerBaseFieldObject();
+	BaseFieldObjectManager::ManagerBaseFieldObject();
 #ifdef _DEBUG
 	CollisionManager::GetInstance()->DrawCollider();
 #endif

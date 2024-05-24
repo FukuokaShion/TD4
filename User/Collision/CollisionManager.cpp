@@ -2,6 +2,10 @@
  * @file CollisionManager.cpp
  * @brief 当たり判定のチェック
  */
+#ifdef _DEBUG
+#include"ObjLoader.h"
+#endif
+
 #include"CollisionManager.h"
 #include"Collision.h"
 
@@ -10,10 +14,10 @@ void CollisionManager::Initialize() {
 	isEnemyHit_ = false;
 
 #ifdef _DEBUG
-	model_ = Model::LoadFromOBJ("collider");
+	Model* model_ = ObjLoader::GetInstance()->GetModel("collider");
 	for (int i = 0; i < maxCol_; i++) {
 		objects_[i] = Object3d::Create();
-		objects_[i]->SetModel(model_.get());
+		objects_[i]->SetModel(model_);
 	}
 #endif
 }

@@ -262,9 +262,6 @@
     <ClCompile Include="User\Player\State\PlayerDash.cpp">
       <Filter>User\Source\Player\State</Filter>
     </ClCompile>
-    <ClCompile Include="User\Field\BaseFieldObject.cpp">
-      <Filter>User\Source\Field</Filter>
-    </ClCompile>
     <ClCompile Include="User\Field\CoinObject.cpp">
       <Filter>User\Source\Field</Filter>
     </ClCompile>
@@ -297,6 +294,15 @@
     </ClCompile>
     <ClCompile Include="User\Field\FieldManager.cpp">
       <Filter>User\Source\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Loader\ObjLoader.cpp">
+      <Filter>Engine\Source\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Field\BaseFieldObjectManager.cpp">
+      <Filter>User\Source\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Player\Particle\Spark.cpp">
+      <Filter>User\Source\Player\Particle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -470,6 +476,15 @@
     </ClInclude>
     <ClInclude Include="User\Field\FieldManager.h">
       <Filter>User\Header\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Loader\ObjLoader.h">
+      <Filter>Engine\Header\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Field\BaseFieldObjectManager.h">
+      <Filter>User\Header\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\Particle\Spark.h">
+      <Filter>User\Header\Player\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

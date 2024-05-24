@@ -56,10 +56,8 @@ private:
 	//地面
 	unique_ptr<Ground> ground_=nullptr;
 
-	//仮コイン先
-	unique_ptr<Model> modelCoin = nullptr;
-  
 	unique_ptr<PlayerParticleManager> playerParticleManager_ = nullptr;
+
 	//地面モデル
 	unique_ptr<Model> modelGround_ = nullptr;
 	

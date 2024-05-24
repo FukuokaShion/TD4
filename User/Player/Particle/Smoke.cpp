@@ -21,26 +21,11 @@ void Smoke::Initialize()
 
 }
 
-void Smoke::Update(Vector3 PlayerPos)
+void Smoke::Update()
 {
-	randPos = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randPos");
-	randVel = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVel");
-	randVelY = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVelY");
-	startScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "startScale");
-	endScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "endScale");
+	ApplyGlobalVariables();
 
-	if (isSmokeEffFlag_ == true) { smokeEffTimer_++; }
-	if (smokeEffTimer_ <= 100 && smokeEffTimer_ >= 1) {
-		//煙エフェクトのでる場所
-		EffSummary(Vector3(PlayerPos.x, PlayerPos.y, PlayerPos.z));
-	}
-	if (smokeEffTimer_ >= 100) {
-		smokeEffTimer_ = 0;
-	}
-	ImGui::Begin("Smoke");
-	ImGui::Text("smokeEffTimer_:%d", smokeEffTimer_);
-	ImGui::Text("isSmokeEffFlag_:%d", isSmokeEffFlag_);
-	ImGui::End();
+	smokeParticle_->Update();
 
 }
 
@@ -82,16 +67,6 @@ void Smoke::EffSummary(Vector3 pos)
 		accGas.y = (float)rand() / RAND_MAX * rnd_accGas - rnd_accGas / 2.0f;
 		//追加
 		smokeParticle_->Add(60, posGas, velGas, accGas, startScale, endScale, { 1.0f,1.0f,1.0f,1.0f });
-		smokeParticle_->Update();
+		
 	}
-}
-
-void Smoke::EffTrueCheck()
-{
-	isSmokeEffFlag_ = true;
-}
-
-void Smoke::EffFalseCheck()
-{
-	isSmokeEffFlag_ = false;
 }

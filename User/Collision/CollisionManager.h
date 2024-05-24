@@ -66,7 +66,6 @@ public:
 	*/
 	void DrawCollider();
 private:
-	std::unique_ptr<Model> model_ = nullptr;
 	int maxCol_ = 32;
 	std::unique_ptr<Object3d> objects_[32];
 #endif
