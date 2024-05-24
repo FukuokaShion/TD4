@@ -159,7 +159,7 @@
             "transform": {
                 "translation": [
                     0.0,
-                    100.0,
+                    1000.0,
                     1.0
                 ],
                 "rotation": [
