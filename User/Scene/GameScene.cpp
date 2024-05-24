@@ -15,7 +15,7 @@
 #include"ObjLoader.h"
 #include"BaseFieldObjectManager.h"
 
-int GameScene::stageNum_ = 0;
+int GameScene::stageNum_ = 1;
 
 GameScene::GameScene() {}
 
@@ -41,7 +41,7 @@ void GameScene::Initialize() {
 	//フィールドマネージャー
 	fieldManager_ = make_unique<FieldManager>();
 	fieldManager_->Initialize();
-	fieldManager_->Load(to_string(stageNum_);
+	fieldManager_->Load(to_string(stageNum_));
                       
 	//パーティクル
 	playerParticleManager_ = make_unique<PlayerParticleManager>();

@@ -24,7 +24,7 @@ void FieldManager::Load(const std::string& num)
 		//コイン
 		if (objectData.fileName == "coin")
 		{
-			CoinObject::Spawn(model, objectData.translation, objectData.scaling);
+			//CoinObject::Spawn(model, objectData.translation, objectData.scaling);
 		}
 		//ゴール
 		else if (objectData.fileName == "goal")
