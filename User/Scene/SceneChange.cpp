@@ -29,6 +29,8 @@ void SceneChange::Initialize() {
 
 	black_->SetTextureIndex(SpriteLoader::GetInstance()->GetTextureIndex("white.png"));
 	loading_->SetTextureIndex(SpriteLoader::GetInstance()->GetTextureIndex("loading.png"));
+	black_->Update();
+	loading_->Update();
 }
 
 void SceneChange::Update() {

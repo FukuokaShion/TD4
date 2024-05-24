@@ -15,6 +15,8 @@
 #include"ObjLoader.h"
 #include"BaseFieldObjectManager.h"
 
+int GameScene::stageNum_ = 0;
+
 GameScene::GameScene() {}
 
 // 初期化
@@ -33,14 +35,14 @@ void GameScene::Initialize() {
 	player_->Initialize();
 
 	//地面
-	modelGround_ = MyEngine::Model::LoadFromOBJ("Ground");
-	ground_ = make_unique<Ground>(modelGround_.get(), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
+	ObjLoader* objLoader = ObjLoader::GetInstance();
+	ground_ = make_unique<Ground>(objLoader->GetModel("Ground"), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
 	
 	//フィールドマネージャー
 	fieldManager_ = make_unique<FieldManager>();
 	fieldManager_->Initialize();
-	fieldManager_->Load("1");
-
+	fieldManager_->Load(to_string(stageNum_);
+                      
 	//パーティクル
 	playerParticleManager_ = make_unique<PlayerParticleManager>();
 	playerParticleManager_->Initialize();
@@ -66,6 +68,8 @@ void GameScene::Update() {
 	playerParticleManager_->Update();
 	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
+
+	StateTransition();
 }
 
 void GameScene::ObjectDraw() {
@@ -86,4 +90,8 @@ void GameScene::SpriteDraw() {
 	playerParticleManager_->Draw();
 }
 
-void GameScene::StateTransition() {}
+void GameScene::StateTransition() {
+	if (Input::GetInstance()->TriggerKey(DIK_T)) {
+		sceneManager_->TransitionTo(SceneManager::SCENE::TITLE);
+	}
+}

@@ -11,7 +11,7 @@ class SceneManager {
 public:
 	enum class SCENE {
 		TITLE,
-		TUTORIAL,
+		SELECT,
 		GAME,
 	};
 

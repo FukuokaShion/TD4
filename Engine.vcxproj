@@ -159,6 +159,8 @@
     <ClCompile Include="User\SCENE\SceneChange.cpp" />
     <ClCompile Include="User\SCENE\SceneManager.cpp" />
     <ClCompile Include="User\SCENE\SceneState.cpp" />
+    <ClCompile Include="User\Scene\StageSelectScene.cpp" />
+    <ClCompile Include="User\Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User\Field\BaseFieldObjectManager.h" />
@@ -221,6 +223,8 @@
     <ClInclude Include="User\SCENE\SceneChange.h" />
     <ClInclude Include="User\SCENE\SceneManager.h" />
     <ClInclude Include="User\SCENE\SceneState.h" />
+    <ClInclude Include="User\Scene\StageSelectScene.h" />
+    <ClInclude Include="User\Scene\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj">

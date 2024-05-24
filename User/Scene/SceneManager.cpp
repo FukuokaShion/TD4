@@ -6,6 +6,8 @@
 #include"FBXObject3d.h"
 #include"SceneManager.h"
 
+#include"TitleScene.h"
+#include"StageSelectScene.h"
 #include"GameScene.h"
 
 SceneManager::SceneManager() {}
@@ -17,7 +19,7 @@ void SceneManager::Initialize(DirectXCommon* dxCommon) {
 	this->dxCommon_ = dxCommon;
 
 	SceneState::SetSceneManager(this);
-	state_ = std::make_unique<GameScene>();
+	state_ = std::make_unique<TitleScene>();
 	state_->Initialize();
 
 	sceneChange_ = std::make_unique<SceneChange>();
@@ -57,7 +59,11 @@ void SceneManager::Draw() {
 void SceneManager::ChangeScene() {
 	if (sceneChange_->GetIsFadeOutFin()) {
 		//新規作成
-		if (nextScene_ == SCENE::GAME) {
+		if (nextScene_ == SCENE::TITLE) {
+			state_ = std::make_unique<TitleScene>();
+		}else if (nextScene_ == SCENE::SELECT) {
+			state_ = std::make_unique<StageSelectScene>();
+		}else if (nextScene_ == SCENE::GAME) {
 			state_ = std::make_unique<GameScene>();
 		}
 		state_->Initialize();
