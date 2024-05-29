@@ -2,7 +2,7 @@
 #include"BaseFieldObjectManager.h"
 void FieldManager::Initialize()
 {
-	models.insert(std::make_pair("coin", MyEngine::Model::LoadFromOBJ("collider")));
+	models.insert(std::make_pair("coin", MyEngine::Model::LoadFromOBJ("coin")));
 	models.insert(std::make_pair("goal", MyEngine::Model::LoadFromOBJ("goal")));
 }
 
