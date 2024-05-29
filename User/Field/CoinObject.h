@@ -11,6 +11,13 @@ public:
 	
 	CoinObject(Model* Model, Vector3 Pos, Vector3 Scale);
 
+	~CoinObject()
+	{
+		//当たり判定をマネージャから解除
+		CollisionManager::GetInstance()->RemoveCollider(sphere);
+		delete sphere;
+	}
+
 	void Update() override;
 
 	void Draw() override;
