@@ -17,12 +17,12 @@ public:
 
 	void Draw() override;
 
-	bool GetGoaled()
+	static bool GetGoaled()
 	{
 		return goaled_flag;
 	}
 
 private:
-	bool goaled_flag = false;
+	static bool goaled_flag;
 };
 

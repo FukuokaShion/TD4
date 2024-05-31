@@ -1,4 +1,5 @@
 #include "GoalObject.h"
+bool GoalObject::goaled_flag = false;
 
 GoalObject::GoalObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotation)
 {
