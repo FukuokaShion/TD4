@@ -27,6 +27,7 @@ void Dash::ApplyGlobalVariables() {
 Dash::~Dash() {}
 
 void Dash::Update(Main* player) {
+	player->CreateParticle(PlayerParticleManager::SMOKE, player->GetWorldTransform().position);
 	Rota();
 	Move(player->GetWorldTransform());
 	StateTransition(player);
@@ -46,6 +47,7 @@ void Dash::Move(Transform wtf) {
 	Vector3 result;
 	result = { 0,0,maxSpeed_ };
 	moveVector_ = Matrix4::bVelocity(result,wtf.matWorld);
+	moveVector_.z = 0;
 }
 
 void Dash::StateTransition(Main* player) {

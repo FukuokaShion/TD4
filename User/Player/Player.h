@@ -6,6 +6,7 @@
 #include "FBXModel.h"
 #include "FBXObject3d.h"
 #include "PlayerState.h"
+#include "Particle/PlayerParticleManager.h"
 #include "CollisionPrimitive.h"
 
 using namespace MyEngine;
@@ -39,11 +40,15 @@ namespace Player {
 		/**
 		 * @brief 更新
 		*/
-		void Update();
+		void Update(const Transform& parentWTF);
 		/**
 		 * @brief 描画
 		*/
 		void FbxDraw();
+		/**
+		 * @brief 描画
+		*/
+		void ParticleDraw();
 		/**
 		 * @brief 状態移行
 		*/
@@ -56,18 +61,30 @@ namespace Player {
 		 * @brief 座標取得
 		*/
 		const Transform GetWorldTransform() { return body_->wtf; };
-
+		/**
+		 * @brief 座標取得
+		*/
+		const Vector3 GetBoneWorldPos(const uint32_t boneNum) { return  body_->GetBonWorldPos(boneNum); };
+		/**
+		 * @brief パーティクル生成
+		*/
+		void CreateParticle(uint32_t particleType, Vector3 createPos) { playerParticleManager_->ParticleCreate(particleType, createPos); };
 	private:
 		// モデル
 		std::unique_ptr<FBXModel> bodyModel_ = nullptr;
 		std::unique_ptr<FBXObject3d> body_ = nullptr;
+		Transform rocalWtf_;
 		// 行動パターン
 		std::unique_ptr<State> state_ = nullptr;
 		//回転の最大
 		float rotaMax_;
+		//横移動の最大
+		float moveMax_;
 		//当たり判定
 		BaseCollider* bodyCollider_ = nullptr;
 		float colliderRad_;
-		uint32_t spineBoneNum_;
+		uint32_t spine3BoneNum_;
+		uint32_t spine2BoneNum_;
+		unique_ptr<PlayerParticleManager> playerParticleManager_ = nullptr;
 	};
 }

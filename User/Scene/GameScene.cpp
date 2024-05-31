@@ -30,6 +30,8 @@ void GameScene::Initialize() {
 	Object3d::SetCamera(gameCamera_.get());
 	ParticleManager::SetCamera(gameCamera_.get());
 
+	railCameraPos_.Initialize();
+
 	// プレイヤー
 	player_ = make_unique<Player::Main>();
 	player_->Initialize();
@@ -43,9 +45,6 @@ void GameScene::Initialize() {
 	fieldManager_->Initialize();
 	fieldManager_->Load(to_string(stageNum_));
                       
-	//パーティクル
-	playerParticleManager_ = make_unique<PlayerParticleManager>();
-	playerParticleManager_->Initialize();
 	// 当たり判定マネージャー初期化
 	CollisionManager::GetInstance()->Initialize();
 }
@@ -58,14 +57,14 @@ GameScene::~GameScene() {
 
 // 更新
 void GameScene::Update() {
-	gameCamera_->SetParentTF(player_->GetWorldTransform());
+	railCameraPos_.position += { 0,0,0.5f };
+	railCameraPos_.UpdateMat();
+
+	gameCamera_->SetParentTF(railCameraPos_);
 	gameCamera_->Update();
-	player_->Update();
+	
+	player_->Update(railCameraPos_);
   
-	//引数ぶぶんを自機の中心座標でお願い
-	playerParticleManager_->ParticleCreate(PlayerParticleManager::SMOKE, player_->GetWorldTransform().position);
-	playerParticleManager_->ParticleCreate(PlayerParticleManager::BACKBOOST, player_->GetWorldTransform().position + Vector3{ 0,3,0 });
-	playerParticleManager_->Update();
 	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
 
@@ -87,7 +86,7 @@ void GameScene::FbxDraw() {
 }
 
 void GameScene::SpriteDraw() {
-	playerParticleManager_->Draw();
+	player_->ParticleDraw();
 }
 
 void GameScene::StateTransition() {
