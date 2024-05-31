@@ -23,10 +23,12 @@ void Main::Initialize() {
 	body_->SetModel(bodyModel_.get());
 	body_->PlayAnimation(DASH, 3.0f);
 	body_->Update();
+	rocalWtf_.Initialize();
 	//ステート
 	state_ = std::make_unique<Dash>();
 	state_->Initialize();
 	rotaMax_ = 3.141592f / 8.0f;
+	moveMax_ = 6.0f;
 	//当たり判定
 	colliderRad_ = 0.7f;
 	spineBoneNum_ = bodyModel_->GetBoneNum("mixamorig:Spine3");
@@ -36,15 +38,33 @@ void Main::Initialize() {
 	CollisionManager::GetInstance()->AddCollider(bodyCollider_);
 }
 
-void Main::Update() {
-	body_->wtf.rotation += state_->GetRotaVector();
-	//回転に制限
-	if (body_->wtf.rotation.y > rotaMax_) {
-		body_->wtf.rotation.y = rotaMax_;
-	}else if (body_->wtf.rotation.y < -rotaMax_) {
-		body_->wtf.rotation.y = -rotaMax_;
+void Main::Update(const Transform& parentWTF) {
+	parentWTF.matWorld;
+	if (state_->GetRotaVector().y != 0) {
+		rocalWtf_.rotation += state_->GetRotaVector();
+	}else {
+		rocalWtf_.rotation = {0, 0, 0};
 	}
-	body_->wtf.position += state_->GetMoveVector();
+	//回転に制限
+	if (rocalWtf_.rotation.y > rotaMax_) {
+		rocalWtf_.rotation.y = rotaMax_;
+	}else if (rocalWtf_.rotation.y < -rotaMax_) {
+		rocalWtf_.rotation.y = -rotaMax_;
+	}
+	rocalWtf_.position += state_->GetMoveVector();
+	//幅に制限
+	if (rocalWtf_.position.x > moveMax_) {
+		rocalWtf_.position.x = moveMax_;
+	}
+	else if (rocalWtf_.position.x < -moveMax_) {
+		rocalWtf_.position.x = -moveMax_;
+	}
+
+	rocalWtf_.UpdateMat();
+
+	body_->wtf.position = rocalWtf_.position * parentWTF.matWorld;
+	body_->wtf.rotation.y = rocalWtf_.rotation.y + parentWTF.rotation.y;
+	
 	bodyCollider_->SetCenter(body_->GetBonWorldPos(spineBoneNum_));
 	body_->Update();
 	state_->Update(this);
@@ -57,7 +77,7 @@ void Main::FbxDraw() {
 void Main::TransitionTo(StateNum nextState) {
 	if (nextState==StateNum::DASH_STATE) {
 		state_ = std::make_unique<Dash>();
-		AnimationChange(Main::Animation::DASH);
+		AnimationChange(Main::Animation::DASH, 3.0f);
 	}else if (nextState == StateNum::JUMP_STATE) {
 		state_ = std::make_unique<Jump>();
 	}else if (nextState == StateNum::SLIDE_STATE) {

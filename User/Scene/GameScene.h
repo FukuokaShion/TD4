@@ -65,4 +65,7 @@ private:
 	
 	//フィールドマネージャー
 	unique_ptr<FieldManager>fieldManager_ = nullptr;
+
+	//レールカメラ
+	Transform railCameraPos_;
 };

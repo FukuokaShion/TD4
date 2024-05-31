@@ -39,7 +39,7 @@ namespace Player {
 		/**
 		 * @brief 更新
 		*/
-		void Update();
+		void Update(const Transform& parentWTF);
 		/**
 		 * @brief 描画
 		*/
@@ -61,10 +61,13 @@ namespace Player {
 		// モデル
 		std::unique_ptr<FBXModel> bodyModel_ = nullptr;
 		std::unique_ptr<FBXObject3d> body_ = nullptr;
+		Transform rocalWtf_;
 		// 行動パターン
 		std::unique_ptr<State> state_ = nullptr;
 		//回転の最大
 		float rotaMax_;
+		//横移動の最大
+		float moveMax_;
 		//当たり判定
 		BaseCollider* bodyCollider_ = nullptr;
 		float colliderRad_;
