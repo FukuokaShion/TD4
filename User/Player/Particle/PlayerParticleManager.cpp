@@ -36,7 +36,7 @@ void PlayerParticleManager::Update()
 
 void PlayerParticleManager::Draw()
 {
-	/*smoke_->Draw();*/
+	smoke_->Draw();
 	backBoost_->Draw();
 	/*spark_->Draw();*/
 	/*stageChangeParticle_->Draw();*/
