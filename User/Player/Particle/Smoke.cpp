@@ -2,7 +2,6 @@
 #include <imgui.h>
 #include "GlobalVariables.h"
 
-
 void Smoke::Initialize()
 {
 	smokeParticle_ = make_unique<ParticleManager>();
@@ -10,13 +9,17 @@ void Smoke::Initialize()
 	smokeParticle_->LoadTexture("particle.png");
 
 	//指定した名前のグループを作る
-	GlobalVariables::GetInstance()->CreateGroup(groupName_);
+	GlobalVariables* globalVariables = GlobalVariables::GetInstance();
+	globalVariables->CreateGroup(groupName_);
 	//第一引数名のグループ内に第二引数名の調整項目が無ければ、第三引数を初期値として登録
-	GlobalVariables::GetInstance()->AddItem(groupName_, "randPos", 0.02f);
-	GlobalVariables::GetInstance()->AddItem(groupName_, "randVel", 0.02f);
-	GlobalVariables::GetInstance()->AddItem(groupName_, "randVelY", 0.0f);
-	GlobalVariables::GetInstance()->AddItem(groupName_, "startScale", 0.8f);
-	GlobalVariables::GetInstance()->AddItem(groupName_, "endScale", 0.4f);
+	globalVariables->AddItem(groupName_, "randPos", 1.0f);
+	globalVariables->AddItem(groupName_, "randVel", 0.4f);
+	globalVariables->AddItem(groupName_, "randVelY", 0.0f);
+	globalVariables->AddItem(groupName_, "startScale", 1.0f);
+	globalVariables->AddItem(groupName_, "endScale", 0.1f);
+	globalVariables->AddItem(groupName_, "liveTime", 30);
+	globalVariables->AddItem(groupName_, "color", { 0.3f,1.0f,1.0f });
+	globalVariables->AddItem(groupName_, "alpha", 0.7f);
 	ApplyGlobalVariables();
 
 }
@@ -36,13 +39,15 @@ void Smoke::Draw()
 
 void Smoke::ApplyGlobalVariables()
 {
-	
 	//第一引数名のグループ内の第二引数名の調整項目の最新状態を読み込む
 	randPos = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randPos");
 	randVel = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVel");
 	randVelY = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "randVelY");
 	startScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "startScale");
 	endScale = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "endScale");
+	liveTime = GlobalVariables::GetInstance()->GetIntValue(groupName_, "liveTime");
+	color = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "color");
+	alpha = GlobalVariables::GetInstance()->GetFloatValue(groupName_, "alpha");
 }
 
 void Smoke::EffSummary(Vector3 pos)
@@ -66,7 +71,8 @@ void Smoke::EffSummary(Vector3 pos)
 		accGas.x = (float)rand() / RAND_MAX * rnd_accGas - rnd_accGas / 2.0f;
 		accGas.y = (float)rand() / RAND_MAX * rnd_accGas - rnd_accGas / 2.0f;
 		//追加
-		smokeParticle_->Add(60, posGas, velGas, accGas, startScale, endScale, { 1.0f,1.0f,1.0f,1.0f });
-		
+		smokeParticle_->Add(liveTime, posGas, velGas, accGas, startScale, endScale, { color.x,color.y,color.z,alpha });
+	
 	}
 }
+

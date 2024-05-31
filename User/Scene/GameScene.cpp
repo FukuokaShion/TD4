@@ -61,10 +61,12 @@ void GameScene::Update() {
 	gameCamera_->SetParentTF(player_->GetWorldTransform());
 	gameCamera_->Update();
 	player_->Update();
-  
+	
 	//引数ぶぶんを自機の中心座標でお願い
-	playerParticleManager_->ParticleCreate(PlayerParticleManager::SMOKE, player_->GetWorldTransform().position);
-	playerParticleManager_->ParticleCreate(PlayerParticleManager::BACKBOOST, player_->GetWorldTransform().position + Vector3{ 0,3,0 });
+	playerParticleManager_->ParticleCreate(PlayerParticleManager::SMOKE, player_->GetWorldTransform().position + Vector3{ 0,1,0 });
+	playerParticleManager_->ParticleCreate(PlayerParticleManager::BACKBOOST, player_->GetWorldTransform().position + Vector3{ 0,1,-3 });
+	playerParticleManager_->ParticleCreate(PlayerParticleManager::SPARK, player_->GetWorldTransform().position + Vector3{ 0,3,0 });
+	playerParticleManager_->ParticleCreate(PlayerParticleManager::STAGECHANGE, player_->GetWorldTransform().position + Vector3{ 0,3,0 });
 	playerParticleManager_->Update();
 	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();

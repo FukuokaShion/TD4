@@ -27,7 +27,7 @@ public:
 	void EffSummary(Vector3 pos);
 
 private:
-	unique_ptr<ParticleManager> backBoostParticle_;
+	unique_ptr<ParticleManager> sparkParticle_;
 	int backBoostEffTimer_ = 0;
 	bool isBackBoostEffFlag_ = false;
 

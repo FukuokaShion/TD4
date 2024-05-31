@@ -310,6 +310,9 @@
     <ClCompile Include="User\Scene\StageSelectScene.cpp">
       <Filter>User\Source\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="User\Player\Particle\StageChangeParticle.cpp">
+      <Filter>User\Source\Player\Particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BASE\FPS.h">
@@ -497,6 +500,9 @@
     </ClInclude>
     <ClInclude Include="User\Scene\StageSelectScene.h">
       <Filter>User\Header\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Player\Particle\StageChangeParticle.h">
+      <Filter>User\Header\Player\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
