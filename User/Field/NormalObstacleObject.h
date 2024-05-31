@@ -1,12 +1,12 @@
 #pragma once
 #include "BaseFieldObject.h"
-class GoalObject : public BaseFieldObject
+class NormalObstacleObject : public BaseFieldObject
 {
 public:
 
-	GoalObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotation);
+	NormalObstacleObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotation);
 
-	~GoalObject()
+	~NormalObstacleObject()
 	{
 		//当たり判定をマネージャから解除
 		CollisionManager::GetInstance()->RemoveCollider(sphere);
@@ -17,12 +17,5 @@ public:
 
 	void Draw() override;
 
-	bool GetGoaled()
-	{
-		return goaled_flag;
-	}
-
-private:
-	bool goaled_flag = false;
 };
 

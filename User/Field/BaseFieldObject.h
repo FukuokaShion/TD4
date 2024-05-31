@@ -2,15 +2,10 @@
 #include <list>
 #include <memory>
 #include "Object3d.h"
+#include"CollisionPrimitive.h"
+#include"CollisionManager.h"
 
 using namespace MyEngine;
-
-enum struct ObjectTag
-{
-	NONE,
-	COIN,
-	GOAL
-};
 
 class BaseFieldObject
 {
@@ -25,7 +20,7 @@ public:
 	
 	std::unique_ptr<Object3d> object = nullptr;
 
-	ObjectTag tag = ObjectTag::NONE;
+	BaseCollider* sphere;
 
 };
 

@@ -9,11 +9,23 @@ GoalObject::GoalObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotatio
 	object->wtf.scale = Scale;
 	object->wtf.rotation = Rotation;
 
-	tag = ObjectTag::GOAL;
+	sphere = new BaseCollider;
+
+	//半径セット
+	sphere->SetRad(Scale.x);
+	//中心座標
+	sphere->SetCenter(Pos);
+	//属性付与*1
+	sphere->SetAttribute(Attribute::Goal);
+	//当たり判定をマネージャにセット
+	CollisionManager::GetInstance()->AddCollider(sphere);
 }
 
 void GoalObject::Update()
 {
+	if (sphere->GetIsHit().playerBody) {
+		goaled_flag = true;
+	}
 	object->Update();
 }
 
