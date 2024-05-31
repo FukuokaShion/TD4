@@ -12,6 +12,8 @@
 
 #include "Smoke.h"
 #include "BackBoost.h"
+#include "Spark.h"
+#include "StageChangeParticle.h"
 
 using namespace MyEngine;
 using namespace std;
@@ -21,7 +23,9 @@ class PlayerParticleManager
 public :
 	enum : uint32_t{
 		SMOKE,
-		BACKBOOST
+		BACKBOOST,
+		SPARK,
+		STAGECHANGE
 	};
 public:
 	PlayerParticleManager();
@@ -38,6 +42,8 @@ public:
 private:
 	unique_ptr<Smoke> smoke_ = nullptr;
 	unique_ptr<BackBoost> backBoost_ = nullptr;
+	unique_ptr<Spark> spark_ = nullptr;
+	unique_ptr<StageChangeParticle> stageChangeParticle_ = nullptr;
 
 };
 
