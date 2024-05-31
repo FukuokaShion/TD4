@@ -23,6 +23,9 @@ GoalObject::GoalObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotatio
 
 void GoalObject::Update()
 {
+	if (sphere->GetIsHit().playerBody) {
+		goaled_flag = true;
+	}
 	object->Update();
 }
 

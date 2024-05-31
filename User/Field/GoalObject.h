@@ -16,5 +16,13 @@ public:
 	void Update() override;
 
 	void Draw() override;
+
+	bool GetGoaled()
+	{
+		return goaled_flag;
+	}
+
+private:
+	bool goaled_flag = false;
 };
 
