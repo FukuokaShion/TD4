@@ -12,7 +12,6 @@
 #include"CollisionManager.h"
 
 #include"Player.h"
-#include"Particle/PlayerParticleManager.h"
 #include"Ground.h"
 #include"FieldManager.h"
 using namespace std;
@@ -57,8 +56,6 @@ private:
 	unique_ptr<Player::Main> player_ = nullptr;
 	//地面
 	unique_ptr<Ground> ground_=nullptr;
-
-	unique_ptr<PlayerParticleManager> playerParticleManager_ = nullptr;
 
 	//地面モデル
 	unique_ptr<Model> modelGround_ = nullptr;

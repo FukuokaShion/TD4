@@ -29,6 +29,7 @@ Slide::~Slide() {}
 
 void Slide::Update(Main* player) {
 	timer_++;
+	player->CreateParticle(PlayerParticleManager::SMOKE, player->GetWorldTransform().position);
 	Rota();
 	Move(player->GetWorldTransform());
 	StateTransition(player);

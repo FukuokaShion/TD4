@@ -31,11 +31,15 @@ void Main::Initialize() {
 	moveMax_ = 6.0f;
 	//当たり判定
 	colliderRad_ = 0.7f;
-	spineBoneNum_ = bodyModel_->GetBoneNum("mixamorig:Spine3");
+	spine3BoneNum_ = bodyModel_->GetBoneNum("mixamorig:Spine3");
+	spine2BoneNum_ = bodyModel_->GetBoneNum("mixamorig:Spine2");
 	bodyCollider_ = new BaseCollider();
 	bodyCollider_->SetAttribute(Attribute::PlyerBody);
 	bodyCollider_->SetRad(colliderRad_);
 	CollisionManager::GetInstance()->AddCollider(bodyCollider_);
+	//パーティクル
+	playerParticleManager_ = make_unique<PlayerParticleManager>();
+	playerParticleManager_->Initialize();
 }
 
 void Main::Update(const Transform& parentWTF) {
@@ -65,13 +69,20 @@ void Main::Update(const Transform& parentWTF) {
 	body_->wtf.position = rocalWtf_.position * parentWTF.matWorld;
 	body_->wtf.rotation.y = rocalWtf_.rotation.y + parentWTF.rotation.y;
 	
-	bodyCollider_->SetCenter(body_->GetBonWorldPos(spineBoneNum_));
+	bodyCollider_->SetCenter(body_->GetBonWorldPos(spine3BoneNum_));
 	body_->Update();
 	state_->Update(this);
+	
+	playerParticleManager_->ParticleCreate(PlayerParticleManager::BACKBOOST, body_->GetBonWorldPos(spine2BoneNum_));
+	playerParticleManager_->Update();
 }
 
 void Main::FbxDraw() {
 	body_->Draw(); 
+}
+
+void Main::ParticleDraw() {
+	playerParticleManager_->Draw();
 }
 
 void Main::TransitionTo(StateNum nextState) {

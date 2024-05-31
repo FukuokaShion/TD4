@@ -27,6 +27,7 @@ void Dash::ApplyGlobalVariables() {
 Dash::~Dash() {}
 
 void Dash::Update(Main* player) {
+	player->CreateParticle(PlayerParticleManager::SMOKE, player->GetWorldTransform().position);
 	Rota();
 	Move(player->GetWorldTransform());
 	StateTransition(player);
