@@ -22,6 +22,12 @@ public:
 		return goaled_flag;
 	}
 
+	static void Reset()
+	{
+		goaled_flag = false;
+	}
+
+
 private:
 	static bool goaled_flag;
 };

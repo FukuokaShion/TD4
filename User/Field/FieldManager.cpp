@@ -1,5 +1,6 @@
 #include "FieldManager.h"
 #include"BaseFieldObjectManager.h"
+#include"GoalObject.h"
 void FieldManager::Initialize()
 {
 	models.insert(std::make_pair("coin", MyEngine::Model::LoadFromOBJ("coin")));
@@ -29,6 +30,7 @@ void FieldManager::Load(const std::string& num)
 		else if (objectData.fileName == "goal")
 		{
 			BaseFieldObjectManager::CreateGoalObject(model, objectData.translation, objectData.scaling,objectData.rotation);
+			GoalObject::Reset();
 		}
 	}
 }
