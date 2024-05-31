@@ -27,7 +27,7 @@ void GoalObject::Update()
 	if (sphere->GetIsHit().playerBody) {
 		goaled_flag = true;
 	}
-	if (goaled_flag)
+	if (goaled_flag)//あたおか回転ゴール
 	{
 		object->wtf.position.z += 3.0f;
 		object->wtf.rotation.z += 9.0f;
