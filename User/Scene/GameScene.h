@@ -15,6 +15,7 @@
 #include"Particle/PlayerParticleManager.h"
 #include"Ground.h"
 #include"FieldManager.h"
+#include"CountCoin.h"
 using namespace std;
 
 class GameScene : public SceneState {
@@ -65,4 +66,7 @@ private:
 	
 	//フィールドマネージャー
 	unique_ptr<FieldManager>fieldManager_ = nullptr;
+
+	//コインカウント
+	unique_ptr<CountCoin>countCoin_ = nullptr;
 };

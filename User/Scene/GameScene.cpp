@@ -48,6 +48,10 @@ void GameScene::Initialize() {
 	playerParticleManager_->Initialize();
 	// 当たり判定マネージャー初期化
 	CollisionManager::GetInstance()->Initialize();
+
+	//コインカウント
+	countCoin_ = make_unique<CountCoin>();
+	countCoin_->Initialize();
 }
 
 GameScene::~GameScene() {
@@ -88,6 +92,7 @@ void GameScene::FbxDraw() {
 
 void GameScene::SpriteDraw() {
 	playerParticleManager_->Draw();
+	countCoin_->Draw();
 }
 
 void GameScene::StateTransition() {
