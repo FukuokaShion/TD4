@@ -63,7 +63,6 @@ void GameScene::Update() {
 	gameCamera_->SetParentTF(railCameraPos_);
 	gameCamera_->Update();
   
-	playerParticleManager_->Update();
 	player_->Update(railCameraPos_);
   
 	ground_->Update();

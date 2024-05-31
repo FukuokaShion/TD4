@@ -11,7 +11,7 @@ CoinObject::CoinObject(Model* Model, Vector3 Pos, Vector3 Scale)
 	sphere = new BaseCollider;
 
 	//半径セット
-	sphere->SetRad(3.0f);
+	sphere->SetRad(1.0f);
 	//中心座標
 	sphere->SetCenter(Pos);
 	//属性付与*1
