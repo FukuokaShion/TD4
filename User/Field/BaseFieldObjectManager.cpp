@@ -1,6 +1,7 @@
 #include "BaseFieldObjectManager.h"
 #include "CoinObject.h"
 #include "GoalObject.h"
+#include "NormalObstacleObject.h"
 
 std::list<std::unique_ptr<BaseFieldObject>> BaseFieldObjectManager::manageBaseFieldObjectList;
 
@@ -45,4 +46,9 @@ void BaseFieldObjectManager::CreateCoinObject(Model* Model, Vector3 Pos, Vector3
 void BaseFieldObjectManager::CreateGoalObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotatin)
 {
 	GetInstance()->manageBaseFieldObjectList.emplace_back(std::make_unique<GoalObject>(Model, Pos, Scale, Rotatin));
+}
+
+void BaseFieldObjectManager::CreateNormalObstacleObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotatin)
+{
+	GetInstance()->manageBaseFieldObjectList.emplace_back(std::make_unique<NormalObstacleObject>(Model, Pos, Scale, Rotatin));
 }

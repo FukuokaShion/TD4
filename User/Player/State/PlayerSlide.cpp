@@ -29,6 +29,7 @@ Slide::~Slide() {}
 
 void Slide::Update(Main* player) {
 	timer_++;
+	player->CreateParticle(PlayerParticleManager::SMOKE, player->GetWorldTransform().position);
 	Rota();
 	Move(player->GetWorldTransform());
 	StateTransition(player);
@@ -42,6 +43,7 @@ void Slide::Move(Transform wtf) {
 	Vector3 result;
 	result = { 0,0,maxSpeed_ };
 	moveVector_ = Matrix4::bVelocity(result, wtf.matWorld);
+	moveVector_.z = 0;
 }
 
 void Slide::StateTransition(Main* player) {

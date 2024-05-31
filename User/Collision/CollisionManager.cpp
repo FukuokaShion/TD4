@@ -42,6 +42,7 @@ void CollisionManager::Finalize() {
 };
 
 void CollisionManager::CheakAllCol() {
+	isEnemyHit_ = false;
 	std::forward_list<BaseCollider*>::iterator itA;
 	std::forward_list<BaseCollider*>::iterator itB;
 	itA = colliders_.begin();
@@ -57,6 +58,10 @@ void CollisionManager::CheakAllCol() {
 			else if(CheakCol(colA, colB, Attribute::PlyerBody, Attribute::EnemyBullet, isPlayerHit_)) {}
 			//自機攻撃と敵機
 			else if(CheakCol(colA, colB, Attribute::PlayerAttack, Attribute::EnemyBody, isEnemyHit_)) {}
+			//金と人
+			else if (CheakCol(colA, colB, Attribute::PlyerBody, Attribute::Coin, isEnemyHit_)) {}
+			//ゴールと人
+			else if (CheakCol(colA, colB, Attribute::PlyerBody, Attribute::Goal, isEnemyHit_)) {}
 		}
 	}
 }

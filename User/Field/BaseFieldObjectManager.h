@@ -15,6 +15,7 @@ public:
 
 	static void CreateCoinObject(Model* Model, Vector3 Pos, Vector3 Scale);
 	static void CreateGoalObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotatin);
+	static void CreateNormalObstacleObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotatin);
 
 	static void ManagerBaseFieldObject();
 	static void Clear();

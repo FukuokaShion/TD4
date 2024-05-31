@@ -1,9 +1,8 @@
 #include "FieldManager.h"
-#include"CoinObject.h"
-#include"GoalObject.h"
+#include"BaseFieldObjectManager.h"
 void FieldManager::Initialize()
 {
-	models.insert(std::make_pair("coin", MyEngine::Model::LoadFromOBJ("collider")));
+	models.insert(std::make_pair("coin", MyEngine::Model::LoadFromOBJ("coin")));
 	models.insert(std::make_pair("goal", MyEngine::Model::LoadFromOBJ("goal")));
 }
 
@@ -24,12 +23,12 @@ void FieldManager::Load(const std::string& num)
 		//コイン
 		if (objectData.fileName == "coin")
 		{
-			//CoinObject::Spawn(model, objectData.translation, objectData.scaling);
+			BaseFieldObjectManager::CreateCoinObject(model, objectData.translation, objectData.scaling);
 		}
 		//ゴール
 		else if (objectData.fileName == "goal")
 		{
-			//CoinObject::Spawn(model, objectData.translation, objectData.scaling,objectData.rotation);
+			BaseFieldObjectManager::CreateGoalObject(model, objectData.translation, objectData.scaling,objectData.rotation);
 		}
 	}
 }

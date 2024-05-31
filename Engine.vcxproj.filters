@@ -313,6 +313,9 @@
     <ClCompile Include="User\Player\Particle\StageChangeParticle.cpp">
       <Filter>User\Source\Player\Particle</Filter>
     </ClCompile>
+    <ClCompile Include="User\Field\NormalObstacleObject.cpp">
+      <Filter>User\Source\Field</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BASE\FPS.h">
@@ -503,6 +506,9 @@
     </ClInclude>
     <ClInclude Include="User\Player\Particle\StageChangeParticle.h">
       <Filter>User\Header\Player\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Field\NormalObstacleObject.h">
+      <Filter>User\Header\Field</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
