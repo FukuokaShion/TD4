@@ -52,8 +52,11 @@ void StageSelectScene::SpriteDraw() {
 }
 
 void StageSelectScene::StateTransition() {
-	if (Input::GetInstance()->TriggerKey(DIK_SPACE)) {
+	if (Input::GetInstance()->TriggerKey(DIK_1)) {
 		GameScene::stageNum_ = 1;
+		sceneManager_->TransitionTo(SceneManager::SCENE::GAME);
+	}else if (Input::GetInstance()->TriggerKey(DIK_2)) {
+		GameScene::stageNum_ = 2;
 		sceneManager_->TransitionTo(SceneManager::SCENE::GAME);
 	}
 }
