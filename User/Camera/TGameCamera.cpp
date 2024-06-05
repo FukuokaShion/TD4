@@ -29,18 +29,17 @@ void TGameCamera::Initialize(int window_width, int window_height) {
 }
 
 void TGameCamera::ApplyGlobalVariables() {
-	lowEyePos_ = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "lowEyePos_");
-	lowTargetPos_ = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "lowTargetPos_");
-	mediumEyePos_ = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "mediumEyePos_");
-	mediumTargetPos_ =
-	    GlobalVariables::GetInstance()->GetVector3Value(groupName_, "mediumTargetPos_");
-	highEyePos_ = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "highEyePos_");
-	highTargetPos_ = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "highTargetPos_");
-	lightEyePos_ = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "lightEyePos_");
-	lightTargetPos_ =
-	    GlobalVariables::GetInstance()->GetVector3Value(groupName_, "lightTargetPos_");
-	leftEyePos_ = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "leftEyePos_");
-	leftTargetPos_ = GlobalVariables::GetInstance()->GetVector3Value(groupName_, "leftTargetPos_");
+	GlobalVariables* globalVariables = GlobalVariables::GetInstance();
+	lowEyePos_		 = globalVariables->GetVector3Value(groupName_, "lowEyePos_");
+	lowTargetPos_	 = globalVariables->GetVector3Value(groupName_, "lowTargetPos_");
+	mediumEyePos_	 = globalVariables->GetVector3Value(groupName_, "mediumEyePos_");
+	mediumTargetPos_ = globalVariables->GetVector3Value(groupName_, "mediumTargetPos_");
+	highEyePos_		 = globalVariables->GetVector3Value(groupName_, "highEyePos_");
+	highTargetPos_	 = globalVariables->GetVector3Value(groupName_, "highTargetPos_");
+	lightEyePos_	 = globalVariables->GetVector3Value(groupName_, "lightEyePos_");
+	lightTargetPos_  = globalVariables->GetVector3Value(groupName_, "lightTargetPos_");
+	leftEyePos_		 = globalVariables->GetVector3Value(groupName_, "leftEyePos_");
+	leftTargetPos_	 = globalVariables->GetVector3Value(groupName_, "leftTargetPos_");
 }
 
 void TGameCamera::Update() {
