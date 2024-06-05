@@ -90,5 +90,7 @@ namespace Player {
 		uint32_t spine3BoneNum_;
 		uint32_t spine2BoneNum_;
 		unique_ptr<PlayerParticleManager> playerParticleManager_ = nullptr;
+		//影
+		CircleShadow* circleShadow_;
 	};
 }

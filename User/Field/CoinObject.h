@@ -16,11 +16,14 @@ public:
 		//当たり判定をマネージャから解除
 		CollisionManager::GetInstance()->RemoveCollider(sphere);
 		delete sphere;
+		LightGroup::GetInstance()->RemoveCircleShadow(circleShadow_);
 	}
 
 	void Update() override;
 
 	void Draw() override;
 
+	//影
+	CircleShadow* circleShadow_;
 };
 
