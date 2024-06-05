@@ -40,6 +40,10 @@ void Main::Initialize() {
 	//パーティクル
 	playerParticleManager_ = make_unique<PlayerParticleManager>();
 	playerParticleManager_->Initialize();
+	//影
+	circleShadow_ = new CircleShadow();
+	circleShadow_->SetActive(true);
+	LightGroup::GetInstance()->SetCircleShadow(circleShadow_);
 }
 
 void Main::Update(const Transform& parentWTF) {
@@ -63,6 +67,8 @@ void Main::Update(const Transform& parentWTF) {
 	else if (rocalWtf_.position.x < -moveMax_) {
 		rocalWtf_.position.x = -moveMax_;
 	}
+
+	circleShadow_->SetCasterPos(body_->wtf.position);
 
 	rocalWtf_.UpdateMat();
 
