@@ -33,6 +33,10 @@ public:
 
 	void AngleUpdate();
 
+	void CameraUpdate();
+
+	void DebugCameraUpdate();
+
 	void SetParentTF(const MyEngine::Transform& parentWTF);
 
 	void ApplyGlobalVariables();

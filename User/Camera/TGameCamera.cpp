@@ -25,6 +25,8 @@ void TGameCamera::Initialize(int window_width, int window_height) {
 	globalVariables->AddItem(groupName_, "lightTargetPos_",  {0.0f, 2.0f, 9.0f});
 	globalVariables->AddItem(groupName_, "leftEyePos_",      {-5.0f, 6.0f, -15.0f});
 	globalVariables->AddItem(groupName_, "leftTargetPos_",   {0.0f, 2.0f, 9.0f});
+	globalVariables->AddItem(groupName_, "cameraAngle", Back);
+	globalVariables->AddItem(groupName_, "speedLv", Low);
 	ApplyGlobalVariables();
 }
 
@@ -40,6 +42,8 @@ void TGameCamera::ApplyGlobalVariables() {
 	lightTargetPos_  = globalVariables->GetVector3Value(groupName_, "lightTargetPos_");
 	leftEyePos_		 = globalVariables->GetVector3Value(groupName_, "leftEyePos_");
 	leftTargetPos_	 = globalVariables->GetVector3Value(groupName_, "leftTargetPos_");
+	cameraAngle = (Angle)globalVariables->GetIntValue(groupName_, "cameraAngle");
+	speedLv = (Speed)globalVariables->GetIntValue(groupName_, "speedLv");
 }
 
 void TGameCamera::Update() {
@@ -53,9 +57,9 @@ void TGameCamera::Update() {
 		}
 	} 
 	else {
-		InputAngle();
+		/*InputAngle();
 
-		AngleUpdate();
+		AngleUpdate();*/
 	}
 
 	Camera::Update();
@@ -105,7 +109,7 @@ void TGameCamera::AngleUpdate() {
 	}
 }
 
-void TGameCamera::SetParentTF(const Transform& parentWTF) { 
+void TGameCamera::CameraUpdate() {
 	if (isEase) {
 		switch (cameraAngle) {
 		case TGameCamera::Back:
@@ -113,26 +117,26 @@ void TGameCamera::SetParentTF(const Transform& parentWTF) {
 			case TGameCamera::Low:
 				endCameraEye_ = lowEyePos_;
 				endCameraTarget_ = lowTargetPos_;
-				cameraEye_ =
-				    MyEngine::Easing::OutQuadVec3(cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
-				cameraTarget_ =
-				    MyEngine::Easing::OutQuadVec3(cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
+				cameraEye_ = MyEngine::Easing::OutQuadVec3(
+				    cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
+				cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+				    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 				break;
 			case TGameCamera::Medium:
 				endCameraEye_ = mediumEyePos_;
 				endCameraTarget_ = mediumTargetPos_;
-				cameraEye_ =
-				    MyEngine::Easing::OutQuadVec3(cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
-				cameraTarget_ =
-				    MyEngine::Easing::OutQuadVec3(cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
+				cameraEye_ = MyEngine::Easing::OutQuadVec3(
+				    cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
+				cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+				    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 				break;
 			case TGameCamera::High:
 				endCameraEye_ = highEyePos_;
 				endCameraTarget_ = highTargetPos_;
-				cameraEye_ =
-				    MyEngine::Easing::OutQuadVec3(cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
-				cameraTarget_ =
-				    MyEngine::Easing::OutQuadVec3(cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
+				cameraEye_ = MyEngine::Easing::OutQuadVec3(
+				    cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
+				cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+				    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 				break;
 			default:
 				break;
@@ -143,16 +147,16 @@ void TGameCamera::SetParentTF(const Transform& parentWTF) {
 			endCameraTarget_ = lightTargetPos_;
 			cameraEye_ =
 			    MyEngine::Easing::OutQuadVec3(cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
-			cameraTarget_ =
-			    MyEngine::Easing::OutQuadVec3(cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
+			cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+			    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 			break;
 		case TGameCamera::LeftBack:
 			endCameraEye_ = leftEyePos_;
 			endCameraTarget_ = leftTargetPos_;
 			cameraEye_ =
 			    MyEngine::Easing::OutQuadVec3(cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
-			cameraTarget_ =
-			    MyEngine::Easing::OutQuadVec3(cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
+			cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+			    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 			break;
 		default:
 			break;
@@ -160,14 +164,58 @@ void TGameCamera::SetParentTF(const Transform& parentWTF) {
 
 		eye_ = cameraEye_;
 		target_ = cameraTarget_;
-	} 
-	else {
+	} else {
 		cameraEye_ = endCameraEye_;
 		cameraTarget_ = endCameraTarget_;
 
 		eye_ = cameraEye_;
 		target_ = cameraTarget_;
 	}
+}
+
+void TGameCamera::DebugCameraUpdate() {
+	switch (cameraAngle) {
+	case TGameCamera::Back:
+		switch (speedLv) {
+		case TGameCamera::Low:
+			endCameraEye_ = lowEyePos_;
+			endCameraTarget_ = lowTargetPos_;
+			break;
+		case TGameCamera::Medium:
+			endCameraEye_ = mediumEyePos_;
+			endCameraTarget_ = mediumTargetPos_;
+			break;
+		case TGameCamera::High:
+			endCameraEye_ = highEyePos_;
+			endCameraTarget_ = highTargetPos_;
+			break;
+		default:
+			break;
+		}
+		break;
+	case TGameCamera::RightBack:
+		endCameraEye_ = lightEyePos_;
+		endCameraTarget_ = lightTargetPos_;
+		break;
+	case TGameCamera::LeftBack:
+		endCameraEye_ = leftEyePos_;
+		endCameraTarget_ = leftTargetPos_;
+		break;
+	default:
+		break;
+	}
+
+	cameraEye_ = endCameraEye_;
+	cameraTarget_ = endCameraTarget_;
+
+	eye_ = cameraEye_;
+	target_ = cameraTarget_;
+}
+
+void TGameCamera::SetParentTF(const Transform& parentWTF) { 
+	//CameraUpdate();
+
+	DebugCameraUpdate();
 
 	wtf = parentWTF;
 }
