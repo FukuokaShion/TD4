@@ -51,4 +51,5 @@ private:
 
 	//スプライト
 	unique_ptr<Sprite> titlePic_ = nullptr;
+	unique_ptr<Sprite> spacePic_ = nullptr;
 };
