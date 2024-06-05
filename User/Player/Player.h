@@ -69,6 +69,10 @@ namespace Player {
 		 * @brief パーティクル生成
 		*/
 		void CreateParticle(uint32_t particleType, Vector3 createPos) { playerParticleManager_->ParticleCreate(particleType, createPos); };
+		/**
+		 * @brief 
+		*/
+		void SetMoveMax(float moveMax) { moveMax_ = moveMax; };
 	private:
 		// モデル
 		std::unique_ptr<FBXModel> bodyModel_ = nullptr;
