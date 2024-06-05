@@ -148,6 +148,11 @@ namespace MyEngine {
 		*/
 		void SetIsFlipX(bool isFlipX);
 
+		/*
+		* @brief 左上の座標
+		*/
+		void SetTexLeftTop(Vector2 leftTop);
+
 	private:
 		/**
 		 * @brief テクスチャサイズをイメージに合わせる
