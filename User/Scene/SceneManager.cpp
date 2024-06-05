@@ -19,7 +19,7 @@ void SceneManager::Initialize(DirectXCommon* dxCommon) {
 	this->dxCommon_ = dxCommon;
 
 	SceneState::SetSceneManager(this);
-	state_ = std::make_unique<GameScene>();
+	state_ = std::make_unique<TitleScene>();
 	state_->Initialize();
 
 	sceneChange_ = std::make_unique<SceneChange>();

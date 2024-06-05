@@ -44,7 +44,7 @@ void GameScene::Initialize() {
 	fieldManager_ = make_unique<FieldManager>();
 	fieldManager_->Initialize();
 	fieldManager_->Load(to_string(stageNum_));
-                      
+
 	// 当たり判定マネージャー初期化
 	CollisionManager::GetInstance()->Initialize();
 }
