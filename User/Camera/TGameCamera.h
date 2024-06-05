@@ -54,13 +54,13 @@ private:
 	MyEngine::Vector3 leftEyePos_;
 	MyEngine::Vector3 leftTargetPos_;
 
-	Angle cameraAngle = Back;
-	Speed speedLv = Low;
+	Angle cameraAngle_ = Back;
+	Speed speedLv_ = Low;
 
 	MyEngine::Vector3 cameraEye_;
 	MyEngine::Vector3 cameraTarget_;
 
-	bool isEase = false;
+	bool isEase_ = false;
 	float easeTimer_ = 0;
 	float easeTime_ = 30;
 

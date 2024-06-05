@@ -42,17 +42,17 @@ void TGameCamera::ApplyGlobalVariables() {
 	lightTargetPos_  = globalVariables->GetVector3Value(groupName_, "lightTargetPos_");
 	leftEyePos_		 = globalVariables->GetVector3Value(groupName_, "leftEyePos_");
 	leftTargetPos_	 = globalVariables->GetVector3Value(groupName_, "leftTargetPos_");
-	cameraAngle = (Angle)globalVariables->GetIntValue(groupName_, "cameraAngle");
-	speedLv = (Speed)globalVariables->GetIntValue(groupName_, "speedLv");
+	cameraAngle_ = (Angle)globalVariables->GetIntValue(groupName_, "cameraAngle");
+	speedLv_ = (Speed)globalVariables->GetIntValue(groupName_, "speedLv");
 }
 
 void TGameCamera::Update() {
 	ApplyGlobalVariables();
-	if (isEase) {
+	if (isEase_) {
 		easeTimer_++;
 
 		if (easeTimer_ >= easeTime_) {
-			isEase = false;
+			isEase_ = false;
 			easeTimer_ = 0;
 		}
 	} 
@@ -67,37 +67,37 @@ void TGameCamera::Update() {
 
 void TGameCamera::InputAngle() {
 	if (Input::GetInstance()->TriggerKey(DIK_DOWNARROW)) {
-		cameraAngle = Back;
-		isEase = true;
+		cameraAngle_ = Back;
+		isEase_ = true;
 	}
 
 	if (Input::GetInstance()->TriggerKey(DIK_RIGHTARROW)) {
-		cameraAngle = RightBack;
-		isEase = true;
+		cameraAngle_ = RightBack;
+		isEase_ = true;
 	}
 
 	if (Input::GetInstance()->TriggerKey(DIK_LEFTARROW)) {
-		cameraAngle = LeftBack;
-		isEase = true;
+		cameraAngle_ = LeftBack;
+		isEase_ = true;
 	}
 }
 
 void TGameCamera::AngleUpdate() {
-	switch (cameraAngle) {
+	switch (cameraAngle_) {
 	case TGameCamera::Back:
 		if (Input::GetInstance()->TriggerKey(DIK_1)) {
-			speedLv = Low;
-			isEase = true;
+			speedLv_ = Low;
+			isEase_ = true;
 		}
 
 		if (Input::GetInstance()->TriggerKey(DIK_2)) {
-			speedLv = Medium;
-			isEase = true;
+			speedLv_ = Medium;
+			isEase_ = true;
 		}
 
 		if (Input::GetInstance()->TriggerKey(DIK_3)) {
-			speedLv = High;
-			isEase = true;
+			speedLv_ = High;
+			isEase_ = true;
 		}
 		break;
 	case TGameCamera::RightBack:
@@ -110,10 +110,10 @@ void TGameCamera::AngleUpdate() {
 }
 
 void TGameCamera::CameraUpdate() {
-	if (isEase) {
-		switch (cameraAngle) {
+	if (isEase_) {
+		switch (cameraAngle_) {
 		case TGameCamera::Back:
-			switch (speedLv) {
+			switch (speedLv_) {
 			case TGameCamera::Low:
 				endCameraEye_ = lowEyePos_;
 				endCameraTarget_ = lowTargetPos_;
@@ -174,9 +174,9 @@ void TGameCamera::CameraUpdate() {
 }
 
 void TGameCamera::DebugCameraUpdate() {
-	switch (cameraAngle) {
+	switch (cameraAngle_) {
 	case TGameCamera::Back:
-		switch (speedLv) {
+		switch (speedLv_) {
 		case TGameCamera::Low:
 			endCameraEye_ = lowEyePos_;
 			endCameraTarget_ = lowTargetPos_;
