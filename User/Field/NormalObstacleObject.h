@@ -17,5 +17,12 @@ public:
 
 	void Draw() override;
 
+private:
+
+	int animationTimer = 0;
+	const int animationTime = 60;
+
+	bool animated = false;
+
 };
 
