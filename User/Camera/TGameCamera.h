@@ -6,13 +6,13 @@
 
 class TGameCamera : public MyEngine::Camera {
 public:
-	enum Angle {
+	enum CameraAngle {
 		Back,
 		RightBack,
 		LeftBack,
 	};
 
-	enum Speed {
+	enum SpeedLv {
 		Low,
 		Medium,
 		High
@@ -54,8 +54,8 @@ private:
 	MyEngine::Vector3 leftEyePos_;
 	MyEngine::Vector3 leftTargetPos_;
 
-	Angle cameraAngle_ = Back;
-	Speed speedLv_ = Low;
+	CameraAngle cameraAngle_ = Back;
+	SpeedLv speedLv_ = Low;
 
 	MyEngine::Vector3 cameraEye_;
 	MyEngine::Vector3 cameraTarget_;

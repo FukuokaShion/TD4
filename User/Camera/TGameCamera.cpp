@@ -42,8 +42,8 @@ void TGameCamera::ApplyGlobalVariables() {
 	lightTargetPos_  = globalVariables->GetVector3Value(groupName_, "lightTargetPos_");
 	leftEyePos_		 = globalVariables->GetVector3Value(groupName_, "leftEyePos_");
 	leftTargetPos_	 = globalVariables->GetVector3Value(groupName_, "leftTargetPos_");
-	cameraAngle_ = (Angle)globalVariables->GetIntValue(groupName_, "cameraAngle");
-	speedLv_ = (Speed)globalVariables->GetIntValue(groupName_, "speedLv");
+	cameraAngle_ = (CameraAngle)globalVariables->GetIntValue(groupName_, "cameraAngle");
+	speedLv_ = (SpeedLv)globalVariables->GetIntValue(groupName_, "speedLv");
 }
 
 void TGameCamera::Update() {
