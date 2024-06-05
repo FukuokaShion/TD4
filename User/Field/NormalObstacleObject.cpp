@@ -20,7 +20,7 @@ NormalObstacleObject::NormalObstacleObject(Model* Model, Vector3 Pos, Vector3 Sc
 	//当たり判定をマネージャにセット
 	CollisionManager::GetInstance()->AddCollider(sphere);
 
-	animationTimer = animationTime;
+	animationTimer = 0;
 }
 
 void NormalObstacleObject::Update()
@@ -32,7 +32,7 @@ void NormalObstacleObject::Update()
 	if (animated)
 	{
 		object->wtf.rotation.x += 3.0f;
-		object->wtf.position += Vector3(0, 1.0f, 1.0f);
+		object->wtf.position += Vector3(0, 0.3f, 0.3f);
 		if (animationTimer > animationTime)
 		{
 			isDelete = true;

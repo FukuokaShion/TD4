@@ -6,6 +6,8 @@ void FieldManager::Initialize()
 {
 	models.insert(std::make_pair("coin", MyEngine::Model::LoadFromOBJ("coin")));
 	models.insert(std::make_pair("goal", MyEngine::Model::LoadFromOBJ("goal")));
+	models.insert(std::make_pair("cone", MyEngine::Model::LoadFromOBJ("playerObj")));
+	
 }
 
 
