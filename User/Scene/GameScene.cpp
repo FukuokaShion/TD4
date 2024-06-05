@@ -14,6 +14,7 @@
 #include"Model.h"
 #include"ObjLoader.h"
 #include"BaseFieldObjectManager.h"
+#include"GoalObject.h"
 
 int GameScene::stageNum_ = 1;
 
@@ -90,7 +91,7 @@ void GameScene::SpriteDraw() {
 }
 
 void GameScene::StateTransition() {
-	if (Input::GetInstance()->TriggerKey(DIK_T)) {
+	if (Input::GetInstance()->TriggerKey(DIK_T)||GoalObject::GetGoaled()) {
 		sceneManager_->TransitionTo(SceneManager::SCENE::TITLE);
 	}
 }
