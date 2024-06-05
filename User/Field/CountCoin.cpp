@@ -4,33 +4,33 @@
 #include"Input.h"
 using namespace MyEngine;
 
-int32_t CountCoin::num = 99;
+int32_t CountCoin::num_ = 0;
 
 void CountCoin::Initialize()
 {
-	for (size_t i = 0; i < digit; i++)
+	for (size_t i = 0; i < digit_; i++)
 	{
-		count[i] = std::make_unique<Sprite>();
-		count[i]->Initialize(SpriteCommon::GetInstance(), SpriteLoader::GetInstance()->GetTextureIndex("nums.png"));
-		count[i]->SetPozition({ 20.0f+(40.0f*i), 50.0f});
-		count[i]->SetTexSize({ 64.0f,64.0f });
-		count[i]->SetSize({ 64.0f,64.0f });
-		count[i]->Update();
+		count_[i] = std::make_unique<Sprite>();
+		count_[i]->Initialize(SpriteCommon::GetInstance(), SpriteLoader::GetInstance()->GetTextureIndex("nums.png"));
+		count_[i]->SetPozition({ 20.0f+(40.0f*i), 50.0f});
+		count_[i]->SetTexSize({ 64.0f,64.0f });
+		count_[i]->SetSize({ 64.0f,64.0f });
+		count_[i]->Update();
 	}
 }
 
 void CountCoin::Draw()
 {
-	if (num>99)
+	if (num_>99)
 	{
-		num = 0;
+		num_ = 0;
 	}
-	sprintf_s(strNum, sizeof(strNum), "%02d", num);
-	for (size_t i = 0; i < digit; i++)
+	sprintf_s(strNum_, sizeof(strNum_), "%02d", num_);
+	for (size_t i = 0; i < digit_; i++)
 	{
-		strNum[i] -= 48;
-		count[i]->SetTexLeftTop({ 64.0f*strNum[i],0.0f});
-		count[i]->Update();
-		count[i]->Draw();
+		strNum_[i] -= 48;
+		count_[i]->SetTexLeftTop({ 64.0f*strNum_[i],0.0f});
+		count_[i]->Update();
+		count_[i]->Draw();
 	}
 }

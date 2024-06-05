@@ -28,7 +28,7 @@ void CoinObject::Update()
 
 	if (sphere->GetIsHit().playerBody){
 		isDelete = true;
-		CountCoin::num++;
+		CountCoin::num_++;
 	}
 
 	object->Update();

@@ -7,10 +7,10 @@ public:
 	void Initialize();
 
 	void Draw();
-	static int32_t num;
+	static int32_t num_;
 private:
-	const int32_t digit = 2;
-	std::unique_ptr<Sprite> count[2];
-	char strNum[3];
+	const int32_t digit_ = 2;
+	std::unique_ptr<Sprite> count_[2];
+	char strNum_[3];
 };
 
