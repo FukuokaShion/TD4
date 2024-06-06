@@ -26,8 +26,10 @@ void BaseMovie::Update(TGameCamera* camera) {
 }
 
 void BaseMovie::Draw() {
-	for (size_t i = 0; i < movieBar_.size(); i++) {
-		movieBar_[i]->Draw();
+	if (!isFinish_) {
+		for (size_t i = 0; i < movieBar_.size(); i++) {
+			movieBar_[i]->Draw();
+		}
 	}
 }
 

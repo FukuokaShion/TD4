@@ -7,6 +7,7 @@ StartMovie::StartMovie() { isFinish_ = false; }
 void StartMovie::Init() {
 	BaseMovie::Init();
 	phaseTimer_ = 0;
+	MovieBarInInit();
 }
 
 void StartMovie::Update(TGameCamera* camera) {
@@ -24,6 +25,7 @@ void StartMovie::Update(TGameCamera* camera) {
 	BaseMovie::Update(camera);
 
 	if (phaseTimer_ >= phaseTime_) {
+		MovieBarOutInit();
 		isFinish_ = true;
 	}
 }
