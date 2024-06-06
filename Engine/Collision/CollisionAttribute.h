@@ -14,6 +14,7 @@ namespace MyEngine {
 		EnemyBullet,
 		Coin,
 		Goal,
+		NormalObstacle,
 	};
 
 	//何に当たっているか
@@ -25,6 +26,7 @@ namespace MyEngine {
 		bool enemyBullet = false;
 		bool coin = false;
 		bool goal = false;
+		bool normalObstacle = false;
 	};
 
 	//どこで当たっているか
@@ -36,5 +38,6 @@ namespace MyEngine {
 		Vector3 enemyBullet = { 0,0,0 };
 		Vector3 coin = { 0,0,0 };
 		Vector3 goal = { 0,0,0 };
+		Vector3 normalObstacle = { 0,0,0 };
 	};
 }

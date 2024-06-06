@@ -1,10 +1,13 @@
 #include "FieldManager.h"
 #include"BaseFieldObjectManager.h"
 #include"GoalObject.h"
+#include"NormalObstacleObject.h"
 void FieldManager::Initialize()
 {
 	models.insert(std::make_pair("coin", MyEngine::Model::LoadFromOBJ("coin")));
 	models.insert(std::make_pair("goal", MyEngine::Model::LoadFromOBJ("goal")));
+	models.insert(std::make_pair("cone", MyEngine::Model::LoadFromOBJ("playerObj")));
+	
 }
 
 
@@ -31,6 +34,10 @@ void FieldManager::Load(const std::string& num)
 		{
 			BaseFieldObjectManager::CreateGoalObject(model, objectData.translation, objectData.scaling,objectData.rotation);
 			GoalObject::Reset();
+		}
+		else if(objectData.fileName=="cone")
+		{
+			BaseFieldObjectManager::CreateNormalObstacleObject(model, objectData.translation, objectData.scaling, objectData.rotation);
 		}
 	}
 }

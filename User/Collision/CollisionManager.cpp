@@ -62,6 +62,8 @@ void CollisionManager::CheakAllCol() {
 			else if (CheakCol(colA, colB, Attribute::PlyerBody, Attribute::Coin, isEnemyHit_)) {}
 			//ゴールと人
 			else if (CheakCol(colA, colB, Attribute::PlyerBody, Attribute::Goal, isEnemyHit_)) {}
+			//障害と人
+			else if (CheakCol(colA, colB, Attribute::PlyerBody, Attribute::NormalObstacle, isEnemyHit_)) {}
 		}
 	}
 }
