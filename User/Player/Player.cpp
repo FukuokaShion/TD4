@@ -49,12 +49,6 @@ void Main::Initialize() {
 void Main::Update(const Transform& parentWTF) {
 	parentWTF.matWorld;
 	rocalWtf_.rotation = state_->GetRotaVector();
-	//回転に制限
-	//if (rocalWtf_.rotation.y > rotaMax_) {
-	//	rocalWtf_.rotation.y = rotaMax_;
-	//}else if (rocalWtf_.rotation.y < -rotaMax_) {
-	//	rocalWtf_.rotation.y = -rotaMax_;
-	//}
 	rocalWtf_.position += state_->GetMoveVector();
 	//幅に制限
 	if (rocalWtf_.position.x > moveMax_) {
