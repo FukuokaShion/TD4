@@ -15,7 +15,7 @@ void CollisionManager::Initialize() {
 
 #ifdef _DEBUG
 	Model* model_ = ObjLoader::GetInstance()->GetModel("collider");
-	for (int i = 0; i < maxCol_; i++) {
+	for (int i = 0; i < MAXCOL; i++) {
 		objects_[i] = Object3d::Create();
 		objects_[i]->SetModel(model_);
 	}

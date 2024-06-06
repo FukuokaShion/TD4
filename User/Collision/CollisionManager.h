@@ -15,6 +15,10 @@ using namespace MyEngine;
 
 class CollisionManager {
 public:
+	enum ColStack {
+		MAXCOL = 120
+	};
+
 	~CollisionManager();
 	/**
 	 * @brief 初期化
@@ -66,7 +70,6 @@ public:
 	*/
 	void DrawCollider();
 private:
-	int maxCol_ = 32;
-	std::unique_ptr<Object3d> objects_[32];
+	std::unique_ptr<Object3d> objects_[MAXCOL];
 #endif
 };
