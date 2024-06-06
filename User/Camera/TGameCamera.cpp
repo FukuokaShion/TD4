@@ -94,7 +94,7 @@ void TGameCamera::SetParentTF(const Transform& parentWTF) {
 				break;
 			case TGameCamera::High:
 				cameraEye_ =
-				    MyEngine::Easing::OutQuadVec3(cameraEye_, {0, 10, -15}, easeTimer_ / easeTime_);
+				    MyEngine::Easing::OutQuadVec3(cameraEye_, {0, 10, -18}, easeTimer_ / easeTime_);
 				cameraTarget_ =
 				    MyEngine::Easing::OutQuadVec3(cameraTarget_, {0, 1, 9}, easeTimer_ / easeTime_);
 				break;
@@ -104,13 +104,13 @@ void TGameCamera::SetParentTF(const Transform& parentWTF) {
 			break;
 		case TGameCamera::RightBack:
 			cameraEye_ =
-			    MyEngine::Easing::OutQuadVec3(cameraEye_, {5, 6, -8}, easeTimer_ / easeTime_);
+			    MyEngine::Easing::OutQuadVec3(cameraEye_, {5, 6, -15}, easeTimer_ / easeTime_);
 			cameraTarget_ =
 			    MyEngine::Easing::OutQuadVec3(cameraTarget_, {0, 2, 9}, easeTimer_ / easeTime_);
 			break;
 		case TGameCamera::LeftBack:
 			cameraEye_ =
-			    MyEngine::Easing::OutQuadVec3(cameraEye_, {-5, 6, -8}, easeTimer_ / easeTime_);
+			    MyEngine::Easing::OutQuadVec3(cameraEye_, {-5, 6, -15}, easeTimer_ / easeTime_);
 			cameraTarget_ =
 			    MyEngine::Easing::OutQuadVec3(cameraTarget_, {0, 2, 9}, easeTimer_ / easeTime_);
 			break;
@@ -142,11 +142,11 @@ void TGameCamera::SetParentTF(const Transform& parentWTF) {
 			}
 			break;
 		case TGameCamera::RightBack:
-			cameraEye_ = {5, 6, -8};
+			cameraEye_ = {5, 6, -15};
 			cameraTarget_ = {0, 2, 9};
 			break;
 		case TGameCamera::LeftBack:
-			cameraEye_ = {-5, 6, -8};
+			cameraEye_ = {-5, 6, -15};
 			cameraTarget_ = {0, 2, 9};
 			break;
 		default:

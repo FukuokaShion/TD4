@@ -9,7 +9,7 @@
 using namespace MyEngine;
 using namespace std;
 
-class Smoke
+class StageChangeParticle
 {
 private:
 
@@ -27,16 +27,16 @@ public:
 	void EffSummary(Vector3 pos);
 
 private:
-	unique_ptr<ParticleManager> smokeParticle_;
+	unique_ptr<ParticleManager> stageChangeParticle_;
 	int backBoostEffTimer_ = 0;
 	bool isBackBoostEffFlag_ = false;
 
-	const float rnd_posGas = 0.4f;
+	const float rnd_posGas = 0.0f;
 	const float rnd_velGasz = 0.02f;
 	const float rnd_accGas = 0.000001f;
 
 	//グループ名、jsonファイル名になる
-	const char* groupName_ = "smokeParticle";
+	const char* groupName_ = "stageChangeParticle";
 	//調整項目例
 	float randPos;
 	float randVel;

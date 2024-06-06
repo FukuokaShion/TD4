@@ -12,7 +12,6 @@
 #include"CollisionManager.h"
 
 #include"Player.h"
-#include"Particle/PlayerParticleManager.h"
 #include"Ground.h"
 #include"FieldManager.h"
 #include"CountCoin.h"
@@ -59,8 +58,6 @@ private:
 	//地面
 	unique_ptr<Ground> ground_=nullptr;
 
-	unique_ptr<PlayerParticleManager> playerParticleManager_ = nullptr;
-
 	//地面モデル
 	unique_ptr<Model> modelGround_ = nullptr;
 	
@@ -69,4 +66,6 @@ private:
 
 	//コインカウント
 	unique_ptr<CountCoin>countCoin_ = nullptr;
+	//レールカメラ
+	Transform railCameraPos_;
 };

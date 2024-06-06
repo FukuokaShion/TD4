@@ -43,5 +43,6 @@ namespace Player {
 		float maxHeight_;
 		int timer_;
 		int reachTime_;
+		float rotaSpeed_;
 	};
 }

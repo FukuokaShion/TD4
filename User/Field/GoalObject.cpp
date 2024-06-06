@@ -1,4 +1,5 @@
 #include "GoalObject.h"
+bool GoalObject::goaled_flag = false;
 
 GoalObject::GoalObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotation)
 {
@@ -25,6 +26,11 @@ void GoalObject::Update()
 {
 	if (sphere->GetIsHit().playerBody) {
 		goaled_flag = true;
+	}
+	if (goaled_flag)//あたおか回転ゴール
+	{
+		object->wtf.position.z += 3.0f;
+		object->wtf.rotation.z += 9.0f;
 	}
 	object->Update();
 }
