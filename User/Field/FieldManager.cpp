@@ -37,7 +37,7 @@ void FieldManager::Load(const std::string& num)
 		}
 		else if(objectData.fileName=="cone")
 		{
-			BaseFieldObjectManager::CreateNormalObstacleObject(model, objectData.translation, objectData.scaling, objectData.rotation);
+			BaseFieldObjectManager::CreateNormalObstacleObject(model, objectData.translation, objectData.scaling, Vector3(0.0f, 0.0f, 0.0f));
 		}
 	}
 }

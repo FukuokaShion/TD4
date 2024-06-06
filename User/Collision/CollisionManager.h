@@ -16,7 +16,7 @@ using namespace MyEngine;
 class CollisionManager {
 public:
 	enum ColStack {
-		MAXCOL = 120
+		MAXCOL = 600
 	};
 
 	~CollisionManager();
