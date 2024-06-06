@@ -68,4 +68,7 @@ private:
 	unique_ptr<CountCoin>countCoin_ = nullptr;
 	//レールカメラ
 	Transform railCameraPos_;
+
+	//コインカウント
+	unique_ptr<CountCoin>countCoin_ = nullptr;
 };

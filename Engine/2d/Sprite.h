@@ -147,6 +147,11 @@ namespace MyEngine {
 		 * @brief 左右反転の設定
 		*/
 		void SetIsFlipX(bool isFlipX);
+		
+		/**
+		 * @brief テクスチャの左上座標取得
+		*/
+		void SetTexLeftTop(Vector2 texLeftTop);
 
 		/*
 		* @brief 左上の座標

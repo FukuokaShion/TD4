@@ -238,9 +238,9 @@ void Sprite::SetIsFlipX(bool isFlipX)
 	Update();
 }
 
-void MyEngine::Sprite::SetTexLeftTop(Vector2 leftTop)
+void MyEngine::Sprite::SetTexLeftTop(Vector2 texLeftTop)
 {
-	this->textureLeftTop = leftTop;
+	textureLeftTop = texLeftTop;
 }
 
 void Sprite::AdjustTextureSize()

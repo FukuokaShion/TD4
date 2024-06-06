@@ -1,5 +1,6 @@
 #include "CoinObject.h"
 #include"CountCoin.h"
+
 CoinObject::CoinObject(Model* Model, Vector3 Pos, Vector3 Scale)
 {
 	object = Object3d::Create();

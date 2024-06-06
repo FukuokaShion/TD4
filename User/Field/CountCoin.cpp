@@ -17,6 +17,7 @@ void CountCoin::Initialize()
 		count_[i]->SetSize({ 64.0f,64.0f });
 		count_[i]->Update();
 	}
+	num_ = 0;
 }
 
 void CountCoin::Draw()

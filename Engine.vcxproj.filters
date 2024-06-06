@@ -317,6 +317,9 @@
     <ClCompile Include="User\Camera\TGameCamera.cpp">
       <Filter>User\Source\Field</Filter>
     </ClCompile>
+    <ClCompile Include="User\Field\CountCoin.cpp">
+      <Filter>User\Source\Field</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BASE\FPS.h">
@@ -511,6 +514,9 @@
       <Filter>User\Header\Player\Particle</Filter>
     </ClInclude>
     <ClInclude Include="User\Field\NormalObstacleObject.h">
+      <Filter>User\Header\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Field\CountCoin.h">
       <Filter>User\Header\Field</Filter>
     </ClInclude>
   </ItemGroup>
