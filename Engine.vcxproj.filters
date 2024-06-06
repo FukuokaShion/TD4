@@ -319,6 +319,9 @@
     <ClCompile Include="User\Field\CountCoin.cpp">
       <Filter>User\Source\Field</Filter>
     </ClCompile>
+    <ClCompile Include="User\GameManager.cpp" />
+    <ClCompile Include="User\Movie\BaseMovie.cpp" />
+    <ClCompile Include="User\Movie\StartMovie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BASE\FPS.h">
@@ -516,6 +519,9 @@
     <ClInclude Include="User\Field\CountCoin.h">
       <Filter>User\Header\Field</Filter>
     </ClInclude>
+    <ClInclude Include="User\GameManager.h" />
+    <ClInclude Include="User\Movie\BaseMovie.h" />
+    <ClInclude Include="User\Movie\StartMovie.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SHADER\FBX.hlsli">

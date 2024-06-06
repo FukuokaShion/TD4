@@ -15,6 +15,7 @@
 #include"ObjLoader.h"
 #include"BaseFieldObjectManager.h"
 #include"GoalObject.h"
+#include "StartMovie.h"
 
 int GameScene::stageNum_ = 1;
 
@@ -52,6 +53,13 @@ void GameScene::Initialize() {
 	//コインカウント
 	countCoin_ = make_unique<CountCoin>();
 	countCoin_->Initialize();
+
+	gameManager_ = std::make_unique<GameManager>();
+	gameManager_->Init();
+
+	movie_ = std::make_unique<StartMovie>();
+	movie_->Init();
+	movie_->Update();
 }
 
 GameScene::~GameScene() {
@@ -72,6 +80,8 @@ void GameScene::Update() {
   
 	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
+
+	movie_->Update();
 
 	StateTransition();
 }
@@ -94,6 +104,8 @@ void GameScene::SpriteDraw() {
 	countCoin_->Draw();
 	player_->ParticleDraw();
 	countCoin_->Draw();
+
+	movie_->Draw();
 }
 
 void GameScene::StateTransition() {
