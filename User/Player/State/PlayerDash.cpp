@@ -17,6 +17,12 @@ void Dash::Initialize() {
 	GlobalVariables::GetInstance()->AddItem(groupName_, "rotaSpeed", 0.01f);
 	moveVector_ = { 0,0,0 };
 	ApplyGlobalVariables();
+	if (Input::GetInstance()->PushKey(DIK_A)) {
+		rotaVector_ += {0, -rotaSpeed_, 0};
+	}
+	if (Input::GetInstance()->PushKey(DIK_D)) {
+		rotaVector_ += {0, rotaSpeed_, 0};
+	}
 }
 
 void Dash::ApplyGlobalVariables() {

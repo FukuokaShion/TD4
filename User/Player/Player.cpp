@@ -27,7 +27,7 @@ void Main::Initialize() {
 	//ステート
 	state_ = std::make_unique<Dash>();
 	state_->Initialize();
-	rotaMax_ = 3.141592f / 8.0f;
+	rotaMax_ = 3.141592f / 12.0f;
 	moveMax_ = 6.0f;
 	//当たり判定
 	colliderRad_ = 0.7f;
@@ -48,17 +48,13 @@ void Main::Initialize() {
 
 void Main::Update(const Transform& parentWTF) {
 	parentWTF.matWorld;
-	if (state_->GetRotaVector().y != 0) {
-		rocalWtf_.rotation += state_->GetRotaVector();
-	}else {
-		rocalWtf_.rotation = {0, 0, 0};
-	}
+	rocalWtf_.rotation = state_->GetRotaVector();
 	//回転に制限
-	if (rocalWtf_.rotation.y > rotaMax_) {
-		rocalWtf_.rotation.y = rotaMax_;
-	}else if (rocalWtf_.rotation.y < -rotaMax_) {
-		rocalWtf_.rotation.y = -rotaMax_;
-	}
+	//if (rocalWtf_.rotation.y > rotaMax_) {
+	//	rocalWtf_.rotation.y = rotaMax_;
+	//}else if (rocalWtf_.rotation.y < -rotaMax_) {
+	//	rocalWtf_.rotation.y = -rotaMax_;
+	//}
 	rocalWtf_.position += state_->GetMoveVector();
 	//幅に制限
 	if (rocalWtf_.position.x > moveMax_) {
