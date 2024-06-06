@@ -1,6 +1,7 @@
 #include "BaseMovie.h"
 #include "Easing.h"
 #include "SpriteLoader.h"
+#include "TGameCamera.h"
 
 BaseMovie::~BaseMovie() {}
 
@@ -17,7 +18,8 @@ void BaseMovie::Init() {
 	movieBar_[1]->SetAnchorPoint({0, 1});
 }
 
-void BaseMovie::Update() {
+void BaseMovie::Update(TGameCamera* camera) {
+	MyEngine::Vector3 hoge = camera->GetEye();
 	for (size_t i = 0; i < movieBar_.size(); i++) {
 		movieBar_[i]->SetPozition(movieBarPos_[i]);
 	}

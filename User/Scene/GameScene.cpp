@@ -3,18 +3,18 @@
  * @brief ゲームプレイシーン
  */
 
-#include"GameScene.h"
-#include"SceneManager.h"
-#include"FbxLoader.h"
-#include"SpriteLoader.h"
-#include"Easing.h"
-#include"Collision.h"
-#include"LightGroup.h"
-#include"Object3D.h"
-#include"Model.h"
-#include"ObjLoader.h"
-#include"BaseFieldObjectManager.h"
-#include"GoalObject.h"
+#include "GameScene.h"
+#include "BaseFieldObjectManager.h"
+#include "Collision.h"
+#include "Easing.h"
+#include "FbxLoader.h"
+#include "GoalObject.h"
+#include "LightGroup.h"
+#include "Model.h"
+#include "ObjLoader.h"
+#include "Object3D.h"
+#include "SceneManager.h"
+#include "SpriteLoader.h"
 #include "StartMovie.h"
 
 int GameScene::stageNum_ = 1;
@@ -33,16 +33,19 @@ void GameScene::Initialize() {
 	ParticleManager::SetCamera(gameCamera_.get());
 
 	railCameraPos_.Initialize();
+	railCameraPos_.position.z = -150.0f;
 
 	// プレイヤー
 	player_ = make_unique<Player::Main>();
 	player_->Initialize();
 
-	//地面
+	// 地面
 	ObjLoader* objLoader = ObjLoader::GetInstance();
-	ground_ = make_unique<Ground>(objLoader->GetModel("Ground"), Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 40.0f),gameCamera_.get());
-	
-	//フィールドマネージャー
+	ground_ = make_unique<Ground>(
+	    objLoader->GetModel("Ground"), Vector3(0.0f, 0.0f, -150.0f), Vector3(10.0f, 10.0f, 40.0f),
+	    gameCamera_.get());
+
+	// フィールドマネージャー
 	fieldManager_ = make_unique<FieldManager>();
 	fieldManager_->Initialize();
 	fieldManager_->Load(to_string(stageNum_));
@@ -50,7 +53,7 @@ void GameScene::Initialize() {
 	// 当たり判定マネージャー初期化
 	CollisionManager::GetInstance()->Initialize();
 
-	//コインカウント
+	// コインカウント
 	countCoin_ = make_unique<CountCoin>();
 	countCoin_->Initialize();
 
@@ -59,7 +62,7 @@ void GameScene::Initialize() {
 
 	movie_ = std::make_unique<StartMovie>();
 	movie_->Init();
-	movie_->Update();
+	movie_->Update(gameCamera_.get());
 }
 
 GameScene::~GameScene() {
@@ -70,18 +73,23 @@ GameScene::~GameScene() {
 
 // 更新
 void GameScene::Update() {
-	railCameraPos_.position += { 0,0,0.5f };
+	railCameraPos_.position += {0, 0, 0.5f};
 	railCameraPos_.UpdateMat();
+
+	if (!movie_->GetIsFinish()) {
+		movie_->Update(gameCamera_.get());
+	} else {
+		gameCamera_->AngleUpdate();
+	}
 
 	gameCamera_->SetParentTF(railCameraPos_);
 	gameCamera_->Update();
-  
+	TGameCamera::gameCamera_ = gameCamera_.get();
+
 	player_->Update(railCameraPos_);
-  
+
 	ground_->Update();
 	CollisionManager::GetInstance()->CheakAllCol();
-
-	movie_->Update();
 
 	StateTransition();
 }
@@ -95,10 +103,7 @@ void GameScene::ObjectDraw() {
 #endif
 }
 
-void GameScene::FbxDraw() { 
-	player_->FbxDraw(); 
-
-}
+void GameScene::FbxDraw() { player_->FbxDraw(); }
 
 void GameScene::SpriteDraw() {
 	countCoin_->Draw();
@@ -109,7 +114,7 @@ void GameScene::SpriteDraw() {
 }
 
 void GameScene::StateTransition() {
-	if (Input::GetInstance()->TriggerKey(DIK_T)||GoalObject::GetGoaled()) {
+	if (Input::GetInstance()->TriggerKey(DIK_T) || GoalObject::GetGoaled()) {
 		sceneManager_->TransitionTo(SceneManager::SCENE::TITLE);
 	}
 }

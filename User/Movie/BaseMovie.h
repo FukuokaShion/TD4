@@ -4,6 +4,8 @@
 #include "Sprite.h"
 #include <memory>
 
+class TGameCamera;
+
 class BaseMovie {
 public:
 	// デストラクタ
@@ -13,7 +15,7 @@ public:
 	virtual void Init();
 
 	// 更新
-	virtual void Update();
+	virtual void Update(TGameCamera* camera);
 
 	// 描画
 	void Draw();

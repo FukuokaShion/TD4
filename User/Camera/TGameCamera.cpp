@@ -6,6 +6,8 @@
 using namespace MyEngine;
 using namespace Player;
 
+TGameCamera* TGameCamera::gameCamera_ = nullptr;
+
 TGameCamera::TGameCamera() {}
 
 void TGameCamera::Initialize(int window_width, int window_height) {
@@ -24,8 +26,6 @@ void TGameCamera::Update() {
 	} 
 	else {
 		InputAngle();
-
-		AngleUpdate();
 	}
 
 	Camera::Update();
@@ -46,9 +46,7 @@ void TGameCamera::InputAngle() {
 		cameraAngle = LeftBack;
 		isEase = true;
 	}
-}
 
-void TGameCamera::AngleUpdate() {
 	switch (cameraAngle) {
 	case TGameCamera::Back:
 		if (Input::GetInstance()->TriggerKey(DIK_1)) {
@@ -75,7 +73,7 @@ void TGameCamera::AngleUpdate() {
 	}
 }
 
-void TGameCamera::SetParentTF(const Transform& parentWTF) { 
+void TGameCamera::AngleUpdate() {
 	if (isEase) {
 		switch (cameraAngle) {
 		case TGameCamera::Back:
@@ -117,11 +115,7 @@ void TGameCamera::SetParentTF(const Transform& parentWTF) {
 		default:
 			break;
 		}
-
-		eye_ = cameraEye_;
-		target_ = cameraTarget_;
-	} 
-	else {
+	} else {
 		switch (cameraAngle) {
 		case TGameCamera::Back:
 			switch (speedLv) {
@@ -152,10 +146,12 @@ void TGameCamera::SetParentTF(const Transform& parentWTF) {
 		default:
 			break;
 		}
-
-		eye_ = cameraEye_;
-		target_ = cameraTarget_;
 	}
 
+	eye_ = cameraEye_;
+	target_ = cameraTarget_;
+}
+
+void TGameCamera::SetParentTF(const Transform& parentWTF) { 
 	wtf = parentWTF;
 }
