@@ -62,7 +62,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)User\Scene;$(SolutionDir)Engine\ImGui;$(SolutionDir)Engine\2d;$(SolutionDir)Engine\3d\Particle;$(SolutionDir)Engine\3d;$(SolutionDir)Engine\Collision;$(SolutionDir)Engine\Audio;$(SolutionDir)Engine\Input;$(SolutionDir)Engine\Math;$(SolutionDir)Engine\Base;$(SolutionDir)DirectXTex;$(SolutionDir)imgui;$(SolutionDir)User;$(SolutionDir)User\Player;$(SolutionDir)Engine\Camera;$(SolutionDir)User\Enemy;$(SolutionDir)User\Field;$(SolutionDir)User\Loader;$(SolutionDir)User\Collision;$(SolutionDir)Engine\Loader;$(SolutionDir)User\Player\State;$(SolutionDir)User\Enemy\State;$(SolutionDir)User\Enemy\Particle;$(SolutionDir)Engine\3d\Light;$(SolutionDir)User\Camera;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)User\Scene;$(SolutionDir)Engine\ImGui;$(SolutionDir)Engine\2d;$(SolutionDir)Engine\3d\Particle;$(SolutionDir)Engine\3d;$(SolutionDir)Engine\Collision;$(SolutionDir)Engine\Audio;$(SolutionDir)Engine\Input;$(SolutionDir)Engine\Math;$(SolutionDir)Engine\Base;$(SolutionDir)DirectXTex;$(SolutionDir)imgui;$(SolutionDir)User;$(SolutionDir)User\Player;$(SolutionDir)Engine\Camera;$(SolutionDir)User\Enemy;$(SolutionDir)User\Field;$(SolutionDir)User\Loader;$(SolutionDir)User\Collision;$(SolutionDir)Engine\Loader;$(SolutionDir)User\Player\State;$(SolutionDir)User\Enemy\State;$(SolutionDir)User\Enemy\Particle;$(SolutionDir)Engine\3d\Light;$(SolutionDir)User\Camera;$(SolutionDir)User\Movie;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -101,6 +101,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="User\Movie\StartMovie.cpp" />
+    <ClCompile Include="User\Movie\BaseMovie.cpp" />
+    <ClCompile Include="User\GameManager.cpp" />
     <ClCompile Include="User\Field\CountCoin.cpp" />
     <ClCompile Include="User\Field\NormalObstacleObject.cpp" />
     <ClCompile Include="User\Field\BaseFieldObjectManager.cpp" />
@@ -166,6 +169,9 @@
     <ClCompile Include="User\Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="User\Movie\StartMovie.h" />
+    <ClInclude Include="User\Movie\BaseMovie.h" />
+    <ClInclude Include="User\GameManager.h" />
     <ClInclude Include="User\Field\CountCoin.h" />
     <ClInclude Include="User\Field\NormalObstacleObject.h" />
     <ClInclude Include="User\Field\BaseFieldObjectManager.h" />

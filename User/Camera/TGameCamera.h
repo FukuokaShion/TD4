@@ -35,6 +35,8 @@ public:
 
 	void SetParentTF(const MyEngine::Transform& parentWTF);
 
+	static TGameCamera* gameCamera_;
+
 private:
 	Angle cameraAngle = Back;
 	Speed speedLv = Low;

@@ -130,6 +130,12 @@
     <Filter Include="User\Source\Player\Particle">
       <UniqueIdentifier>{0e647565-8867-44e4-9761-b37c538a263d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="User\Source\Movie">
+      <UniqueIdentifier>{69846abc-4604-483f-ab68-f93ea72e8e34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="User\Header\Movie">
+      <UniqueIdentifier>{610103df-8ed3-490f-862f-21bda15a1650}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -318,6 +324,15 @@
     </ClCompile>
     <ClCompile Include="User\Field\CountCoin.cpp">
       <Filter>User\Source\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Movie\BaseMovie.cpp">
+      <Filter>User\Source\Movie</Filter>
+    </ClCompile>
+    <ClCompile Include="User\Movie\StartMovie.cpp">
+      <Filter>User\Source\Movie</Filter>
+    </ClCompile>
+    <ClCompile Include="User\GameManager.cpp">
+      <Filter>User\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -515,6 +530,15 @@
     </ClInclude>
     <ClInclude Include="User\Field\CountCoin.h">
       <Filter>User\Header\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Movie\BaseMovie.h">
+      <Filter>User\Header\Movie</Filter>
+    </ClInclude>
+    <ClInclude Include="User\Movie\StartMovie.h">
+      <Filter>User\Header\Movie</Filter>
+    </ClInclude>
+    <ClInclude Include="User\GameManager.h">
+      <Filter>User\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

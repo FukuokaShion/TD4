@@ -15,6 +15,11 @@
 #include"Ground.h"
 #include"FieldManager.h"
 #include"CountCoin.h"
+
+#include"GameManager.h"
+
+#include"BaseMovie.h"
+
 using namespace std;
 
 class GameScene : public SceneState {
@@ -69,4 +74,7 @@ private:
 	//レールカメラ
 	Transform railCameraPos_;
 
+	unique_ptr<GameManager> gameManager_ = nullptr;
+
+	unique_ptr<BaseMovie> movie_ = nullptr;
 };
