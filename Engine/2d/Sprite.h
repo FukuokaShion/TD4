@@ -153,10 +153,6 @@ namespace MyEngine {
 		*/
 		void SetTexLeftTop(Vector2 texLeftTop);
 
-		/*
-		* @brief 左上の座標
-		*/
-		void SetTexLeftTop(Vector2 leftTop);
 
 	private:
 		/**

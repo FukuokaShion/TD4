@@ -91,7 +91,6 @@ void GameScene::FbxDraw() {
 }
 
 void GameScene::SpriteDraw() {
-	playerParticleManager_->Draw();
 	countCoin_->Draw();
 	player_->ParticleDraw();
 	countCoin_->Draw();

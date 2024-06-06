@@ -69,6 +69,4 @@ private:
 	//レールカメラ
 	Transform railCameraPos_;
 
-	//コインカウント
-	unique_ptr<CountCoin>countCoin_ = nullptr;
 };
