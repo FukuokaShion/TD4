@@ -47,6 +47,12 @@ void TitleScene::Update() {
 	spacePic_->Update();
 
 	StateTransition();
+	flashTime++;
+	if (flashTime>=flashTimer)
+	{
+		isFlash ^= 1;
+		flashTime = 0;
+	}
 }
 
 void TitleScene::ObjectDraw() {
@@ -58,7 +64,10 @@ void TitleScene::FbxDraw() {
 
 void TitleScene::SpriteDraw() {
 	titlePic_->Draw();
-	spacePic_->Draw();
+	if (isFlash)
+	{
+		spacePic_->Draw();
+	}
 }
 
 void TitleScene::StateTransition() {

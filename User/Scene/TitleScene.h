@@ -55,5 +55,6 @@ private:
 
 	//点滅
 	int8_t flashTime;
-	const int8_t flashTimer = 45;
+	const int8_t flashTimer = 40;
+	bool isFlash;
 };
