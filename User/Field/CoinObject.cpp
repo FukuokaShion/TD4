@@ -20,9 +20,7 @@ CoinObject::CoinObject(Model* Model, Vector3 Pos, Vector3 Scale)
 	//当たり判定をマネージャにセット
 	CollisionManager::GetInstance()->AddCollider(sphere);
 	//影
-	circleShadow_ = new CircleShadow();
-	circleShadow_->SetActive(true);
-	LightGroup::GetInstance()->SetCircleShadow(circleShadow_);
+	
 }
 
 void CoinObject::Update()
@@ -36,7 +34,7 @@ void CoinObject::Update()
 	}
 
 	object->Update();
-	circleShadow_->SetCasterPos(object->wtf.position + Vector3{0, -1.0f, 0});
+	
 }
 
 void CoinObject::Draw()
