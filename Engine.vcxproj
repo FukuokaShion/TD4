@@ -101,6 +101,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="User\Field\CountCoin.cpp" />
     <ClCompile Include="User\Field\NormalObstacleObject.cpp" />
     <ClCompile Include="User\Field\BaseFieldObjectManager.cpp" />
     <ClCompile Include="Engine\Loader\LevelLoader.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="User\Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="User\Field\CountCoin.h" />
     <ClInclude Include="User\Field\NormalObstacleObject.h" />
     <ClInclude Include="User\Field\BaseFieldObjectManager.h" />
     <ClInclude Include="Engine\Loader\LevelLoader.h" />

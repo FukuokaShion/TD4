@@ -238,6 +238,11 @@ void Sprite::SetIsFlipX(bool isFlipX)
 	Update();
 }
 
+void MyEngine::Sprite::SetTexLeftTop(Vector2 leftTop)
+{
+	this->textureLeftTop = leftTop;
+}
+
 void Sprite::AdjustTextureSize()
 {
 	ComPtr<ID3D12Resource> textureBuffer = spritecomon->GetTextureBuffer(textureIndex_);

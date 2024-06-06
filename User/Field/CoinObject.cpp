@@ -1,5 +1,5 @@
 #include "CoinObject.h"
-
+#include"CountCoin.h"
 CoinObject::CoinObject(Model* Model, Vector3 Pos, Vector3 Scale)
 {
 	object = Object3d::Create();
@@ -31,6 +31,7 @@ void CoinObject::Update()
 
 	if (sphere->GetIsHit().playerBody){
 		isDelete = true;
+		CountCoin::num_++;
 	}
 
 	object->Update();
