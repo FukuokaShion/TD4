@@ -23,12 +23,14 @@ void SceneChange::Initialize() {
 	black_->SetSize({ WinApp::window_width,WinApp::window_height });
 	black_->SetColor({ 0,0,0,0 });
 
+	loadPos_ = { 750.0f,550.0f };
 	loading_ = std::make_unique<Sprite>();
 	loading_->Initialize(SpriteCommon::GetInstance());
-	loading_->SetSize({ WinApp::window_width,WinApp::window_height });
+	loading_->SetTextureIndex(SpriteLoader::GetInstance()->GetTextureIndex("loading.png"));
+	loading_->SetPozition(loadPos_);
+	loading_->SetSize(loading_->GetTexSize());
 
 	black_->SetTextureIndex(SpriteLoader::GetInstance()->GetTextureIndex("white.png"));
-	loading_->SetTextureIndex(SpriteLoader::GetInstance()->GetTextureIndex("loading.png"));
 	black_->Update();
 	loading_->Update();
 }

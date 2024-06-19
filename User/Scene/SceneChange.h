@@ -54,4 +54,7 @@ private:
 	//明転
 	bool isFadeIn;
 	float blackSubtractAlpha;
+
+	//位置
+	Vector2 loadPos_;
 };
