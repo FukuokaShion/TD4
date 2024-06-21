@@ -35,3 +35,12 @@ void CountCoin::Draw()
 		count_[i]->Draw();
 	}
 }
+
+void CountCoin::SetPos(const Vector2& pos)
+{
+	for (size_t i = 0; i < digit_; i++)
+	{
+		count_[i]->SetPozition({ pos.x+ (40.0f * i), pos.y });
+		count_[i]->Update();
+	}
+}

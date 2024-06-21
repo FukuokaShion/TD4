@@ -7,6 +7,9 @@ public:
 	void Initialize();
 
 	void Draw();
+
+	void SetPos(const Vector2& pos);
+
 	static int32_t num_;
 private:
 	const int32_t digit_ = 2;

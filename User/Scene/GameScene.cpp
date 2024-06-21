@@ -63,6 +63,18 @@ void GameScene::Initialize() {
 	movie_ = std::make_unique<StartMovie>();
 	movie_->Init();
 	movie_->Update(gameCamera_.get());
+
+	//リザルト
+	result_ = make_unique<Sprite>();
+	result_->Initialize(SpriteCommon::GetInstance(), SpriteLoader::GetInstance()->GetTextureIndex("result.png"));
+	result_->SetPozition({ WinApp::window_width / 2.0f, 50.0f });
+	result_->SetAnchorPoint({ 0.5f,0.5f });
+	//result_->SetTexSize();
+	result_->Update();
+	scorePos_ = { WinApp::window_width / 2.0f, WinApp::window_height / 2.0f };
+
+	//フェーズ
+	phase = Phase::Game;
 }
 
 GameScene::~GameScene() {
@@ -73,23 +85,40 @@ GameScene::~GameScene() {
 
 // 更新
 void GameScene::Update() {
-	railCameraPos_.position += {0, 0, 0.5f};
-	railCameraPos_.UpdateMat();
+	switch (phase)
+	{
+	case GameScene::Game:
+		railCameraPos_.position += {0, 0, 0.5f};
+		railCameraPos_.UpdateMat();
 
-	if (!movie_->GetIsFinish()) {
-		movie_->Update(gameCamera_.get());
-	} else {
-		gameCamera_->AngleUpdate();
+		if (!movie_->GetIsFinish()) {
+			movie_->Update(gameCamera_.get());
+		}
+		else {
+			gameCamera_->AngleUpdate();
+		}
+
+		gameCamera_->SetParentTF(railCameraPos_);
+		gameCamera_->Update();
+		TGameCamera::gameCamera_ = gameCamera_.get();
+
+		player_->Update(railCameraPos_);
+
+		ground_->Update();
+		CollisionManager::GetInstance()->CheakAllCol();
+		if (GoalObject::GetGoaled())
+		{
+			phase = Phase::Result;
+			countCoin_->SetPos(scorePos_);
+		}
+		break;
+	case GameScene::Result:
+
+		break;
+	default:
+		break;
 	}
-
-	gameCamera_->SetParentTF(railCameraPos_);
-	gameCamera_->Update();
-	TGameCamera::gameCamera_ = gameCamera_.get();
-
-	player_->Update(railCameraPos_);
-
-	ground_->Update();
-	CollisionManager::GetInstance()->CheakAllCol();
+	
 
 	StateTransition();
 }
@@ -111,10 +140,15 @@ void GameScene::SpriteDraw() {
 	countCoin_->Draw();
 
 	movie_->Draw();
+	if (phase==Phase::Result)
+	{
+		result_->Draw();
+	}
 }
 
 void GameScene::StateTransition() {
-	if (Input::GetInstance()->TriggerKey(DIK_T) || GoalObject::GetGoaled()) {
+	if (Input::GetInstance()->TriggerKey(DIK_T) || 
+		(GoalObject::GetGoaled()&&phase==Phase::Result)&& Input::GetInstance()->TriggerKey(DIK_SPACE)) {
 		sceneManager_->TransitionTo(SceneManager::SCENE::TITLE);
 	}
 }

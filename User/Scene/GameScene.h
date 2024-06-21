@@ -56,6 +56,12 @@ public:
 	//ステージ番号
 	static int stageNum_;
 private:
+	enum Phase
+	{
+		Game,
+		Result,
+	};
+private:
 	//カメラ
 	unique_ptr<TGameCamera> gameCamera_ = nullptr;
 	//プレイヤー
@@ -77,4 +83,9 @@ private:
 	unique_ptr<GameManager> gameManager_ = nullptr;
 
 	unique_ptr<BaseMovie> movie_ = nullptr;
+
+	//リザルト
+	unique_ptr<Sprite> result_;
+	Vector2 scorePos_;
+	Phase phase;
 };
