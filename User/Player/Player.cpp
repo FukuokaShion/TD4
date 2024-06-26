@@ -24,6 +24,7 @@ void Main::Initialize() {
 	body_->PlayAnimation(DASH, 3.0f);
 	body_->Update();
 	rocalWtf_.Initialize();
+	isDraw_ = true;
 	//ステート
 	state_ = std::make_unique<Dash>();
 	state_->Initialize();
@@ -37,6 +38,8 @@ void Main::Initialize() {
 	bodyCollider_->SetAttribute(Attribute::PlyerBody);
 	bodyCollider_->SetRad(colliderRad_);
 	CollisionManager::GetInstance()->AddCollider(bodyCollider_);
+	hitTimer_ = 0;
+	hitTimerMax_ = 60;
 	//パーティクル
 	playerParticleManager_ = make_unique<PlayerParticleManager>();
 	playerParticleManager_->Initialize();
@@ -65,7 +68,24 @@ void Main::Update(const Transform& parentWTF) {
 	body_->wtf.position = rocalWtf_.position * parentWTF.matWorld;
 	body_->wtf.rotation.y = rocalWtf_.rotation.y + parentWTF.rotation.y;
 	
+	//当たり判定
 	bodyCollider_->SetCenter(body_->GetBonWorldPos(spine3BoneNum_));
+	if (bodyCollider_->GetIsHit().normalObstacle == true) {
+		hitTimer_++;
+		if (hitTimer_ % 10 == 0) {
+			if (isDraw_ == true) {
+				isDraw_ = false;
+			}else{
+				isDraw_ = true;
+			}
+		}
+		if (hitTimerMax_ < hitTimer_) {
+			hitTimer_ = 0;
+			isDraw_ = true;
+			bodyCollider_->RemoveHit(Attribute::NormalObstacle);
+		}
+	}
+
 	body_->Update();
 	state_->Update(this);
 	
@@ -74,7 +94,9 @@ void Main::Update(const Transform& parentWTF) {
 }
 
 void Main::FbxDraw() {
-	body_->Draw(); 
+	if (isDraw_ == true) {
+		body_->Draw();
+	}
 }
 
 void Main::ParticleDraw() {

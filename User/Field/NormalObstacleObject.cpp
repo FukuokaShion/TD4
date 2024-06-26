@@ -1,4 +1,5 @@
 #include "NormalObstacleObject.h"
+#include"CountCoin.h"
 
 NormalObstacleObject::NormalObstacleObject(Model* Model, Vector3 Pos, Vector3 Scale, Vector3 Rotation)
 {
@@ -27,6 +28,18 @@ void NormalObstacleObject::Update()
 {
 	if (sphere->GetIsHit().playerBody) {
 		animated = true;
+		
+		//スコア
+		int score = CountCoin::num_;
+		if (score >= downScore_) {
+			CountCoin::num_ -= downScore_;
+		}else {
+			CountCoin::num_ = 0;
+		}
+
+		//当たり判定
+		sphere->RemoveHit(Attribute::PlyerBody);
+		CollisionManager::GetInstance()->RemoveCollider(sphere);
 	}
 
 	if (animated)

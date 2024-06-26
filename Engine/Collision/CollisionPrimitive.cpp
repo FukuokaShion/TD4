@@ -24,6 +24,12 @@ void BaseCollider::IsHit(Attribute attribute, Vector3 hitPos) {
 	}else if (attribute == Attribute::EnemyBullet) {
 		isHit_.enemyBullet = true;
 		hitPos_.enemyBullet = hitPos;
+	}else if (attribute == Attribute::Coin) {
+		isHit_.coin = true;
+		hitPos_.coin = hitPos;
+	}else if (attribute == Attribute::NormalObstacle) {
+		isHit_.normalObstacle = true;
+		hitPos_.normalObstacle = hitPos;
 	}
 }
 
@@ -43,6 +49,12 @@ void BaseCollider::RemoveHit(Attribute attribute) {
 	}
 	else if (attribute == Attribute::EnemyBullet) {
 		isHit_.enemyBullet = false;
+	}
+	else if (attribute == Attribute::Coin) {
+		isHit_.coin = false;
+	}
+	else if (attribute == Attribute::NormalObstacle) {
+		isHit_.normalObstacle = false;
 	}
 }
 

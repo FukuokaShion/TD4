@@ -23,6 +23,6 @@ private:
 	const int animationTime = 60;
 
 	bool animated = false;
-
+	int downScore_ = 3;
 };
 
