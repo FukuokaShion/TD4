@@ -78,6 +78,7 @@ namespace Player {
 		std::unique_ptr<FBXModel> bodyModel_ = nullptr;
 		std::unique_ptr<FBXObject3d> body_ = nullptr;
 		Transform rocalWtf_;
+		bool isDraw_;
 		// 行動パターン
 		std::unique_ptr<State> state_ = nullptr;
 		//回転の最大
@@ -90,6 +91,8 @@ namespace Player {
 		uint32_t spine3BoneNum_;
 		uint32_t spine2BoneNum_;
 		unique_ptr<PlayerParticleManager> playerParticleManager_ = nullptr;
+		int hitTimer_;
+		int hitTimerMax_;
 		//影
 		CircleShadow* circleShadow_;
 	};
