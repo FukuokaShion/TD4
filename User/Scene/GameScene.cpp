@@ -16,7 +16,15 @@
 #include "SceneManager.h"
 #include "SpriteLoader.h"
 #include "StartMovie.h"
-
+#pragma warning( push )
+#pragma warning( disable : 5039 )
+#pragma warning( disable : 4820 )
+#pragma warning( disable : 4514 )
+#pragma warning( disable : 4668 )
+#include <imgui.h>
+#include <imgui_impl_dx12.h>
+#include <d3d12.h>
+#pragma warning( pop )
 int GameScene::stageNum_ = 1;
 
 GameScene::GameScene() {}
@@ -71,7 +79,7 @@ void GameScene::Initialize() {
 	result_->SetAnchorPoint({ 0.5f,0.5f });
 	//result_->SetTexSize();
 	result_->Update();
-	scorePos_ = { WinApp::window_width / 2.0f, WinApp::window_height / 2.0f };
+	scorePos_ = { (WinApp::window_width / 2.0f)- 64.0f, WinApp::window_height / 2.0f };
 
 	//フェーズ
 	phase = Phase::Game;
@@ -113,7 +121,6 @@ void GameScene::Update() {
 		}
 		break;
 	case GameScene::Result:
-
 		break;
 	default:
 		break;
