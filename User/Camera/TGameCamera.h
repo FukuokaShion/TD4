@@ -6,13 +6,13 @@
 
 class TGameCamera : public MyEngine::Camera {
 public:
-	enum Angle {
+	enum CameraAngle {
 		Back,
 		RightBack,
 		LeftBack,
 	};
 
-	enum Speed {
+	enum SpeedLv {
 		Low,
 		Medium,
 		High
@@ -33,18 +33,39 @@ public:
 
 	void AngleUpdate();
 
+	void CameraUpdate();
+
+	void DebugCameraUpdate();
+
 	void SetParentTF(const MyEngine::Transform& parentWTF);
+
+	void ApplyGlobalVariables();
 
 	static TGameCamera* gameCamera_;
 
 private:
-	Angle cameraAngle = Back;
-	Speed speedLv = Low;
+	const char* groupName_ = "TGameCamera";
+	MyEngine::Vector3 lowEyePos_;
+	MyEngine::Vector3 lowTargetPos_;
+	MyEngine::Vector3 mediumEyePos_;
+	MyEngine::Vector3 mediumTargetPos_;
+	MyEngine::Vector3 highEyePos_;
+	MyEngine::Vector3 highTargetPos_;
+	MyEngine::Vector3 lightEyePos_;
+	MyEngine::Vector3 lightTargetPos_;
+	MyEngine::Vector3 leftEyePos_;
+	MyEngine::Vector3 leftTargetPos_;
+
+	CameraAngle cameraAngle_ = Back;
+	SpeedLv speedLv_ = Low;
 
 	MyEngine::Vector3 cameraEye_;
 	MyEngine::Vector3 cameraTarget_;
 
-	bool isEase = false;
+	bool isEase_ = false;
 	float easeTimer_ = 0;
 	float easeTime_ = 30;
+
+	MyEngine::Vector3 endCameraEye_ = {0.0f, 4.0f, -9.0f};
+	MyEngine::Vector3 endCameraTarget_ = {0.0f, 3.0f, 9.0f};
 };

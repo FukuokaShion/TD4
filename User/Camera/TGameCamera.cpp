@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "Input.h"
 #include "Easing.h"
+#include <imgui.h>
+#include "GlobalVariables.h"
 
 using namespace MyEngine;
 using namespace Player;
@@ -12,20 +14,54 @@ TGameCamera::TGameCamera() {}
 
 void TGameCamera::Initialize(int window_width, int window_height) {
 	Camera::Initialize(window_width, window_height);
-	
+
+	GlobalVariables* globalVariables = GlobalVariables::GetInstance();
+	globalVariables->CreateGroup(groupName_);
+	globalVariables->AddItem(groupName_, "lowEyePos_",       {0.0f, 4.0f, -9.0f});
+	globalVariables->AddItem(groupName_, "lowTargetPos_",    {0.0f, 3.0f, 9.0f});
+	globalVariables->AddItem(groupName_, "mediumEyePos_",    {0.0f, 8.0f, -12.0f});
+	globalVariables->AddItem(groupName_, "mediumTargetPos_", {0.0f, 1.0f, 9.0f});
+	globalVariables->AddItem(groupName_, "highEyePos_",      {0.0f, 10.0f, -18.0f});
+	globalVariables->AddItem(groupName_, "highTargetPos_",   {0.0f, 1.0f, 9.0f});
+	globalVariables->AddItem(groupName_, "lightEyePos_",     {5.0f, 6.0f, -15.0f});
+	globalVariables->AddItem(groupName_, "lightTargetPos_",  {0.0f, 2.0f, 9.0f});
+	globalVariables->AddItem(groupName_, "leftEyePos_",      {-5.0f, 6.0f, -15.0f});
+	globalVariables->AddItem(groupName_, "leftTargetPos_",   {0.0f, 2.0f, 9.0f});
+	globalVariables->AddItem(groupName_, "cameraAngle", Back);
+	globalVariables->AddItem(groupName_, "speedLv", Low);
+	ApplyGlobalVariables();
+}
+
+void TGameCamera::ApplyGlobalVariables() {
+	GlobalVariables* globalVariables = GlobalVariables::GetInstance();
+	lowEyePos_		 = globalVariables->GetVector3Value(groupName_, "lowEyePos_");
+	lowTargetPos_	 = globalVariables->GetVector3Value(groupName_, "lowTargetPos_");
+	mediumEyePos_	 = globalVariables->GetVector3Value(groupName_, "mediumEyePos_");
+	mediumTargetPos_ = globalVariables->GetVector3Value(groupName_, "mediumTargetPos_");
+	highEyePos_		 = globalVariables->GetVector3Value(groupName_, "highEyePos_");
+	highTargetPos_	 = globalVariables->GetVector3Value(groupName_, "highTargetPos_");
+	lightEyePos_	 = globalVariables->GetVector3Value(groupName_, "lightEyePos_");
+	lightTargetPos_  = globalVariables->GetVector3Value(groupName_, "lightTargetPos_");
+	leftEyePos_		 = globalVariables->GetVector3Value(groupName_, "leftEyePos_");
+	leftTargetPos_	 = globalVariables->GetVector3Value(groupName_, "leftTargetPos_");
+	cameraAngle_ = (CameraAngle)globalVariables->GetIntValue(groupName_, "cameraAngle");
+	speedLv_ = (SpeedLv)globalVariables->GetIntValue(groupName_, "speedLv");
 }
 
 void TGameCamera::Update() {
-	if (isEase) {
+	ApplyGlobalVariables();
+	if (isEase_) {
 		easeTimer_++;
 
 		if (easeTimer_ >= easeTime_) {
-			isEase = false;
+			isEase_ = false;
 			easeTimer_ = 0;
 		}
 	} 
 	else {
-		InputAngle();
+		/*InputAngle();
+
+		AngleUpdate();*/
 	}
 
 	Camera::Update();
@@ -33,35 +69,36 @@ void TGameCamera::Update() {
 
 void TGameCamera::InputAngle() {
 	if (Input::GetInstance()->TriggerKey(DIK_DOWNARROW)) {
-		cameraAngle = Back;
-		isEase = true;
+		cameraAngle_ = Back;
+		isEase_ = true;
 	}
 
 	if (Input::GetInstance()->TriggerKey(DIK_RIGHTARROW)) {
-		cameraAngle = RightBack;
-		isEase = true;
+		cameraAngle_ = RightBack;
+		isEase_ = true;
 	}
 
 	if (Input::GetInstance()->TriggerKey(DIK_LEFTARROW)) {
-		cameraAngle = LeftBack;
-		isEase = true;
+		cameraAngle_ = LeftBack;
+		isEase_ = true;
 	}
 
-	switch (cameraAngle) {
+void TGameCamera::AngleUpdate() {
+	switch (cameraAngle_) {
 	case TGameCamera::Back:
 		if (Input::GetInstance()->TriggerKey(DIK_1)) {
-			speedLv = Low;
-			isEase = true;
+			speedLv_ = Low;
+			isEase_ = true;
 		}
 
 		if (Input::GetInstance()->TriggerKey(DIK_2)) {
-			speedLv = Medium;
-			isEase = true;
+			speedLv_ = Medium;
+			isEase_ = true;
 		}
 
 		if (Input::GetInstance()->TriggerKey(DIK_3)) {
-			speedLv = High;
-			isEase = true;
+			speedLv_ = High;
+			isEase_ = true;
 		}
 		break;
 	case TGameCamera::RightBack:
@@ -73,80 +110,104 @@ void TGameCamera::InputAngle() {
 	}
 }
 
-void TGameCamera::AngleUpdate() {
-	if (isEase) {
-		switch (cameraAngle) {
+void TGameCamera::CameraUpdate() {
+	if (isEase_) {
+		switch (cameraAngle_) {
 		case TGameCamera::Back:
-			switch (speedLv) {
+			switch (speedLv_) {
 			case TGameCamera::Low:
-				cameraEye_ =
-				    MyEngine::Easing::OutQuadVec3(cameraEye_, {0, 4, -9}, easeTimer_ / easeTime_);
-				cameraTarget_ =
-				    MyEngine::Easing::OutQuadVec3(cameraTarget_, {0, 3, 9}, easeTimer_ / easeTime_);
+				endCameraEye_ = lowEyePos_;
+				endCameraTarget_ = lowTargetPos_;
+				cameraEye_ = MyEngine::Easing::OutQuadVec3(
+				    cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
+				cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+				    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 				break;
 			case TGameCamera::Medium:
-				cameraEye_ =
-				    MyEngine::Easing::OutQuadVec3(cameraEye_, {0, 8, -12}, easeTimer_ / easeTime_);
-				cameraTarget_ =
-				    MyEngine::Easing::OutQuadVec3(cameraTarget_, {0, 1, 9}, easeTimer_ / easeTime_);
+				endCameraEye_ = mediumEyePos_;
+				endCameraTarget_ = mediumTargetPos_;
+				cameraEye_ = MyEngine::Easing::OutQuadVec3(
+				    cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
+				cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+				    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 				break;
 			case TGameCamera::High:
-				cameraEye_ =
-				    MyEngine::Easing::OutQuadVec3(cameraEye_, {0, 10, -18}, easeTimer_ / easeTime_);
-				cameraTarget_ =
-				    MyEngine::Easing::OutQuadVec3(cameraTarget_, {0, 1, 9}, easeTimer_ / easeTime_);
+				endCameraEye_ = highEyePos_;
+				endCameraTarget_ = highTargetPos_;
+				cameraEye_ = MyEngine::Easing::OutQuadVec3(
+				    cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
+				cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+				    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 				break;
 			default:
 				break;
 			}
 			break;
 		case TGameCamera::RightBack:
+			endCameraEye_ = lightEyePos_;
+			endCameraTarget_ = lightTargetPos_;
 			cameraEye_ =
-			    MyEngine::Easing::OutQuadVec3(cameraEye_, {5, 6, -15}, easeTimer_ / easeTime_);
-			cameraTarget_ =
-			    MyEngine::Easing::OutQuadVec3(cameraTarget_, {0, 2, 9}, easeTimer_ / easeTime_);
+			    MyEngine::Easing::OutQuadVec3(cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
+			cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+			    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 			break;
 		case TGameCamera::LeftBack:
+			endCameraEye_ = leftEyePos_;
+			endCameraTarget_ = leftTargetPos_;
 			cameraEye_ =
-			    MyEngine::Easing::OutQuadVec3(cameraEye_, {-5, 6, -15}, easeTimer_ / easeTime_);
-			cameraTarget_ =
-			    MyEngine::Easing::OutQuadVec3(cameraTarget_, {0, 2, 9}, easeTimer_ / easeTime_);
+			    MyEngine::Easing::OutQuadVec3(cameraEye_, endCameraEye_, easeTimer_ / easeTime_);
+			cameraTarget_ = MyEngine::Easing::OutQuadVec3(
+			    cameraTarget_, endCameraTarget_, easeTimer_ / easeTime_);
 			break;
 		default:
 			break;
 		}
+
+		eye_ = cameraEye_;
+		target_ = cameraTarget_;
 	} else {
-		switch (cameraAngle) {
-		case TGameCamera::Back:
-			switch (speedLv) {
-			case TGameCamera::Low:
-				cameraEye_ = {0, 4, -9};
-				cameraTarget_ = {0, 3, 9};
-				break;
-			case TGameCamera::Medium:
-				cameraEye_ = {0, 8, -12};
-				cameraTarget_ = {0, 1, 9};
-				break;
-			case TGameCamera::High:
-				cameraEye_ = {0, 10, -15};
-				cameraTarget_ = {0, 1, 9};
-				break;
-			default:
-				break;
-			}
+		cameraEye_ = endCameraEye_;
+		cameraTarget_ = endCameraTarget_;
+
+		eye_ = cameraEye_;
+		target_ = cameraTarget_;
+	}
+}
+
+void TGameCamera::DebugCameraUpdate() {
+	switch (cameraAngle_) {
+	case TGameCamera::Back:
+		switch (speedLv_) {
+		case TGameCamera::Low:
+			endCameraEye_ = lowEyePos_;
+			endCameraTarget_ = lowTargetPos_;
 			break;
-		case TGameCamera::RightBack:
-			cameraEye_ = {5, 6, -15};
-			cameraTarget_ = {0, 2, 9};
+		case TGameCamera::Medium:
+			endCameraEye_ = mediumEyePos_;
+			endCameraTarget_ = mediumTargetPos_;
 			break;
-		case TGameCamera::LeftBack:
-			cameraEye_ = {-5, 6, -15};
-			cameraTarget_ = {0, 2, 9};
+		case TGameCamera::High:
+			endCameraEye_ = highEyePos_;
+			endCameraTarget_ = highTargetPos_;
 			break;
 		default:
 			break;
 		}
+		break;
+	case TGameCamera::RightBack:
+		endCameraEye_ = lightEyePos_;
+		endCameraTarget_ = lightTargetPos_;
+		break;
+	case TGameCamera::LeftBack:
+		endCameraEye_ = leftEyePos_;
+		endCameraTarget_ = leftTargetPos_;
+		break;
+	default:
+		break;
 	}
+
+	cameraEye_ = endCameraEye_;
+	cameraTarget_ = endCameraTarget_;
 
 	eye_ = cameraEye_;
 	target_ = cameraTarget_;

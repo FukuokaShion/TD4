@@ -84,6 +84,7 @@ void GameScene::Update() {
 
 	gameCamera_->SetParentTF(railCameraPos_);
 	gameCamera_->Update();
+
 	TGameCamera::gameCamera_ = gameCamera_.get();
 
 	player_->Update(railCameraPos_);
