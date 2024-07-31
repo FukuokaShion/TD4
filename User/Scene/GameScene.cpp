@@ -79,7 +79,7 @@ void GameScene::Update() {
 	if (!movie_->GetIsFinish()) {
 		movie_->Update(gameCamera_.get());
 	} else {
-		gameCamera_->AngleUpdate();
+		gameCamera_->DebugCameraUpdate();
 	}
 
 	gameCamera_->SetParentTF(railCameraPos_);

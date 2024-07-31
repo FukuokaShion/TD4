@@ -82,6 +82,7 @@ void TGameCamera::InputAngle() {
 		cameraAngle_ = LeftBack;
 		isEase_ = true;
 	}
+}
 
 void TGameCamera::AngleUpdate() {
 	switch (cameraAngle_) {
