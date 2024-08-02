@@ -334,6 +334,7 @@
     <ClCompile Include="User\GameManager.cpp">
       <Filter>User\Source</Filter>
     </ClCompile>
+    <ClCompile Include="User\Movie\GoalMovie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BASE\FPS.h">
@@ -540,6 +541,7 @@
     <ClInclude Include="User\GameManager.h">
       <Filter>User\Header</Filter>
     </ClInclude>
+    <ClInclude Include="User\Movie\GoalMovie.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SHADER\FBX.hlsli">
