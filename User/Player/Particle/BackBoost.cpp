@@ -24,11 +24,6 @@ void BackBoost::Initialize(){
 void BackBoost::Update(){
 	ApplyGlobalVariables();
 	backBoostParticle_->Update();
-
-	ImGui::Begin("backBoost");
-	ImGui::Text("backBoostEffTimer_:%d", backBoostEffTimer_);
-	ImGui::Text("isBackBoostEffFlag_:%d", isBackBoostEffFlag_);
-	ImGui::End();
 }
 
 void BackBoost::Draw(){
